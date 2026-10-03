@@ -5,7 +5,7 @@
 - 项目：Microsoft / generative-ai-for-beginners。
 - 上游地址：https://github.com/microsoft/generative-ai-for-beginners
 - 上游提交：d8ec07e31c4b32bd283d565c1abd9b58bb5cf2e8。
-- 核对日期：2026-10-03。
+- 初版核对日期：2026-10-03；深化与完整验收日期：2026-10-04。
 - 读取范围：根 README、00—21 各课 README、LICENSE；重点检查 06 的 Python 文本生成脚本、11 的 OpenAI 函数调用 Notebook、15 的 RAG Notebook。
 - 每篇课程文章的末尾有固定提交链接，方便核对。未声称逐一审计所有翻译、所有语言实现和全部依赖。
 
@@ -42,6 +42,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ~~~
+
+## 本版完整验收
+
+2026-10-04，00–21共22个课次均完成概览与深化文章；新增各篇保留固定上游链接，区分历史案例、原代码观察和原创工程补充。
+
+- 远端读取全部52份Markdown文件，检查195处实际相对文件链接，未发现缺失目标；代码围栏中的函数调用不算Markdown链接。
+- 最后六篇文章逐一读取，与提交文本一致。
+- 从远端读取四份测试模块，46项离线测试全部通过。
+- 未执行真实模型、云服务或GPU推理；测试范围见[示例说明](examples/README.md)。
+- 除上游课程，LoRA/量化、缓存、FAISS与Llama协议解释引用各篇链接的一手论文或官方文档；这些动态文档未来可能更新。
 
 ## 怎样持续填充
 
