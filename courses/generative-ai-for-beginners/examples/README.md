@@ -35,17 +35,20 @@ fake_generator 只读取发送的 evidence，直接返回其中一段原文，�
 
 ## 深化笔记的独立检查
 
-另外两份脚本可从仓库根目录独立运行：
+以下脚本可从仓库根目录独立运行：
 
 ```bash
 python courses/generative-ai-for-beginners/examples/deep_dive_search_tool_checks.py -v
 python courses/generative-ai-for-beginners/examples/deep_dive_rag_evidence_checks.py -v
+python courses/generative-ai-for-beginners/examples/deep_dive_model_memory_checks.py
 ```
 
 - [检索与工具检查](deep_dive_search_tool_checks.py)：第08与11课示例，10项检查，验证余弦计算、参数契约与权限边界。
 - [RAG证据组装检查](deep_dive_rag_evidence_checks.py)：第15课示例，12项检查，验证原文与来源进入消息、授权过滤、去重、字符预算及无证据状态。
 
-两份独立脚本均已在2026-10-04执行通过。它们和原离线示例一样使用教学数据，不调用在线模型，不能作为在线模型质量或安全保证。
+- [模型内存估算检查](deep_dive_model_memory_checks.py)：第19课示例，12项检查，验证原始权重与普通KV缓存公式、单位和非法参数；不代表实际设备可运行模型。
+
+三份独立脚本均已在2026-10-04执行通过。它们和原离线示例一样使用教学数据，不调用在线模型，不能作为在线模型质量或安全保证。
 
 ## 扩展方向
 
