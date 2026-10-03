@@ -1,9 +1,13 @@
-# 第04–19课深化笔记
+# 第00–21课深化笔记
 
 这些笔记在课程概览基础上进一步解释机制、业务案例、失败模式和后端实现。原课程解读与原创工程扩展均在各篇说明；目录更新日期：2026-10-04；各篇核对日期见正文。
 
 | 课次 | 深化笔记 | 重点 |
 | --- | --- | --- |
+| 00 | [环境与故障定位](00-environment-and-failure-diagnosis.md) | 解释器、WSL、凭据、Notebook与排错分层 |
+| 01 | [Token、训练与生成](01-tokens-training-and-generation.md) | 自回归、上下文、采样、幻觉与职责边界 |
+| 02 | [模型选择与对照评测](02-model-selection-and-controlled-evaluation.md) | 多维分类、硬约束、任务集、质量与成本 |
+| 03 | [负责任AI控制与验收](03-responsible-ai-controls-and-acceptance.md) | 风险登记、公平、缓解层、透明与事故处理 |
 | 04 | [提示词设计与验证](04-prompt-design-and-validation.md) | Token、任务结构、数据口径、模板、缺项、评测 |
 | 05 | [高级提示词与失败模式](05-prompt-techniques-and-failure-modes.md) | 示例、任务分解、自检、事实依据、采样与无解条件 |
 | 06 | [文本生成后端服务](06-text-generation-service.md) | 请求生命周期、输出验证、超时重试、流式与成本 |
@@ -20,6 +24,8 @@
 | 17 | [Agent状态与有界工作流](17-agent-state-and-bounded-workflows.md) | 权威状态、预算、停止、回执、幂等与原例边界 |
 | 18 | [微调数据与适配器](18-fine-tuning-data-and-adapters.md) | SFT、LoRA、QLoRA、数据泄漏、loss mask与交付 |
 | 19 | [小模型内存与推理](19-small-model-memory-and-inference.md) | 权重、KV cache、MoE、量化、WSL与性能验收 |
+| 20 | [Mistral RAG与Tokenizer实验](20-mistral-rag-and-tokenizer-experiments.md) | 下载、切块、FAISS、有效近邻、时延与计数 |
+| 21 | [Llama工具协议与视觉输入](21-llama-tool-protocol-and-vision-inputs.md) | 模板、调用建议、受控执行、视觉与合成数据 |
 
 
 
@@ -71,9 +77,20 @@ python courses/generative-ai-for-beginners/examples/deep_dive_model_memory_check
 
 该脚本计算假设下的原始存储量，不测量实际设备，不计入激活、量化元数据和运行时峰值，不能用于保证模型可加载。第16–19课明确区分源课程示意、历史型号与原创工程补充。
 
-## 后续深化范围
+## 全课程覆盖与验证
 
-全课程概览已覆盖00–21；本目录目前详细展开04–19。后续可继续扩展20–21，以及00–03的机制与示例。已有章节可以按来源、口径、实现与练习继续补充，避免重复新建同主题笔记。
+目前00–21共22个课次均有概览与深化文章。最后补充的00–03解释基础机制、环境、选型和责任控制；20–21对模型案例的原代码逐步解读，并明确历史版本、示意调用与实际执行的区别。
+
+2026-10-04从远端读取四份测试模块，执行46项离线测试，全部通过。完整运行命令（仓库根目录）：
+
+```bash
+cd courses/generative-ai-for-beginners/examples
+python -m unittest -v test_offline_demo deep_dive_search_tool_checks deep_dive_rag_evidence_checks deep_dive_model_memory_checks
+```
+
+测试验证教学代码的证据传递、权限边界、参数、向量与内存计算。未验证真实云服务、模型质量、GPU运行、线上配额或当前型号可用性。
+
+后续可在已有文章中按具体问题与上游变更继续更新；完成本版整理不表示知识不再变化，也不表示所有上游示例都可直接上线。
 
 ## 来源与版权
 
