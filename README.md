@@ -4,6 +4,8 @@
 
 ## 正在编写的专题
 
+- [深度学习训练基础](knowledge/deep-learning-basics/README.md)：张量、自动求导、神经网络与训练循环，基于 PyTorch 官方开源教程，附可运行数学演示。
+
 - [机器学习评估基础](knowledge/ml-evaluation/README.md)：数据泄漏、交叉验证、指标与业务决策，基于 scikit-learn 开源文档。
 
 - [Microsoft Generative AI for Beginners 中文详解](courses/generative-ai-for-beginners/README.md)：已覆盖环境准备与 21 节课程，另有术语表、后端实践、代码审阅和离线示例；逐篇独立提交。
