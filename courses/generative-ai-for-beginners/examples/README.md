@@ -33,6 +33,20 @@ fake_generator 只读取发送的 evidence，直接返回其中一段原文，�
 
 2026-10-03 在当前环境执行：12 个测试全部通过。测试没有证明真实模型能准确选工具，也没有测在线限流、延迟或模型服务兼容性。
 
+## 深化笔记的独立检查
+
+另外两份脚本可从仓库根目录独立运行：
+
+```bash
+python courses/generative-ai-for-beginners/examples/deep_dive_search_tool_checks.py -v
+python courses/generative-ai-for-beginners/examples/deep_dive_rag_evidence_checks.py -v
+```
+
+- [检索与工具检查](deep_dive_search_tool_checks.py)：第08与11课示例，10项检查，验证余弦计算、参数契约与权限边界。
+- [RAG证据组装检查](deep_dive_rag_evidence_checks.py)：第15课示例，12项检查，验证原文与来源进入消息、授权过滤、去重、字符预算及无证据状态。
+
+两份独立脚本均已在2026-10-04执行通过。它们和原离线示例一样使用教学数据，不调用在线模型，不能作为在线模型质量或安全保证。
+
 ## 扩展方向
 
 用真正的 Embedding 替换词面检索，保留 payload 测试；用在线模型替换 fake_generator，增加引用准确度与证据支持评估；用真实受控 API 替换 demo_query，增加超时、错误契约与幂等。每替换一层，就增加对应的集成验证。
