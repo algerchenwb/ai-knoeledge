@@ -6,7 +6,7 @@
 
 - [机器学习评估基础](knowledge/ml-evaluation/README.md)：数据泄漏、交叉验证、指标与业务决策，基于 scikit-learn 开源文档。
 
-- [Microsoft Generative AI for Beginners 中文详解](courses/generative-ai-for-beginners/README.md)：环境准备与 21 节课程，逐章独立提交。
+- [Microsoft Generative AI for Beginners 中文详解](courses/generative-ai-for-beginners/README.md)：已覆盖环境准备与 21 节课程，另有术语表、后端实践、代码审阅和离线示例；逐篇独立提交。
 
 ## 阅读约定
 
