@@ -123,4 +123,4 @@
 
 - [原课程第 04 课](https://github.com/microsoft/generative-ai-for-beginners/blob/d8ec07e31c4b32bd283d565c1abd9b58bb5cf2e8/04-prompt-engineering-fundamentals/README.md)：Token、指令模型、提示词结构、示例、模板与最佳实践。
 - [上一课：负责任地使用 AI](../03-using-generative-ai-responsibly.md) · [下一课：高级提示词](../05-advanced-prompts.md) · [目录](../README.md)
-- 原课程 Copyright (c) Microsoft Corporation，MIT License；见 [来源与许可](../SOURCES.md)。业务示例和工程扩展为本知识库原创。
+- 原课程 Copyright (c) Microsoft Corporation，MIT License；见 [完整许可声明](LICENSE-Microsoft.txt)。业务示例和工程扩展为本知识库原创。
