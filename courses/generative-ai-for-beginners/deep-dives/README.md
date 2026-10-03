@@ -1,4 +1,4 @@
-# 第04–15课深化笔记
+# 第04–19课深化笔记
 
 这些笔记在课程概览基础上进一步解释机制、业务案例、失败模式和后端实现。原课程解读与原创工程扩展均在各篇说明；目录更新日期：2026-10-04；各篇核对日期见正文。
 
@@ -16,6 +16,10 @@
 | 13 | [安全与信任边界](13-ai-security-trust-boundaries.md) | 提示注入、租户隔离、知识污染、输出防护与红队 |
 | 14 | [LLMOps评测与发布](14-llmops-evaluation-and-releases.md) | 评测集、版本、Trace、发布门槛、灰度与回滚 |
 | 15 | [RAG证据与验证](15-rag-evidence-and-validation.md) | 证据传递、原课代码差异、来源、冲突与评测 |
+| 16 | [开放模型资产与部署](16-open-model-assets-and-deployment.md) | 权重、模板、许可、版本、任务评测与部署清单 |
+| 17 | [Agent状态与有界工作流](17-agent-state-and-bounded-workflows.md) | 权威状态、预算、停止、回执、幂等与原例边界 |
+| 18 | [微调数据与适配器](18-fine-tuning-data-and-adapters.md) | SFT、LoRA、QLoRA、数据泄漏、loss mask与交付 |
+| 19 | [小模型内存与推理](19-small-model-memory-and-inference.md) | 权重、KV cache、MoE、量化、WSL与性能验收 |
 
 
 
@@ -57,9 +61,19 @@ python courses/generative-ai-for-beginners/examples/deep_dive_rag_evidence_check
 
 这些检查不调用真实语言模型，不证明模型免疫提示注入或答案有事实依据。它们验证“正确的证据是否进入实际请求”这一独立环节。原论文中的RAG-Sequence/RAG-Token区别也已在第15篇说明，并保留论文链接。
 
+## 第19课内存公式检查
+
+新增[内存估算检查脚本](../examples/deep_dive_model_memory_checks.py)，2026-10-04执行12项检查全部通过，覆盖权重位宽、打包取整、GB/GiB区别、KV缓存与批量/上下文增长，以及无效输入。
+
+```bash
+python courses/generative-ai-for-beginners/examples/deep_dive_model_memory_checks.py
+```
+
+该脚本计算假设下的原始存储量，不测量实际设备，不计入激活、量化元数据和运行时峰值，不能用于保证模型可加载。第16–19课明确区分源课程示意、历史型号与原创工程补充。
+
 ## 后续深化范围
 
-全课程概览已覆盖00–21；本目录目前详细展开04–15。后续可继续扩展16–21，以及00–03的机制与示例。已有章节可以按来源、口径、实现与练习继续补充，避免重复新建同主题笔记。
+全课程概览已覆盖00–21；本目录目前详细展开04–19。后续可继续扩展20–21，以及00–03的机制与示例。已有章节可以按来源、口径、实现与练习继续补充，避免重复新建同主题笔记。
 
 ## 来源与版权
 
