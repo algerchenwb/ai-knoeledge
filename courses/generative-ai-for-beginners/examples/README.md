@@ -50,6 +50,16 @@ python courses/generative-ai-for-beginners/examples/deep_dive_model_memory_check
 
 三份独立脚本均已在2026-10-04执行通过。它们和原离线示例一样使用教学数据，不调用在线模型，不能作为在线模型质量或安全保证。
 
+## 完整离线回归
+
+2026-10-04重新读取远端代码，四份测试模块共46项检查全部通过：
+
+```bash
+python -m unittest -v test_offline_demo deep_dive_search_tool_checks deep_dive_rag_evidence_checks deep_dive_model_memory_checks
+```
+
+在本目录中运行。该结果覆盖离线教学逻辑，不包含真实模型或云服务集成。
+
 ## 扩展方向
 
 用真正的 Embedding 替换词面检索，保留 payload 测试；用在线模型替换 fake_generator，增加引用准确度与证据支持评估；用真实受控 API 替换 demo_query，增加超时、错误契约与幂等。每替换一层，就增加对应的集成验证。
