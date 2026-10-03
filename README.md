@@ -4,6 +4,8 @@
 
 ## 正在编写的专题
 
+- [经典机器学习模型基础](knowledge/classical-ml/README.md)：线性回归、逻辑回归、Ridge/Lasso/ElasticNet，附已运行的验证脚本。
+
 - [深度学习训练基础](knowledge/deep-learning-basics/README.md)：张量、自动求导、神经网络与训练循环，基于 PyTorch 官方开源教程，附可运行数学演示。
 
 - [机器学习评估基础](knowledge/ml-evaluation/README.md)：数据泄漏、交叉验证、指标与业务决策，基于 scikit-learn 开源文档。
