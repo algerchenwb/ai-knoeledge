@@ -1,6 +1,6 @@
 # 经典机器学习模型基础
 
-基于 scikit-learn 官方开源文档，面向想理解模型机制的应用开发者。先学数值预测，再学分类概率，再理解正则化与调参，再学习决策树和集成模型，并理解支持向量机、核方法、近邻模型和朴素贝叶斯，进一步处理概率校准与类别不平衡。
+基于 scikit-learn 官方开源文档，面向想理解模型机制的应用开发者。先学数值预测，再学分类概率，再理解正则化与调参，再学习决策树和集成模型，并理解支持向量机、核方法、近邻模型和朴素贝叶斯，进一步处理概率校准、类别不平衡与异常检测。
 
 ## 已完成教程
 
@@ -18,6 +18,9 @@
 | 10 | [朴素贝叶斯](10-naive-bayes.md) | 先验/后验、条件独立、模型变体、平滑与词表 |
 | 11 | [概率校准](11-probability-calibration.md) | 可靠性曲线、Brier、校准隔离与成本阈值 |
 | 12 | [类别不平衡](12-class-imbalance.md) | 发生率、类权重、重采样与折内验证 |
+| 13 | [异常检测与 Isolation Forest](13-isolation-forest.md) | 随机隔离、分数方向、阈值与独立评估 |
+| 14 | [Local Outlier Factor](14-local-outlier-factor.md) | 局部可达密度、手算与新颖性接口 |
+| 异常检测示例 | [验证脚本](examples/anomaly_detection_checks.py) | 隔离分数/阈值、正常校验集与 LOF 手算 |
 | 校准与不平衡示例 | [验证脚本](examples/calibration_imbalance_checks.py) | 概率质量、校准、权重与折内随机复制 |
 | 近邻与 NB 示例 | [验证脚本](examples/knn_naive_bayes_checks.py) | 加权手算、保留测试调参、平滑与未知词 |
 | 核示例 | [SVM 与核方法验证脚本](examples/svm_kernel_checks.py) | 一维间隔、XOR 与保留测试集的网格搜索 |
@@ -38,6 +41,7 @@
 - 近邻与朴素贝叶斯来源：[neighbors.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/neighbors.rst)、[naive_bayes.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/naive_bayes.rst)，使用同一固定提交。
 - 校准与类权重来源：[calibration.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/calibration.rst)、[class_weight.py](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/sklearn/utils/class_weight.py)，使用同一固定提交。
 - 采样补充来源：[imbalanced-learn common_pitfalls.rst](https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8504e95f0160f61d1b617ca66f779646d2ee609e/doc/common_pitfalls.rst) 与 [over_sampling.rst](https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8504e95f0160f61d1b617ca66f779646d2ee609e/doc/over_sampling.rst)，固定提交 `8504e95f0160f61d1b617ca66f779646d2ee609e`，采用 [MIT License](https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8504e95f0160f61d1b617ca66f779646d2ee609e/LICENSE)。该项目 API 未实跑，本批随机复制代码独立编写。
+- 异常检测来源：[outlier_detection.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/outlier_detection.rst)，另核对 [Isolation Forest 阈值实现](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/sklearn/ensemble/_iforest.py)，使用同一固定提交。
 - 对应章节：Ordinary Least Squares、Ridge、Lasso、Elastic-Net、Logistic regression。
 - 许可：[BSD 3-Clause](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/COPYING)，Copyright (c) 2007-2026 The scikit-learn developers。
 
@@ -71,6 +75,10 @@
 - 类权重开发集比较选中 C=1、无类别权重，CV AP 约 0.4677，测试 AP 约 0.5986；固定阈值 0.5 的 Precision=1、Recall≈0.2273。
 - 手动折内随机复制验证了训练/验证行号不重叠；每折重采样训练计数 [240,240]，验证保留 [120,14] 或 [120,13]。
 
+- Isolation Forest 固定种子下 contamination=0.05 与 0.2 的查询原始分数一致，训练告警数分别为 16 与 63。
+- 独立正常校验集的 5% 分位数阈值约为 −0.5617；人为远处异常测试 AP=1，Precision=0.5、Recall=1，正常 FPR=0.05。此合成异常被刻意设得容易，不是业务性能保证。
+- 四点 LOF 为 [0.875,1.3333,0.875,4.9583]，与手算一致；新颖性示例只预测独立新点，正常与远点分别为 +1 与 −1。
+
 这些数值只用于核对示例，不是实际业务性能结论。边界概率和浮点输出可能随环境略有变化。
 
 运行：
@@ -81,10 +89,11 @@ python knowledge/classical-ml/examples/tree_ensemble_checks.py
 python knowledge/classical-ml/examples/svm_kernel_checks.py
 python knowledge/classical-ml/examples/knn_naive_bayes_checks.py
 python knowledge/classical-ml/examples/calibration_imbalance_checks.py
+python knowledge/classical-ml/examples/anomaly_detection_checks.py
 ```
 
 ## 后续扩展（尚未完成）
 
-异常检测、模型解释与特征选择等。聚类与降维已另设 [无监督学习专题](../unsupervised-learning/README.md)。只有完成并核验的条目才加入上面的教程表。
+模型解释与特征选择等。聚类与降维已另设 [无监督学习专题](../unsupervised-learning/README.md)。只有完成并核验的条目才加入上面的教程表。
 
 [返回总入口](../../README.md)
