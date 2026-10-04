@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 14,
+  "case_count": 15,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -165,6 +165,18 @@
       "source_record": "examples/business-golden-sources.json",
       "scope": "independent deterministic evaluation; structured proposals and synthetic fixtures",
       "validation": "12 golden cases and 10 grader fault injection checks passed"
+    },
+    {
+      "id": "15",
+      "title": "业务结果缓存与失效：让命中结果仍然可信",
+      "path": "15-business-result-cache.md",
+      "function": "CachedBusiness.query",
+      "source_repo": "tkem/cachetools",
+      "source_sha": "3c082c654c2804b9354e4b62dbd2994f1aac464d",
+      "source_path": "src/cachetools/__init__.py",
+      "source_record": "examples/business-cache-sources.json",
+      "scope": "independent sequential cache; synthetic fixtures and controllable time; no upstream execution",
+      "validation": "14 sequential fixture checks passed"
     }
   ],
   "http_integration": {
@@ -200,5 +212,11 @@
       "boundary": 7
     },
     "limitations": "no LLM, HTTP, production data or Opik execution; selected assertions only"
+  },
+  "result_cache": {
+    "date": "2026-10-05",
+    "checks_passed": 14,
+    "python": "3.12.14",
+    "limitations": "no distributed cache, concurrency, LLM, HTTP or real database; trustworthy snapshot versions required"
   }
 }

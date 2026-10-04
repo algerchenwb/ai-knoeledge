@@ -1,6 +1,6 @@
 # AI 业务应用案例：从问题到可验收结果
 
-这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加HTTP集成、工具注册路由、批量查询与金标准评测四篇教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
+这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加HTTP集成、工具注册路由、批量查询、金标准评测与结果缓存五篇教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
 
 全部数据与ID虚构；所有业务规则为独立教学定义，不代表任何公司现有接口、经营数据或已上线效果。开源项目提供工具、检索、状态与评测机制依据，不直接提供本篇的业务功能。案例中的接口名称为设计建议。
 
@@ -20,6 +20,7 @@
 | [业务工具注册与任务路由](12-business-tool-registry-routing.md) | 将多接口组织为受控能力 | 歧义选择、旧计划与权限失效 | Registry.plan / execute |
 | [批量业务查询：去重、并发与部分失败](13-batch-business-query.md) | 比较或预热多个业务对象 | 错配结果、跨口径合并与并发压力 | run_batch |
 | [业务Agent金标准评测](14-business-agent-golden-evaluation.md) | 定位回归与验收交付 | 平均分掩盖越权、漏评与标签泄漏 | evaluate / grade |
+| [业务结果缓存与失效](15-business-result-cache.md) | 减少可信重复计算 | 旧权限、旧口径与多源数据失效遗漏 | CachedBusiness.query |
 
 ## 一条可落地的业务流程
 
@@ -97,6 +98,16 @@ python knowledge/business-ai-cases/examples/test_business_golden_eval.py
 ```
 
 [题集](examples/business-golden-dataset.json) · [评测报告](examples/business-golden-report.json) · [固定来源](examples/business-golden-sources.json)
+
+### 业务结果缓存
+
+[缓存教程](15-business-result-cache.md)讲解参数规范化、租户与权限边界、区域/竞品版本、TTL、LRU与旧结果降级。2026-10-05运行14项顺序夹具检查全部通过；未运行Redis、真实接口或并发服务。
+
+```bash
+python knowledge/business-ai-cases/examples/test_business_cache_demo.py
+```
+
+[结果记录](examples/business-cache-results.json) · [固定来源](examples/business-cache-sources.json)
 
 ## 如何做业务试点
 

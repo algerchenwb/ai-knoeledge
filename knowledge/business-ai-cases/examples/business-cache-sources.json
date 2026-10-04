@@ -1,0 +1,38 @@
+{
+  "verified_date": "2026-10-05",
+  "sources": [
+    {
+      "repo": "tkem/cachetools",
+      "sha": "3c082c654c2804b9354e4b62dbd2994f1aac464d",
+      "read_paths": [
+        "src/cachetools/__init__.py",
+        "LICENSE"
+      ],
+      "license": "MIT",
+      "relevance": "TTLCache expiration and bounded LRU; no upstream execution or code copied"
+    },
+    {
+      "repo": "fastapi/fastapi",
+      "sha": "5f9fc5c59a9bb54608aa35376715f3ba9708188e",
+      "read_paths": [
+        "docs/en/docs/tutorial/dependencies/sub-dependencies.md"
+      ],
+      "license": "MIT",
+      "relevance": "request-local shared dependency caching only"
+    }
+  ],
+  "implementation": "independent sequential result cache on synthetic business fixtures",
+  "validation": {
+    "date": "2026-10-05",
+    "python": "3.12.14",
+    "checks_passed": 14,
+    "clock": "controllable fake timer; no sleeps",
+    "limitations": [
+      "no distributed service, LLM, HTTP or database",
+      "no concurrent access or single-flight",
+      "metadata and computation not atomic",
+      "snapshot changes require trustworthy immutable versions",
+      "competitor set hash is a small fixture mechanism, not production data access advice"
+    ]
+  }
+}
