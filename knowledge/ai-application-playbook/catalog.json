@@ -1,0 +1,1577 @@
+{
+  "date": "2026-10-04",
+  "count": 100,
+  "scope": "100 independently numbered applied AI engineering cards; ten upstream agent cases are separately described",
+  "cards": [
+    {
+      "id": "001",
+      "title": "任务边界",
+      "module": "业务目标与输出契约",
+      "path": "01-business-and-output-contracts.md",
+      "scenario": "一个请求同时要求查数据、解释和修改配置。",
+      "implementation": "先列允许动作、输入对象、交付产物和终止条件；查询与变更拆成独立任务。",
+      "acceptance": "相同输入能判断完成或失败，不能只靠模型自称完成。",
+      "pitfall": "把所有需求写进一句长提示，无法定位哪部分未交付。",
+      "source_repositories": [
+        "fastapi/fastapi",
+        "openai/openai-agents-python"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "002",
+      "title": "字段级结构化输出",
+      "module": "业务目标与输出契约",
+      "path": "01-business-and-output-contracts.md",
+      "scenario": "前端需要稳定展示区域画像。",
+      "implementation": "定义字段类型、必需项、单位和允许空值；模型输出经本地schema校验后再交给前端。",
+      "acceptance": "缺字段、类型错、额外字段都有明确处理。",
+      "pitfall": "合法JSON不代表指标口径或数值正确。",
+      "source_repositories": [
+        "fastapi/fastapi",
+        "openai/openai-agents-python"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "003",
+      "title": "未知与空值语义",
+      "module": "业务目标与输出契约",
+      "path": "01-business-and-output-contracts.md",
+      "scenario": "数据库没有某月份数据。",
+      "implementation": "用status区分无数据、不适用、失败和成功；value为空时携带reason。",
+      "acceptance": "四种状态分别用夹具验证，前端不能都显示0。",
+      "pitfall": "将null自动转0，掩盖数据缺失。",
+      "source_repositories": [
+        "fastapi/fastapi",
+        "openai/openai-agents-python"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "004",
+      "title": "事实与解释分栏",
+      "module": "业务目标与输出契约",
+      "path": "01-business-and-output-contracts.md",
+      "scenario": "用户问客流下降原因。",
+      "implementation": "数据结论带来源版本；解释单独记录assumptions与证据，未经验证的原因标为假设。",
+      "acceptance": "没有证据时仍能报告变化，但不会断言因果。",
+      "pitfall": "把相关性直接写成原因。",
+      "source_repositories": [
+        "fastapi/fastapi",
+        "openai/openai-agents-python"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "005",
+      "title": "数值与单位绑定",
+      "module": "业务目标与输出契约",
+      "path": "01-business-and-output-contracts.md",
+      "scenario": "同一个接口返回比例与人数。",
+      "implementation": "每个value附unit与精度约定，比例统一为0到1或百分数之一；转换由确定性函数完成。",
+      "acceptance": "0.15显示15%，人数不会误乘100。",
+      "pitfall": "模型凭展示习惯重复换算。",
+      "source_repositories": [
+        "fastapi/fastapi",
+        "openai/openai-agents-python"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "006",
+      "title": "缺参澄清策略",
+      "module": "业务目标与输出契约",
+      "path": "01-business-and-output-contracts.md",
+      "scenario": "对象明确但日期缺失。",
+      "implementation": "必需参数按规则判断；仅对会影响结果的缺项澄清，默认值记录到结果。",
+      "acceptance": "测试未说明日期时的默认口径和用户覆盖行为。",
+      "pitfall": "模型每轮追问全部参数，或静默猜测关键条件。",
+      "source_repositories": [
+        "fastapi/fastapi",
+        "openai/openai-agents-python"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "007",
+      "title": "输入规范化与保真",
+      "module": "业务目标与输出契约",
+      "path": "01-business-and-output-contracts.md",
+      "scenario": "用户输入中文名称、大小写与别名。",
+      "implementation": "保留raw_input，生成规范化值，并记录实体匹配依据；多候选不能直接取第一条。",
+      "acceptance": "别名可解析，歧义输入返回候选或明确缺项。",
+      "pitfall": "规范化过程丢失原始证据。",
+      "source_repositories": [
+        "fastapi/fastapi",
+        "openai/openai-agents-python"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "008",
+      "title": "对象ID与显示名",
+      "module": "业务目标与输出契约",
+      "path": "01-business-and-output-contracts.md",
+      "scenario": "两个地点名称相同。",
+      "implementation": "显示名仅用于展示，查询绑定服务端验证的ID和范围；结果回传ID以核对。",
+      "acceptance": "同名不同区域不会串结果。",
+      "pitfall": "将名称字符串当唯一业务主键。",
+      "source_repositories": [
+        "fastapi/fastapi",
+        "openai/openai-agents-python"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "009",
+      "title": "报告覆盖清单",
+      "module": "业务目标与输出契约",
+      "path": "01-business-and-output-contracts.md",
+      "scenario": "报告需要同时回答三个问题。",
+      "implementation": "将问题拆成required_sections，每节记录answer、evidence与missing；写作前检查覆盖。",
+      "acceptance": "每项都有结果或具体未完成原因。",
+      "pitfall": "文章很长，却遗漏最关键的小问。",
+      "source_repositories": [
+        "fastapi/fastapi",
+        "openai/openai-agents-python"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "010",
+      "title": "交付产物清单",
+      "module": "业务目标与输出契约",
+      "path": "01-business-and-output-contracts.md",
+      "scenario": "任务要输出表格与摘要。",
+      "implementation": "保存artifact_id、类型、版本、位置和内容摘要；通过文件存在与内容检查后返回。",
+      "acceptance": "链接可打开，文件内容与本次运行对应。",
+      "pitfall": "只返回文件名，没有实际生成或保存。",
+      "source_repositories": [
+        "fastapi/fastapi",
+        "openai/openai-agents-python"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "011",
+      "title": "工具语义分组",
+      "module": "工具调用与 API 接入",
+      "path": "02-tools-and-api-integration.md",
+      "scenario": "几十个接口让模型容易选错。",
+      "implementation": "按业务能力提供少量入口，内部映射底层API；描述注明适用与不适用条件。",
+      "acceptance": "相似问题选择正确能力，错误选择可追溯。",
+      "pitfall": "给每个HTTP路径都创建一个Agent。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "fastapi/fastapi",
+        "BerriAI/litellm"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "012",
+      "title": "参数白名单",
+      "module": "工具调用与 API 接入",
+      "path": "02-tools-and-api-integration.md",
+      "scenario": "模型生成未知字段。",
+      "implementation": "工具schema约束字段、枚举、长度与批量数量，服务端重复校验。",
+      "acceptance": "非法字段拒绝或明确忽略，不透传后端。",
+      "pitfall": "认为模型端schema已等于服务器安全校验。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "fastapi/fastapi",
+        "BerriAI/litellm"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "013",
+      "title": "鉴权上下文注入",
+      "module": "工具调用与 API 接入",
+      "path": "02-tools-and-api-integration.md",
+      "scenario": "用户让Agent查询另一租户。",
+      "implementation": "身份和tenant_id来自已验证会话，由服务端注入工具；不接受模型选择身份。",
+      "acceptance": "越权ID即使格式合法也被拒绝。",
+      "pitfall": "把用户文字中的租户名当授权。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "fastapi/fastapi",
+        "BerriAI/litellm"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "014",
+      "title": "分页与截断标记",
+      "module": "工具调用与 API 接入",
+      "path": "02-tools-and-api-integration.md",
+      "scenario": "接口只返回前100条。",
+      "implementation": "工具返回has_more、next_cursor与total口径；Agent按预算继续或声明覆盖范围。",
+      "acceptance": "摘要不会把第一页当全量。",
+      "pitfall": "只传列表，不告诉模型被截断。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "fastapi/fastapi",
+        "BerriAI/litellm"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "015",
+      "title": "批量查询映射",
+      "module": "工具调用与 API 接入",
+      "path": "02-tools-and-api-integration.md",
+      "scenario": "一次查询多个区域对象。",
+      "implementation": "每项结果保留输入ID与status；部分失败独立记录，不按数组位置盲配。",
+      "acceptance": "顺序打乱、缺失一项仍能正确对应。",
+      "pitfall": "一个失败导致全部有效数据丢弃。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "fastapi/fastapi",
+        "BerriAI/litellm"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "016",
+      "title": "错误分类",
+      "module": "工具调用与 API 接入",
+      "path": "02-tools-and-api-integration.md",
+      "scenario": "HTTP200里业务码表示失败。",
+      "implementation": "分别解析传输、鉴权、业务与数据错误，映射统一error_type和retryable。",
+      "acceptance": "200失败不会记为成功，401不会当空数据。",
+      "pitfall": "只凭HTTP状态做最终判断。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "fastapi/fastapi",
+        "BerriAI/litellm"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "017",
+      "title": "只读与写工具分离",
+      "module": "工具调用与 API 接入",
+      "path": "02-tools-and-api-integration.md",
+      "scenario": "同一助手能查询与创建任务。",
+      "implementation": "工具元数据标记副作用；写操作绑定授权、幂等键与结果查询接口。",
+      "acceptance": "重复调用不会重复创建同一业务对象。",
+      "pitfall": "所有错误都自动重试写请求。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "fastapi/fastapi",
+        "BerriAI/litellm"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "018",
+      "title": "超时与截止时间",
+      "module": "工具调用与 API 接入",
+      "path": "02-tools-and-api-integration.md",
+      "scenario": "串联三个慢接口。",
+      "implementation": "请求携带整体deadline，各步骤只使用剩余预算，取消传播到下游。",
+      "acceptance": "总耗时有上界，不能每一步都重新获得完整超时。",
+      "pitfall": "给三个接口各60秒却宣传任务60秒内完成。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "fastapi/fastapi",
+        "BerriAI/litellm"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "019",
+      "title": "MCP工具适配层",
+      "module": "工具调用与 API 接入",
+      "path": "02-tools-and-api-integration.md",
+      "scenario": "已有HTTPAPI需要供多客户端使用。",
+      "implementation": "将输入schema、工具描述、错误与真实调用分层；记录工具版本和后端响应摘要。",
+      "acceptance": "客户端看到一致协议，旧版本有兼容测试。",
+      "pitfall": "支持MCP就认为自动支持所有OAuth流程。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "fastapi/fastapi",
+        "BerriAI/litellm"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "020",
+      "title": "工具结果压缩",
+      "module": "工具调用与 API 接入",
+      "path": "02-tools-and-api-integration.md",
+      "scenario": "后端响应包含巨大JSON。",
+      "implementation": "提取完成任务必需字段，附source_id和截断信息；大结果保存为可寻址产物。",
+      "acceptance": "压缩后仍能核对对象、时间、单位和错误。",
+      "pitfall": "删掉状态与来源，只留下数值。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "fastapi/fastapi",
+        "BerriAI/litellm"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "021",
+      "title": "规则路由与模型路由",
+      "module": "Agent 路由与协作",
+      "path": "03-agent-routing-and-coordination.md",
+      "scenario": "精确指令和模糊问题混在一起。",
+      "implementation": "明显协议或业务码用规则，语义歧义交给模型；记录route_reason与候选。",
+      "acceptance": "固定输入不会被随机转到不同处理域。",
+      "pitfall": "让模型替代所有确定性判断。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "crewAIInc/crewAI",
+        "microsoft/autogen"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "022",
+      "title": "Handoff控制权",
+      "module": "Agent 路由与协作",
+      "path": "03-agent-routing-and-coordination.md",
+      "scenario": "客服转到专业处理域。",
+      "implementation": "保存current_agent及共享上下文，明确回退路径与转接原因。",
+      "acceptance": "下一轮仍到当前专员，任务结束才回到分诊。",
+      "pitfall": "把专家咨询返回结果误当会话控制权转移。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "crewAIInc/crewAI",
+        "microsoft/autogen"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "023",
+      "title": "专家作为工具",
+      "module": "Agent 路由与协作",
+      "path": "03-agent-routing-and-coordination.md",
+      "scenario": "主Agent只需要一段专项分析。",
+      "implementation": "专家限定输入输出，主Agent拿结果后继续组织回复；给子任务单独预算。",
+      "acceptance": "专家失败能被主流程识别并降级。",
+      "pitfall": "专家输出无限扩写，占满主任务上下文。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "crewAIInc/crewAI",
+        "microsoft/autogen"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "024",
+      "title": "顺序任务依赖",
+      "module": "Agent 路由与协作",
+      "path": "03-agent-routing-and-coordination.md",
+      "scenario": "先研究再写报告。",
+      "implementation": "建立依赖图，传递产物ID与版本；上游改变时使下游旧结果失效。",
+      "acceptance": "未完成研究不能进入正式发布。",
+      "pitfall": "仅靠角色提示隐式继承资料。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "crewAIInc/crewAI",
+        "microsoft/autogen"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "025",
+      "title": "并行独立任务",
+      "module": "Agent 路由与协作",
+      "path": "03-agent-routing-and-coordination.md",
+      "scenario": "查两个互不依赖的数据源。",
+      "implementation": "并行调用后按键汇合，各分支保存状态与错误，限制并发数。",
+      "acceptance": "一支失败时另一支结果仍可保留。",
+      "pitfall": "共享可变状态导致覆盖或重复写。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "crewAIInc/crewAI",
+        "microsoft/autogen"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "026",
+      "title": "协调者与最终责任",
+      "module": "Agent 路由与协作",
+      "path": "03-agent-routing-and-coordination.md",
+      "scenario": "多个Agent都给出部分回答。",
+      "implementation": "协调者按覆盖表汇总，明示冲突并指定最终结果责任者。",
+      "acceptance": "同一指标冲突不会被悄悄平均。",
+      "pitfall": "让最后发言的Agent天然代表正确结论。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "crewAIInc/crewAI",
+        "microsoft/autogen"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "027",
+      "title": "有界反思",
+      "module": "Agent 路由与协作",
+      "path": "03-agent-routing-and-coordination.md",
+      "scenario": "生成失败后不断自我检查。",
+      "implementation": "规定最多N次修正，每次必须有新观测或明确修改；无进展则退出。",
+      "acceptance": "同一错误重复时停止并报告原因。",
+      "pitfall": "把反思次数增加当作质量保证。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "crewAIInc/crewAI",
+        "microsoft/autogen"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "028",
+      "title": "工具反馈优先",
+      "module": "Agent 路由与协作",
+      "path": "03-agent-routing-and-coordination.md",
+      "scenario": "模型认为任务已成功。",
+      "implementation": "使用真实退出码、返回对象与产物校验更新状态；文字自评只作辅助。",
+      "acceptance": "没有真实结果就不会标记done。",
+      "pitfall": "模型说已写入即当数据库提交成功。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "crewAIInc/crewAI",
+        "microsoft/autogen"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "029",
+      "title": "终止条件分层",
+      "module": "Agent 路由与协作",
+      "path": "03-agent-routing-and-coordination.md",
+      "scenario": "消息系统空闲但任务没完成。",
+      "implementation": "分别检查运行结束、产物完成、业务目标达成；状态机包含失败和取消。",
+      "acceptance": "空闲却缺产物的任务记录为未完成。",
+      "pitfall": "没有更多消息就等于成功。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "crewAIInc/crewAI",
+        "microsoft/autogen"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "030",
+      "title": "协作成本基线",
+      "module": "Agent 路由与协作",
+      "path": "03-agent-routing-and-coordination.md",
+      "scenario": "考虑从单Agent改多Agent。",
+      "implementation": "先固定题集测单Agent，新增分工后比较正确率、费用、延迟和交接错误。",
+      "acceptance": "有量化增益再保留新增节点。",
+      "pitfall": "只展示一次漂亮演示，没有对照。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "crewAIInc/crewAI",
+        "microsoft/autogen"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "031",
+      "title": "语料范围与来源时间",
+      "module": "RAG 与检索应用",
+      "path": "04-rag-and-retrieval.md",
+      "scenario": "用户问当前政策但库里是旧文档。",
+      "implementation": "文档记录有效期、发布日与抓取日，查询先过滤适用范围。",
+      "acceptance": "过期资料不会冒充当前结论。",
+      "pitfall": "抓取时间等于内容更新时间。",
+      "source_repositories": [
+        "run-llama/llama_index",
+        "qdrant/qdrant",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "032",
+      "title": "切块按语义边界",
+      "module": "RAG 与检索应用",
+      "path": "04-rag-and-retrieval.md",
+      "scenario": "段落中表格解释被拆开。",
+      "implementation": "优先按标题和结构切块，保留父章节；长度上限作为辅助。",
+      "acceptance": "问题所需定义与数字能一起检索到。",
+      "pitfall": "所有文档机械每500字截断。",
+      "source_repositories": [
+        "run-llama/llama_index",
+        "qdrant/qdrant",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "033",
+      "title": "块与父文档追溯",
+      "module": "RAG 与检索应用",
+      "path": "04-rag-and-retrieval.md",
+      "scenario": "检索返回一小段文本。",
+      "implementation": "每块保存document_id、chunk_id、页码或章节与版本，可定位原文。",
+      "acceptance": "引用可回到正确文档位置。",
+      "pitfall": "只有向量与文本，没有原文映射。",
+      "source_repositories": [
+        "run-llama/llama_index",
+        "qdrant/qdrant",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "034",
+      "title": "Embedding版本迁移",
+      "module": "RAG 与检索应用",
+      "path": "04-rag-and-retrieval.md",
+      "scenario": "更换嵌入模型。",
+      "implementation": "新旧向量分集合或版本区分，重新编码语料，使用同模型编码查询。",
+      "acceptance": "维度匹配且固定题集质量无明显退化。",
+      "pitfall": "混用两个模型向量却只检查维数相同。",
+      "source_repositories": [
+        "run-llama/llama_index",
+        "qdrant/qdrant",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "035",
+      "title": "关键词与语义互补",
+      "module": "RAG 与检索应用",
+      "path": "04-rag-and-retrieval.md",
+      "scenario": "精确ID和自然语言同时出现。",
+      "implementation": "ID优先精确匹配，内容用关键词与向量候选融合，再统一去重。",
+      "acceptance": "编号查询和同义表达都命中目标。",
+      "pitfall": "用语义相似度替代精确主键。",
+      "source_repositories": [
+        "run-llama/llama_index",
+        "qdrant/qdrant",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "036",
+      "title": "候选重排",
+      "module": "RAG 与检索应用",
+      "path": "04-rag-and-retrieval.md",
+      "scenario": "向量TopK里有多个相似条目。",
+      "implementation": "先扩大召回候选，再用重排模型或明确业务特征排序；限制总延迟。",
+      "acceptance": "目标证据排名提高且费用可控。",
+      "pitfall": "重排被当成能找回未召回文档。",
+      "source_repositories": [
+        "run-llama/llama_index",
+        "qdrant/qdrant",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "037",
+      "title": "无证据拒答",
+      "module": "RAG 与检索应用",
+      "path": "04-rag-and-retrieval.md",
+      "scenario": "库中没有用户问的年份。",
+      "implementation": "检索不足时返回缺失范围，可请求补文档或改成一般解释。",
+      "acceptance": "未知题不会编出带假引用的答案。",
+      "pitfall": "把高相似度当作事实支持。",
+      "source_repositories": [
+        "run-llama/llama_index",
+        "qdrant/qdrant",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "038",
+      "title": "查询改写保留约束",
+      "module": "RAG 与检索应用",
+      "path": "04-rag-and-retrieval.md",
+      "scenario": "问题包含地点与日期。",
+      "implementation": "改写只扩展语义词，锁定实体、时间、单位与否定条件。",
+      "acceptance": "改写前后约束一致，召回可对照。",
+      "pitfall": "改写把某区域变成全市。",
+      "source_repositories": [
+        "run-llama/llama_index",
+        "qdrant/qdrant",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "039",
+      "title": "上下文去重与多样性",
+      "module": "RAG 与检索应用",
+      "path": "04-rag-and-retrieval.md",
+      "scenario": "前十条都来自同一文件。",
+      "implementation": "按内容指纹和来源聚合，保留不同支持或冲突证据，避免浪费窗口。",
+      "acceptance": "上下文覆盖关键维度而非重复段落。",
+      "pitfall": "去重时删掉版本变化或相反结论。",
+      "source_repositories": [
+        "run-llama/llama_index",
+        "qdrant/qdrant",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "040",
+      "title": "检索与生成分开评测",
+      "module": "RAG 与检索应用",
+      "path": "04-rag-and-retrieval.md",
+      "scenario": "答案错却不知道原因。",
+      "implementation": "分别记录目标证据是否召回、是否进上下文、是否被正确引用和总结。",
+      "acceptance": "能定位到解析、检索或生成环节。",
+      "pitfall": "只调整提示词而不查看漏召回。",
+      "source_repositories": [
+        "run-llama/llama_index",
+        "qdrant/qdrant",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "041",
+      "title": "解析格式识别",
+      "module": "文档处理与多模态输入",
+      "path": "05-documents-and-multimodal-input.md",
+      "scenario": "用户上传扫描PDF或数字PDF。",
+      "implementation": "按文件特征选择解析/OCR流程，保留原始文件哈希和解析器配置。",
+      "acceptance": "两类文件均有可读文本并记录处理路线。",
+      "pitfall": "所有PDF都直接提取字符。",
+      "source_repositories": [
+        "docling-project/docling",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "042",
+      "title": "阅读顺序",
+      "module": "文档处理与多模态输入",
+      "path": "05-documents-and-multimodal-input.md",
+      "scenario": "双栏页面文字交叉拼接。",
+      "implementation": "保留版面区块和阅读顺序，抽样比较原页与文本。",
+      "acceptance": "一句话不会跨栏混入另一段。",
+      "pitfall": "OCR识字正确就认为语义顺序正确。",
+      "source_repositories": [
+        "docling-project/docling",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "043",
+      "title": "表格结构恢复",
+      "module": "文档处理与多模态输入",
+      "path": "05-documents-and-multimodal-input.md",
+      "scenario": "多层表头含单位和年份。",
+      "implementation": "保存行列关系、表头层级、单位与页码；导出结构化表再计算。",
+      "acceptance": "列名和单元格对应原表，合并单元格不丢含义。",
+      "pitfall": "表格转成一串数字后让模型猜列。",
+      "source_repositories": [
+        "docling-project/docling",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "044",
+      "title": "OCR低置信复核",
+      "module": "文档处理与多模态输入",
+      "path": "05-documents-and-multimodal-input.md",
+      "scenario": "图片中ID含0/O和1/l。",
+      "implementation": "关键字段单独校验格式与业务记录，低置信项标记人工或二次识别。",
+      "acceptance": "错误字符不会直接变成业务主键。",
+      "pitfall": "凭字符串看似合理自动入库。",
+      "source_repositories": [
+        "docling-project/docling",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "045",
+      "title": "页码与引用定位",
+      "module": "文档处理与多模态输入",
+      "path": "05-documents-and-multimodal-input.md",
+      "scenario": "答案引用长报告。",
+      "implementation": "统一原始页码与解析页索引，返回引用时说明对应体系。",
+      "acceptance": "点击引用能看到相应段落或表格。",
+      "pitfall": "PDF页序与印刷页码混用。",
+      "source_repositories": [
+        "docling-project/docling",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "046",
+      "title": "图片说明与事实来源",
+      "module": "文档处理与多模态输入",
+      "path": "05-documents-and-multimodal-input.md",
+      "scenario": "报告含流程图和照片。",
+      "implementation": "图像描述保存图号与原页，涉及数字和关系时核对原图。",
+      "acceptance": "没有在图里出现的信息不能当作识别事实。",
+      "pitfall": "生成描述反过来当原始证据。",
+      "source_repositories": [
+        "docling-project/docling",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "047",
+      "title": "公式与代码保真",
+      "module": "文档处理与多模态输入",
+      "path": "05-documents-and-multimodal-input.md",
+      "scenario": "知识库包含公式和程序。",
+      "implementation": "保留类型标记和原块，解析后检查符号、缩进与关键运算。",
+      "acceptance": "负号、上下标、代码缩进未改变含义。",
+      "pitfall": "全部清洗成普通文字。",
+      "source_repositories": [
+        "docling-project/docling",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "048",
+      "title": "音频转写与说话人",
+      "module": "文档处理与多模态输入",
+      "path": "05-documents-and-multimodal-input.md",
+      "scenario": "会议记录要形成行动项。",
+      "implementation": "保存时间戳和说话人，专有名词用领域词表复核，行动项回连片段。",
+      "acceptance": "责任人和时间来自实际发言。",
+      "pitfall": "将模型总结中的猜测当会议决定。",
+      "source_repositories": [
+        "docling-project/docling",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "049",
+      "title": "脱敏后的可用性",
+      "module": "文档处理与多模态输入",
+      "path": "05-documents-and-multimodal-input.md",
+      "scenario": "文档含手机号和客户标识。",
+      "implementation": "按字段规则替换敏感值，保留一致匿名映射供关联分析。",
+      "acceptance": "必要关系仍可查询，输出不暴露原值。",
+      "pitfall": "随机每次替换不同标记导致关联断裂。",
+      "source_repositories": [
+        "docling-project/docling",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "050",
+      "title": "解析质量门槛",
+      "module": "文档处理与多模态输入",
+      "path": "05-documents-and-multimodal-input.md",
+      "scenario": "批量文档解析后直接索引。",
+      "implementation": "检查空页、异常字符比例、表格完整度与失败清单，低质量先隔离。",
+      "acceptance": "坏文档可定位重做而非污染整个索引。",
+      "pitfall": "以解析进程退出0作为唯一合格标准。",
+      "source_repositories": [
+        "docling-project/docling",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "051",
+      "title": "分子分母同范围",
+      "module": "业务数据与确定性计算",
+      "path": "06-business-data-and-calculation.md",
+      "scenario": "计算近90天触达占比。",
+      "implementation": "把对象、人群、日期与去重口径写入分子分母定义；计算前逐项比较。",
+      "acceptance": "构造范围不一致夹具，必须拒绝直接相除。",
+      "pitfall": "两个数都非空就认为比例成立。",
+      "source_repositories": [
+        "huggingface/smolagents",
+        "langchain-ai/langgraph"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "052",
+      "title": "去重层级",
+      "module": "业务数据与确定性计算",
+      "path": "06-business-data-and-calculation.md",
+      "scenario": "每天人数相加当季度人数。",
+      "implementation": "明确按事件、用户还是对象去重；跨日指标由原始去重集合或约定算法计算。",
+      "acceptance": "同一用户重复到访不会被当新用户。",
+      "pitfall": "日去重总数求和等于季度去重。",
+      "source_repositories": [
+        "huggingface/smolagents",
+        "langchain-ai/langgraph"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "053",
+      "title": "时间窗与时区",
+      "module": "业务数据与确定性计算",
+      "path": "06-business-data-and-calculation.md",
+      "scenario": "凌晨数据跨日。",
+      "implementation": "输入时区显式化，日期窗转成半开区间[start,end)，保存统计时间及成熟时间。",
+      "acceptance": "边界零点事件只进入一个窗口。",
+      "pitfall": "使用服务器默认时区解释用户日期。",
+      "source_repositories": [
+        "huggingface/smolagents",
+        "langchain-ai/langgraph"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "054",
+      "title": "坐标系协议",
+      "module": "业务数据与确定性计算",
+      "path": "06-business-data-and-calculation.md",
+      "scenario": "多个服务返回位置或围栏。",
+      "implementation": "每个坐标附crs与经纬顺序，转换在确定性模块进行，记录版本。",
+      "acceptance": "同一点跨服务转换与参考位置一致。",
+      "pitfall": "混用GCJ-02、BD-09和WGS84直接做距离。",
+      "source_repositories": [
+        "huggingface/smolagents",
+        "langchain-ai/langgraph"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "055",
+      "title": "距离与空间尺度",
+      "module": "业务数据与确定性计算",
+      "path": "06-business-data-and-calculation.md",
+      "scenario": "用户问附近一公里。",
+      "implementation": "明确采用平面投影或地理距离，校验输入单位与适用范围。",
+      "acceptance": "用已知地标距离检验边界，输出单位一致。",
+      "pitfall": "经纬度欧氏差直接当米。",
+      "source_repositories": [
+        "huggingface/smolagents",
+        "langchain-ai/langgraph"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "056",
+      "title": "多围栏对象",
+      "module": "业务数据与确定性计算",
+      "path": "06-business-data-and-calculation.md",
+      "scenario": "一个POI存在多个区域边界。",
+      "implementation": "用稳定对象ID关联多个围栏版本，明确查询是并集、逐围栏还是指定围栏。",
+      "acceptance": "重叠边界不会重复计数，缺边界有状态。",
+      "pitfall": "用单一polygon覆盖全部真实边界。",
+      "source_repositories": [
+        "huggingface/smolagents",
+        "langchain-ai/langgraph"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "057",
+      "title": "JSON数值类型",
+      "module": "业务数据与确定性计算",
+      "path": "06-business-data-and-calculation.md",
+      "scenario": "数据里数字以字符串或null存储。",
+      "implementation": "在数据层按协议解析类型，转换失败附错误状态，保存原始值用于排查。",
+      "acceptance": "非法字符串不会被静默转0。",
+      "pitfall": "让模型读取巨大JSON后自己统一类型。",
+      "source_repositories": [
+        "huggingface/smolagents",
+        "langchain-ai/langgraph"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "058",
+      "title": "重复行与连接膨胀",
+      "module": "业务数据与确定性计算",
+      "path": "06-business-data-and-calculation.md",
+      "scenario": "连接明细和维表后人数翻倍。",
+      "implementation": "先验证维表键唯一性和连接基数，必要时先聚合再连接。",
+      "acceptance": "连接前后对象数量与金标准一致。",
+      "pitfall": "SQL能运行就认为连接逻辑正确。",
+      "source_repositories": [
+        "huggingface/smolagents",
+        "langchain-ai/langgraph"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "059",
+      "title": "数据成熟度",
+      "module": "业务数据与确定性计算",
+      "path": "06-business-data-and-calculation.md",
+      "scenario": "当天指标尚未完全回流。",
+      "implementation": "结果附is_final与available_until，历史对比使用同成熟度数据。",
+      "acceptance": "未成熟数据不会被描述成真实骤降。",
+      "pitfall": "实时值与最终月报直接同比。",
+      "source_repositories": [
+        "huggingface/smolagents",
+        "langchain-ai/langgraph"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "060",
+      "title": "空分母与精度",
+      "module": "业务数据与确定性计算",
+      "path": "06-business-data-and-calculation.md",
+      "scenario": "比例分母为0或金额含小数。",
+      "implementation": "零分母返回无法计算；金额用定点或Decimal，最后统一舍入。",
+      "acceptance": "边界0、极小分母和四舍五入有确定结果。",
+      "pitfall": "模型把除零解释为0%，或浮点直接当财务精度。",
+      "source_repositories": [
+        "huggingface/smolagents",
+        "langchain-ai/langgraph"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "061",
+      "title": "业务状态与聊天分离",
+      "module": "状态、记忆与个性化",
+      "path": "07-state-memory-and-personalization.md",
+      "scenario": "模型需要当前任务参数。",
+      "implementation": "业务状态用类型化对象，历史消息独立保存；关键参数从状态读取。",
+      "acceptance": "摘要删减后任务对象和参数仍准确。",
+      "pitfall": "仅靠聊天文字恢复订单或对象ID。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "062",
+      "title": "短期工作记忆",
+      "module": "状态、记忆与个性化",
+      "path": "07-state-memory-and-personalization.md",
+      "scenario": "任务调用多个工具。",
+      "implementation": "记录本轮证据、剩余步骤和失败点，任务结束后按策略归档或删除。",
+      "acceptance": "恢复任务能看到已完成项，旧任务不污染新任务。",
+      "pitfall": "所有历史观测永久塞进每次提示。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "063",
+      "title": "长期偏好来源",
+      "module": "状态、记忆与个性化",
+      "path": "07-state-memory-and-personalization.md",
+      "scenario": "用户偏好固定报告格式。",
+      "implementation": "偏好标记来源、创建时间和适用范围，新明确指令优先于旧偏好。",
+      "acceptance": "本次要求表格时不会被旧列表偏好覆盖。",
+      "pitfall": "从一次行为推断永久偏好。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "064",
+      "title": "记忆过期策略",
+      "module": "状态、记忆与个性化",
+      "path": "07-state-memory-and-personalization.md",
+      "scenario": "服务配置或地址变化。",
+      "implementation": "事实记忆带valid_until或版本，使用前核对时效，过期条目重新取得。",
+      "acceptance": "失效地址不会继续使用。",
+      "pitfall": "记忆写入后永远当当前事实。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "065",
+      "title": "记忆写入门槛",
+      "module": "状态、记忆与个性化",
+      "path": "07-state-memory-and-personalization.md",
+      "scenario": "聊天包含猜测和引用文字。",
+      "implementation": "仅写入用户确认或可靠来源的稳定信息，保存置信与出处。",
+      "acceptance": "假设和第三方文本不会变成用户事实。",
+      "pitfall": "模型总结什么就存什么。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "066",
+      "title": "会话与租户隔离",
+      "module": "状态、记忆与个性化",
+      "path": "07-state-memory-and-personalization.md",
+      "scenario": "多人同时使用同一Agent服务。",
+      "implementation": "以已验证主体建立存储键，thread_id只是会话标识，读取再次校验归属。",
+      "acceptance": "相同会话名不能读到他人状态。",
+      "pitfall": "允许模型自行指定记忆查询租户。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "067",
+      "title": "摘要的保真字段",
+      "module": "状态、记忆与个性化",
+      "path": "07-state-memory-and-personalization.md",
+      "scenario": "对话过长需要压缩。",
+      "implementation": "摘要保留目标、约束、已验证事实、失败和待办；关键ID用结构字段而非自由文本。",
+      "acceptance": "压缩前后关键约束清单一致。",
+      "pitfall": "只总结最后一次消息忘记原始目标。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "068",
+      "title": "状态版本冲突",
+      "module": "状态、记忆与个性化",
+      "path": "07-state-memory-and-personalization.md",
+      "scenario": "两条请求同时修改同一会话。",
+      "implementation": "采用版本号或比较交换，冲突时重读再合并；日志记录更新者。",
+      "acceptance": "并发不会覆盖已完成步骤。",
+      "pitfall": "最后写入者无条件覆盖整个状态。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "069",
+      "title": "忘记与删除",
+      "module": "状态、记忆与个性化",
+      "path": "07-state-memory-and-personalization.md",
+      "scenario": "用户撤回某项偏好。",
+      "implementation": "删除原记忆与派生索引，记录删除范围并防止缓存重新写回。",
+      "acceptance": "检索与新会话均不再使用撤回内容。",
+      "pitfall": "只从聊天界面隐藏而不清存储。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "070",
+      "title": "记忆是否带来收益",
+      "module": "状态、记忆与个性化",
+      "path": "07-state-memory-and-personalization.md",
+      "scenario": "加入记忆后回答变差。",
+      "implementation": "对有记忆与无记忆的相同题比较正确率、过期误用和上下文成本。",
+      "acceptance": "只保留有可测价值的记忆类型。",
+      "pitfall": "把记忆条数增长当产品质量增长。",
+      "source_repositories": [
+        "openai/openai-agents-python",
+        "run-llama/llama_index"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "071",
+      "title": "检查点粒度",
+      "module": "工作流恢复与事件处理",
+      "path": "08-workflow-recovery-and-events.md",
+      "scenario": "长任务中途进程重启。",
+      "implementation": "在稳定步骤边界保存输入版本、状态和产物引用，从最近可信点恢复。",
+      "acceptance": "注入步骤间故障后不重做已确认产物。",
+      "pitfall": "只保存聊天文本而缺工具执行结果。",
+      "source_repositories": [
+        "langchain-ai/langgraph",
+        "OpenHands/OpenHands",
+        "crewAIInc/crewAI"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "072",
+      "title": "副作用与重放",
+      "module": "工作流恢复与事件处理",
+      "path": "08-workflow-recovery-and-events.md",
+      "scenario": "恢复会重新执行写接口。",
+      "implementation": "执行前查幂等记录，完成后保存真实业务ID；恢复时先核对外部状态。",
+      "acceptance": "模拟回执丢失不重复创建。",
+      "pitfall": "检查点自动保证任意外部操作exactly-once。",
+      "source_repositories": [
+        "langchain-ai/langgraph",
+        "OpenHands/OpenHands",
+        "crewAIInc/crewAI"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "073",
+      "title": "事件ID去重",
+      "module": "工作流恢复与事件处理",
+      "path": "08-workflow-recovery-and-events.md",
+      "scenario": "webhook被重复投递。",
+      "implementation": "用稳定event_id和业务范围建立唯一键，重复返回同一run_id。",
+      "acceptance": "同事件不重复，不同事件不误合并。",
+      "pitfall": "仅以内存集合去重就宣称跨重启可靠。",
+      "source_repositories": [
+        "langchain-ai/langgraph",
+        "OpenHands/OpenHands",
+        "crewAIInc/crewAI"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "074",
+      "title": "重试退避",
+      "module": "工作流恢复与事件处理",
+      "path": "08-workflow-recovery-and-events.md",
+      "scenario": "多个任务同时遇到429。",
+      "implementation": "区分可重试错误，指数退避加抖动并遵循整体deadline。",
+      "acceptance": "限流时调用不会同步爆发。",
+      "pitfall": "固定每秒重试导致持续放大负载。",
+      "source_repositories": [
+        "langchain-ai/langgraph",
+        "OpenHands/OpenHands",
+        "crewAIInc/crewAI"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "075",
+      "title": "部分成功汇合",
+      "module": "工作流恢复与事件处理",
+      "path": "08-workflow-recovery-and-events.md",
+      "scenario": "十个对象有两个查询失败。",
+      "implementation": "汇合器保存八个成功及两个错误，标记partial，支持只补失败对象。",
+      "acceptance": "汇总不会悄悄丢失失败项。",
+      "pitfall": "一个失败把全部成功结果重跑。",
+      "source_repositories": [
+        "langchain-ai/langgraph",
+        "OpenHands/OpenHands",
+        "crewAIInc/crewAI"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "076",
+      "title": "取消传播",
+      "module": "工作流恢复与事件处理",
+      "path": "08-workflow-recovery-and-events.md",
+      "scenario": "用户取消正在运行的任务。",
+      "implementation": "状态改为cancel_requested，停止新步骤并向可取消下游传播，记录未撤销副作用。",
+      "acceptance": "取消后不启动新写操作。",
+      "pitfall": "按钮显示取消就当所有动作已回滚。",
+      "source_repositories": [
+        "langchain-ai/langgraph",
+        "OpenHands/OpenHands",
+        "crewAIInc/crewAI"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "077",
+      "title": "人工介入恢复",
+      "module": "工作流恢复与事件处理",
+      "path": "08-workflow-recovery-and-events.md",
+      "scenario": "某变更需要审批。",
+      "implementation": "保存待批准动作、参数摘要和状态版本，审批后核对未过期再执行。",
+      "acceptance": "批准旧参数不会执行新修改的操作。",
+      "pitfall": "用一句同意覆盖未展示的全部后续动作。",
+      "source_repositories": [
+        "langchain-ai/langgraph",
+        "OpenHands/OpenHands",
+        "crewAIInc/crewAI"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "078",
+      "title": "任务租约与心跳",
+      "module": "工作流恢复与事件处理",
+      "path": "08-workflow-recovery-and-events.md",
+      "scenario": "worker崩溃后任务卡在running。",
+      "implementation": "任务带lease_until，worker续约；超时回收先检查真实执行状态。",
+      "acceptance": "崩溃能恢复，旧worker不能同时提交。",
+      "pitfall": "只用状态字段没有任务所有者与过期时间。",
+      "source_repositories": [
+        "langchain-ai/langgraph",
+        "OpenHands/OpenHands",
+        "crewAIInc/crewAI"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "079",
+      "title": "失败队列与人工修复",
+      "module": "工作流恢复与事件处理",
+      "path": "08-workflow-recovery-and-events.md",
+      "scenario": "某任务反复永久失败。",
+      "implementation": "达到上限进入失败队列，保留输入摘要、错误链和安全重放入口。",
+      "acceptance": "同类问题可聚类分析，修复后可指定重放。",
+      "pitfall": "无限重试或直接丢弃失败任务。",
+      "source_repositories": [
+        "langchain-ai/langgraph",
+        "OpenHands/OpenHands",
+        "crewAIInc/crewAI"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "080",
+      "title": "补偿与真实回滚",
+      "module": "工作流恢复与事件处理",
+      "path": "08-workflow-recovery-and-events.md",
+      "scenario": "跨两个服务创建资源。",
+      "implementation": "记录已完成副作用，为每项定义可行补偿及失败处理；不可逆步骤单独声明。",
+      "acceptance": "第二步失败可追踪第一步资源处理结果。",
+      "pitfall": "把补偿消息等同数据库原子回滚。",
+      "source_repositories": [
+        "langchain-ai/langgraph",
+        "OpenHands/OpenHands",
+        "crewAIInc/crewAI"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "081",
+      "title": "黄金问题集",
+      "module": "评测、可观测性与质量迭代",
+      "path": "09-evaluation-and-observability.md",
+      "scenario": "不知道提示改动是否变好。",
+      "implementation": "保留输入、正确答案依据、允许行为与困难标签，覆盖正常和边界问题。",
+      "acceptance": "同一版本反复评估使用固定题集。",
+      "pitfall": "只挑这次表现好的问题展示。",
+      "source_repositories": [
+        "comet-ml/opik",
+        "SWE-agent/SWE-agent",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "082",
+      "title": "分层失败归因",
+      "module": "评测、可观测性与质量迭代",
+      "path": "09-evaluation-and-observability.md",
+      "scenario": "最终答案错但原因不明。",
+      "implementation": "把解析、路由、检索、工具、计算和表达分别评分，保留中间结果。",
+      "acceptance": "能定位首先偏离金标准的阶段。",
+      "pitfall": "所有问题统一归为模型幻觉。",
+      "source_repositories": [
+        "comet-ml/opik",
+        "SWE-agent/SWE-agent",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "083",
+      "title": "运行轨迹关联",
+      "module": "评测、可观测性与质量迭代",
+      "path": "09-evaluation-and-observability.md",
+      "scenario": "请求跨模型、API和数据库。",
+      "implementation": "为run建立trace_id，步骤用span_id和parent_id，重试也保留关联。",
+      "acceptance": "单请求可还原完整调用树。",
+      "pitfall": "日志很多但无法对应同一次任务。",
+      "source_repositories": [
+        "comet-ml/opik",
+        "SWE-agent/SWE-agent",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "084",
+      "title": "成本归因",
+      "module": "评测、可观测性与质量迭代",
+      "path": "09-evaluation-and-observability.md",
+      "scenario": "任务花费突然变高。",
+      "implementation": "记录每次模型token、工具调用、重试与归属任务；费用按实际价目版本计算。",
+      "acceptance": "能区分正常用量和失败重试成本。",
+      "pitfall": "只看最后一次模型响应token。",
+      "source_repositories": [
+        "comet-ml/opik",
+        "SWE-agent/SWE-agent",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "085",
+      "title": "首字延迟与完成时间",
+      "module": "评测、可观测性与质量迭代",
+      "path": "09-evaluation-and-observability.md",
+      "scenario": "流式界面很快但任务很慢。",
+      "implementation": "分别测TTFT、工具等待和端到端完成时间，按复杂度分组报告P95。",
+      "acceptance": "不会拿首字快代替业务完成快。",
+      "pitfall": "平均耗时掩盖长尾。",
+      "source_repositories": [
+        "comet-ml/opik",
+        "SWE-agent/SWE-agent",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "086",
+      "title": "LLM裁判校准",
+      "module": "评测、可观测性与质量迭代",
+      "path": "09-evaluation-and-observability.md",
+      "scenario": "想自动评价长答案。",
+      "implementation": "设计rubric并用人工样本校准，保存裁判模型与提示，必要时多评审复核。",
+      "acceptance": "裁判与人工的分歧可定位。",
+      "pitfall": "自评分高就等于答案正确。",
+      "source_repositories": [
+        "comet-ml/opik",
+        "SWE-agent/SWE-agent",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "087",
+      "title": "引用支持率",
+      "module": "评测、可观测性与质量迭代",
+      "path": "09-evaluation-and-observability.md",
+      "scenario": "研究报告带很多链接。",
+      "implementation": "按关键结论抽样核对引文是否直接支持，区分支持、部分支持与不支持。",
+      "acceptance": "链接存在但内容无关会扣分。",
+      "pitfall": "引用数量当作事实质量。",
+      "source_repositories": [
+        "comet-ml/opik",
+        "SWE-agent/SWE-agent",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "088",
+      "title": "离线到在线验证",
+      "module": "评测、可观测性与质量迭代",
+      "path": "09-evaluation-and-observability.md",
+      "scenario": "测试集好线上仍失败。",
+      "implementation": "先影子运行再小比例灰度，按真实类别收集失败和人工反馈。",
+      "acceptance": "灰度有回滚阈值，异常不扩大到全量。",
+      "pitfall": "一次离线评测就直接替换全服务。",
+      "source_repositories": [
+        "comet-ml/opik",
+        "SWE-agent/SWE-agent",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "089",
+      "title": "反馈标签化",
+      "module": "评测、可观测性与质量迭代",
+      "path": "09-evaluation-and-observability.md",
+      "scenario": "用户点击不满意。",
+      "implementation": "采集错误类型、期望结果与可用证据，反馈关联运行版本和trace。",
+      "acceptance": "能按类型修复，而非盲调提示。",
+      "pitfall": "把所有差评当语言风格问题。",
+      "source_repositories": [
+        "comet-ml/opik",
+        "SWE-agent/SWE-agent",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "090",
+      "title": "评测集防泄漏",
+      "module": "评测、可观测性与质量迭代",
+      "path": "09-evaluation-and-observability.md",
+      "scenario": "提示里加入测试答案。",
+      "implementation": "训练调参与最终评测分离，保留未参与调参的题，版本化记录变更。",
+      "acceptance": "最终分数来自未看过的评测范围。",
+      "pitfall": "反复针对固定测试题调到满分。",
+      "source_repositories": [
+        "comet-ml/opik",
+        "SWE-agent/SWE-agent",
+        "assafelovic/gpt-researcher"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "091",
+      "title": "统一模型网关",
+      "module": "服务部署、权限与运维",
+      "path": "10-serving-security-and-operations.md",
+      "scenario": "多个服务分别接供应商。",
+      "implementation": "集中配置模型别名、凭据与调用日志，应用使用稳定内部协议。",
+      "acceptance": "模型切换可追踪，不需要散落代码改密钥。",
+      "pitfall": "接口兼容等于所有模型工具行为完全一致。",
+      "source_repositories": [
+        "BerriAI/litellm",
+        "fastapi/fastapi",
+        "OpenHands/OpenHands",
+        "qdrant/qdrant"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "092",
+      "title": "模型能力矩阵",
+      "module": "服务部署、权限与运维",
+      "path": "10-serving-security-and-operations.md",
+      "scenario": "备用模型不支持同样工具。",
+      "implementation": "记录工具调用、结构输出、窗口和模态支持，按任务选择合格模型。",
+      "acceptance": "降级模型能通过同一关键契约检查。",
+      "pitfall": "只比较价格就替换模型。",
+      "source_repositories": [
+        "BerriAI/litellm",
+        "fastapi/fastapi",
+        "OpenHands/OpenHands",
+        "qdrant/qdrant"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "093",
+      "title": "故障切换语义",
+      "module": "服务部署、权限与运维",
+      "path": "10-serving-security-and-operations.md",
+      "scenario": "主模型超时需要备用。",
+      "implementation": "只在可重试阶段切换，保留任务状态和错误；已发生副作用先核对。",
+      "acceptance": "切换不重复执行订单等写动作。",
+      "pitfall": "收到超时就从任务开头重跑。",
+      "source_repositories": [
+        "BerriAI/litellm",
+        "fastapi/fastapi",
+        "OpenHands/OpenHands",
+        "qdrant/qdrant"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "094",
+      "title": "租户配额与公平性",
+      "module": "服务部署、权限与运维",
+      "path": "10-serving-security-and-operations.md",
+      "scenario": "一个租户占满所有worker。",
+      "implementation": "按租户限制并发、token或任务预算，排队记录原因与等待时间。",
+      "acceptance": "大任务不会让其他租户完全不可用。",
+      "pitfall": "只设置全局限流却无租户隔离。",
+      "source_repositories": [
+        "BerriAI/litellm",
+        "fastapi/fastapi",
+        "OpenHands/OpenHands",
+        "qdrant/qdrant"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "095",
+      "title": "缓存范围与版本",
+      "module": "服务部署、权限与运维",
+      "path": "10-serving-security-and-operations.md",
+      "scenario": "同问题命中旧结果或他人数据。",
+      "implementation": "缓存键包括租户、权限范围、数据版本、模型提示版本和必要时间窗。",
+      "acceptance": "权限改变或数据更新后旧缓存失效。",
+      "pitfall": "仅以问题文本缓存所有响应。",
+      "source_repositories": [
+        "BerriAI/litellm",
+        "fastapi/fastapi",
+        "OpenHands/OpenHands",
+        "qdrant/qdrant"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "096",
+      "title": "流式事件协议",
+      "module": "服务部署、权限与运维",
+      "path": "10-serving-security-and-operations.md",
+      "scenario": "前端收到半段文字后断线。",
+      "implementation": "区分progress、tool_result、artifact、final和error事件，带序号与run_id。",
+      "acceptance": "恢复后能识别重复事件和最终状态。",
+      "pitfall": "把收到最后一个token当任务事务完成。",
+      "source_repositories": [
+        "BerriAI/litellm",
+        "fastapi/fastapi",
+        "OpenHands/OpenHands",
+        "qdrant/qdrant"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "097",
+      "title": "凭据隔离与日志脱敏",
+      "module": "服务部署、权限与运维",
+      "path": "10-serving-security-and-operations.md",
+      "scenario": "工具需要数据库或OAuth凭据。",
+      "implementation": "凭据在服务端保管，工具仅获得必要权限；日志脱敏并限制留存。",
+      "acceptance": "trace与产物中不出现密钥原值。",
+      "pitfall": "把凭据写进提示让模型替你保密。",
+      "source_repositories": [
+        "BerriAI/litellm",
+        "fastapi/fastapi",
+        "OpenHands/OpenHands",
+        "qdrant/qdrant"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "098",
+      "title": "执行环境最小权限",
+      "module": "服务部署、权限与运维",
+      "path": "10-serving-security-and-operations.md",
+      "scenario": "Agent要跑命令或处理文件。",
+      "implementation": "隔离工作目录、网络和资源，使用测试身份，外部写操作经受控工具。",
+      "acceptance": "任务无法读取无关宿主文件或无限耗资源。",
+      "pitfall": "用了容器就忽略挂载与网络配置。",
+      "source_repositories": [
+        "BerriAI/litellm",
+        "fastapi/fastapi",
+        "OpenHands/OpenHands",
+        "qdrant/qdrant"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "099",
+      "title": "版本固定与兼容检查",
+      "module": "服务部署、权限与运维",
+      "path": "10-serving-security-and-operations.md",
+      "scenario": "CLI、SDK、服务器各自升级。",
+      "implementation": "固定依赖和镜像摘要，保存配置版本，升级前跑契约和回归检查。",
+      "acceptance": "可重现旧环境，错版本能早期报错。",
+      "pitfall": "latest标签等于可复现构建。",
+      "source_repositories": [
+        "BerriAI/litellm",
+        "fastapi/fastapi",
+        "OpenHands/OpenHands",
+        "qdrant/qdrant"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    },
+    {
+      "id": "100",
+      "title": "回滚与运行手册",
+      "module": "服务部署、权限与运维",
+      "path": "10-serving-security-and-operations.md",
+      "scenario": "上线后发现答案或费用异常。",
+      "implementation": "保留旧模型提示与索引版本，设指标阈值，写明暂停、回滚和失败任务处理步骤。",
+      "acceptance": "演练可恢复服务，产物版本仍可追溯。",
+      "pitfall": "只回滚代码却不回滚提示、索引或配置。",
+      "source_repositories": [
+        "BerriAI/litellm",
+        "fastapi/fastapi",
+        "OpenHands/OpenHands",
+        "qdrant/qdrant"
+      ],
+      "validation_status": "engineering guidance; not individually implemented or executed"
+    }
+  ]
+}

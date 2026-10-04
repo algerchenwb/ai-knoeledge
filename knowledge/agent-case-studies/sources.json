@@ -1,0 +1,182 @@
+{
+  "verified_date": "2026-10-04",
+  "method": "GitHub repository metadata, fixed-commit file reads; no external LLM or integration execution",
+  "sources": [
+    {
+      "id": "S01",
+      "repo": "langchain-ai/langgraph",
+      "sha": "9a0394d88b2211f299dcd69df92db3480c69ee61",
+      "license": "MIT",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "examples/tutorials/sql-agent.ipynb"
+      ]
+    },
+    {
+      "id": "S02",
+      "repo": "openai/openai-agents-python",
+      "sha": "81f0ccf20c6e24063b9da36fa37f2bdb6a43d8d3",
+      "license": "MIT",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "examples/customer_service/main.py",
+        "docs/handoffs.md"
+      ]
+    },
+    {
+      "id": "S03",
+      "repo": "microsoft/autogen",
+      "sha": "027ecf0a379bcc1d09956d46d12d44a3ad9cee14",
+      "license": "文档 CC-BY-4.0；代码 MIT",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "python/docs/src/user-guide/core-user-guide/design-patterns/code-execution-groupchat.ipynb",
+        "LICENSE-CODE"
+      ]
+    },
+    {
+      "id": "S04",
+      "repo": "crewAIInc/crewAI",
+      "sha": "738c8e19e35c2888d8e0663bc5cc45c5acf6ac2d",
+      "license": "MIT",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "lib/cli/src/crewai_cli/templates/crew/crew.py",
+        "lib/cli/src/crewai_cli/templates/crew/config/tasks.yaml"
+      ]
+    },
+    {
+      "id": "S05",
+      "repo": "huggingface/smolagents",
+      "sha": "c30b115286e000e98711fae5e85993547b73d826",
+      "license": "Apache-2.0",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "examples/text_to_sql.py"
+      ]
+    },
+    {
+      "id": "S06",
+      "repo": "SWE-agent/SWE-agent",
+      "sha": "3ea751c087f32b16e039a2233dd6eefecef325d5",
+      "license": "MIT",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "config/default.yaml"
+      ]
+    },
+    {
+      "id": "S07",
+      "repo": "OpenHands/OpenHands",
+      "sha": "a6bba78ffd5a8b31620770f52383b1a2c0477fcd",
+      "license": "MIT",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "examples/acp-docker/README.md",
+        "src/api/automation-service/automation-service.api.ts"
+      ]
+    },
+    {
+      "id": "S08",
+      "repo": "browser-use/browser-use",
+      "sha": "7be96ed8bafa8dfe1eef228b59cf5c884b8b2431",
+      "license": "MIT",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "browser_use/agent/service.py",
+        "examples/getting_started/05_fast_agent.py"
+      ]
+    },
+    {
+      "id": "S09",
+      "repo": "assafelovic/gpt-researcher",
+      "sha": "0957c301ed06c2a5857b834358c7227c739041d4",
+      "license": "Apache-2.0",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "gpt_researcher/agent.py",
+        "gpt_researcher/skills/researcher.py"
+      ]
+    },
+    {
+      "id": "S10",
+      "repo": "run-llama/llama_index",
+      "sha": "962940ddc079cc21701d28d1237c84c82a7c5164",
+      "license": "MIT",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "docs/examples/agent/react_agent_with_query_engine.ipynb"
+      ]
+    },
+    {
+      "id": "S11",
+      "repo": "fastapi/fastapi",
+      "sha": "5f9fc5c59a9bb54608aa35376715f3ba9708188e",
+      "license": "MIT",
+      "read_paths": [
+        "README.md",
+        "LICENSE"
+      ]
+    },
+    {
+      "id": "S12",
+      "repo": "qdrant/qdrant",
+      "sha": "6ab21cac18ebb6f4ae29102c7f8f5cc11affd5de",
+      "license": "Apache-2.0",
+      "read_paths": [
+        "README.md",
+        "LICENSE"
+      ]
+    },
+    {
+      "id": "S13",
+      "repo": "docling-project/docling",
+      "sha": "58f1f8d907fdc4610cd8dca20da6ef53a4550ee8",
+      "license": "MIT",
+      "read_paths": [
+        "README.md",
+        "LICENSE"
+      ]
+    },
+    {
+      "id": "S14",
+      "repo": "BerriAI/litellm",
+      "sha": "a2bf67a03707e474be41e07806ee4fd9791ca7cd",
+      "license": "MIT（enterprise/另有许可）",
+      "read_paths": [
+        "README.md",
+        "LICENSE"
+      ]
+    },
+    {
+      "id": "S15",
+      "repo": "comet-ml/opik",
+      "sha": "657e3197dc460e6441471c832d93666c7fc730c8",
+      "license": "Apache-2.0",
+      "read_paths": [
+        "README.md",
+        "LICENSE"
+      ]
+    }
+  ],
+  "historical_sources": [
+    {
+      "repo": "langchain-ai/langgraph",
+      "sha": "23961cff61a42b52525f3b20b4094d8d2fba1744",
+      "read_paths": [
+        "docs/docs/tutorials/sql/sql-agent.md",
+        "LICENSE"
+      ]
+    }
+  ]
+}

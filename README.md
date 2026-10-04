@@ -4,6 +4,10 @@
 
 ## 新增的深入专题
 
+- [AI 应用落地：100个知识点](knowledge/ai-application-playbook/README.md)：十个方向，逐项提供应用场景、实现步骤、验收方法与常见误区，附15个开源项目快照。
+
+- [Agent 开源实现案例：十篇深度教程](knowledge/agent-case-studies/README.md)：SQL流程、客服转接、代码执行、报告交付、工具组合、仓库修复、控制面、浏览器、研究与Agentic RAG，区分上游演示与实际验证。
+
 - [Agent 应用工程](knowledge/agent-engineering/README.md)：工具重试、幂等键、未知结果、checkpoint 恢复、回执与补偿；结合 LangGraph / Temporal 固定源码案例及六组已运行离线故障注入。
 
 - [半监督学习与伪标签](knowledge/semi-supervised/README.md)：自训练筛选、置信度与确认偏差、标签轮次、独立测试及已运行scikit-learn实验。
