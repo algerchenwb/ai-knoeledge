@@ -4,6 +4,8 @@
 
 ## 新增的深入专题
 
+- [半监督学习与伪标签](knowledge/semi-supervised/README.md)：自训练筛选、置信度与确认偏差、标签轮次、独立测试及已运行scikit-learn实验。
+
 - [应用算法：文本、推荐、图与数据流](knowledge/applied-algorithms/README.md)：逐轮补充TF-IDF、特征哈希、NMF、关联规则、隐式ALS、排序指标、PageRank、图消息传递、在线学习和漂移检测，附开源快照与已运行实验。
 
 - [预测区间与不确定性](knowledge/prediction-uncertainty/README.md)：区间含义、覆盖率、校准集与 split-conformal 有限样本手算，附已运行模拟及开源来源。
