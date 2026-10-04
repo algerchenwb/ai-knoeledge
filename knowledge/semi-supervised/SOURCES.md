@@ -9,3 +9,7 @@
 本专题为独立中文解释、虚构业务示例和原创实验，不是整篇翻译，不复制上游实现。算法与API说明基于上述文件；数据切分、审计、人工复核和业务流程属于独立工程扩展。与上游没有隶属或背书关系，许可证记录不重新许可本仓库全部内容。
 
 实验实际调用本地scikit-learn 1.8.0；固定来源快照与已安装包不是同一版本声明。只核验[验证记录](VALIDATION.md)中的案例，不宣称运行了来源版本全部测试。无需外网、GPU或真实业务数据。
+
+## 标签传播补充
+
+同日实际读取[LabelPropagation/LabelSpreading源码](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/sklearn/semi_supervised/_label_propagation.py)，核对图归一化、硬约束、软约束、零分数处理、argmax及predict_proba；同时读取上述半监督文档的Label Propagation章节。讲解为独立中文解释，实验调用本地1.8.0，不复制上游实现，不将无种子分量的默认类别当成有效标签。
