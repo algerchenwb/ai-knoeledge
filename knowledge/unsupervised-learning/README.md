@@ -9,6 +9,7 @@
 | 1 | [K-means](01-kmeans-and-cluster-evaluation.md) | 中心、距离、尺度、K 的选择、轮廓系数与验证边界 |
 | 2 | [DBSCAN](02-dbscan-density-and-noise.md) | 核心/边界/噪声、邻域参数、地理距离、覆盖与内存 |
 | 3 | [PCA](03-pca-and-information-loss.md) | 主成分、中心化、方差解释率、重建、Whitening 与泄漏 |
+| 4 | [高斯混合模型与 EM](04-gaussian-mixture-and-em.md) | 软归属、责任度手算、协方差约束、BIC 与密度边界 |
 | 示例 | [机制核验脚本](examples/unsupervised_checks.py) | 三个完整算例，可离线运行 |
 
 相关知识：[评估基础](../ml-evaluation/README.md)、[经典监督模型](../classical-ml/README.md)、[张量形状](../deep-learning-basics/01-tensors-shapes-and-devices.md)。
@@ -43,8 +44,20 @@
 python knowledge/unsupervised-learning/examples/unsupervised_checks.py
 ```
 
+### GMM 验证补充
+
+[GMM 脚本](examples/gmm_checks.py)核对一轮人工 EM、AIC/BIC 公式、密度重构、编号交换和四种协方差形状。Python 3.12.14、NumPy 2.3.5、SciPy 1.17.0、scikit-learn 1.8.0；8 次拟合、32 次初始化均完成。合成数据 BIC 选择 K=2，最终测试平均对数密度 −1.698965。详见教程中的数据划分与验证边界。
+
+新增固定来源：[mixture.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/mixture.rst)、[_gaussian_mixture.py](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/sklearn/mixture/_gaussian_mixture.py)，与上方同一提交及 BSD 3-Clause 许可。
+
+运行：
+
+```bash
+python knowledge/unsupervised-learning/examples/gmm_checks.py
+```
+
 ## 后续扩展（尚未完成）
 
-层次聚类、Gaussian Mixture、HDBSCAN/OPTICS、非线性降维与聚类稳定性实验。尚未完成条目不作为已有教程计数。
+层次聚类、HDBSCAN/OPTICS、非线性降维与聚类稳定性实验。尚未完成条目不作为已有教程计数。
 
 [返回总入口](../../README.md)
