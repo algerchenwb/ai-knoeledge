@@ -11,8 +11,9 @@
 | [结构化输出与工具参数](05-structured-output-and-tool-contracts.md) | 严格类型、JSON 边界、日期/坐标语义、Schema 覆盖与服务端权限；附 23 项 Pydantic 检查 |
 | [工具结果缓存与新鲜度](06-tool-result-cache-and-freshness.md) | 租户/权限隔离、语义键、TTL、负缓存、复制隔离、回源竞争和版本失效；附 21 项离线检查 |
 | [熔断与故障隔离](07-circuit-breakers-and-failure-isolation.md) | 故障分类、冷却与探测、旧回执、隔离范围、重试统计与业务降级；附 15 项离线检查 |
+| [分页游标与快照](08-pagination-cursors-and-snapshots.md) | 分页完整性、快照、查询/权限绑定、过期、循环游标与部分排名；附 16 项离线检查 |
 
-案例：LangGraph 节点重试与 entrypoint 状态机制；Temporal Activity 重试及实验性 Deep Agents 插件。Pydantic AI 用量限制与累计机制。Pydantic 严格类型与业务校验。cachetools TTL 与回源协调机制。PyBreaker 故障分类与三态转换。固定提交、许可与未实跑边界见教程。
+案例：LangGraph 节点重试与 entrypoint 状态机制；Temporal Activity 重试及实验性 Deep Agents 插件。Pydantic AI 用量限制与累计机制。Pydantic 严格类型与业务校验。cachetools TTL 与回源协调机制。PyBreaker 故障分类与三态转换。Kubernetes 官方文档中的分块列表与快照契约。固定提交、许可与未实跑边界见教程。
 
 ~~~bash
 python knowledge/agent-engineering/examples/agent_idempotency_checks.py
@@ -22,6 +23,7 @@ python knowledge/agent-engineering/examples/budget_checks.py
 python knowledge/agent-engineering/examples/structured_output_checks.py
 python knowledge/agent-engineering/examples/tool_cache_checks.py
 python knowledge/agent-engineering/examples/circuit_breaker_checks.py
+python knowledge/agent-engineering/examples/pagination_checks.py
 ~~~
 
 Python 3.12.14 标准库 mock 已验证；资源预算和熔断脚本另验证了单进程双线程竞争；结构化输出脚本使用 Pydantic 2.13.5（需安装该依赖）实跑；未验证 Agent 框架集成、真实外部 API 或分布式并发，示例不能直接作为生产服务部署。
