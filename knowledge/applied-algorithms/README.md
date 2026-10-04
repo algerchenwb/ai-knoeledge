@@ -7,6 +7,7 @@
 | 1 | [TF-IDF](01-tfidf.md) | [示例](examples/01_tfidf.py) |
 | 2 | [特征哈希](02-feature-hashing.md) | [示例](examples/02_hashing.py) |
 | 3 | [NMF主题模型](03-nmf-topics.md) | [示例](examples/03_nmf.py) |
+| 4 | [Apriori与关联规则](04-association-rules.md) | [示例](examples/04_rules.py) |
 
 ## 运行与来源
 
