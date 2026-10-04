@@ -5,7 +5,6 @@
 | 教程 | 应用重点 |
 | --- | --- |
 | [工具执行可靠性](01-tool-retries-idempotency-and-recovery.md) | 10 个核心主题：未知结果、操作身份、参数绑定、原子性、checkpoint、重试预算、两类开源案例、回执账本、补偿；附六组检查 |
-
 | [人工审批与版本化动作](02-human-approval-and-versioned-actions.md) | 审批快照、身份与范围、参数/版本绑定、过期、重复决定、执行前再校验；附十个离线检查 |
 
 案例：LangGraph 节点重试与 entrypoint 状态机制；Temporal Activity 重试及实验性 Deep Agents 插件。固定提交、许可与未实跑边界见教程。
