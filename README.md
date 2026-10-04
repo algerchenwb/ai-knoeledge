@@ -4,6 +4,8 @@
 
 ## 新增的深入专题
 
+- [预测区间与不确定性](knowledge/prediction-uncertainty/README.md)：区间含义、覆盖率、校准集与 split-conformal 有限样本手算，附已运行模拟及开源来源。
+
 - [时间序列预测与回测](knowledge/time-series/README.md)：滞后与滚动特征、可用时间、标签成熟、顺序回测及预测指标，附已运行实验。
 
 - [特征工程基础](knowledge/feature-engineering/README.md)：缩放、缺失、类别编码与目标编码，附已运行的 scikit-learn 检查。
