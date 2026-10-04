@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 11,
+  "case_count": 12,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -127,6 +127,19 @@
       ],
       "scope": "independent standard-library HTTP demo; source documents inform design only",
       "validation": "23 real loopback HTTP checks passed"
+    },
+    {
+      "id": "12",
+      "title": "业务工具注册与任务路由：把多接口整理成可验收能力",
+      "path": "12-business-tool-registry-routing.md",
+      "function": "Registry.plan / Registry.execute",
+      "related_cards": "011、012、013、017、021、028",
+      "source_repo": "huggingface/smolagents",
+      "source_sha": "c30b115286e000e98711fae5e85993547b73d826",
+      "source_path": "src/smolagents/tools.py",
+      "source_record": "examples/tool-registry-sources.json",
+      "scope": "independent offline registry; synthetic reused business adapters; no LLM or HTTP",
+      "validation": "17 offline checks passed"
     }
   ],
   "http_integration": {
@@ -135,5 +148,12 @@
     "transport": "real loopback HTTP",
     "python": "3.12.14",
     "limitations": "synthetic fixtures; no LLM, real OAuth, production database or load testing"
+  },
+  "tool_registry": {
+    "date": "2026-10-04",
+    "checks_passed": 17,
+    "python": "3.12.14",
+    "transport": "in-process",
+    "limitations": "no LLM, real API, framework execution, signatures or persistent plans"
   }
 }

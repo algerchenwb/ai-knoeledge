@@ -1,0 +1,35 @@
+{
+  "verified_date": "2026-10-04",
+  "sources": [
+    {
+      "repo": "huggingface/smolagents",
+      "sha": "c30b115286e000e98711fae5e85993547b73d826",
+      "read_paths": [
+        "src/smolagents/tools.py"
+      ],
+      "license": "Apache-2.0",
+      "relevance": "Tool metadata, signature validation, input validation helper; output_schema informational only"
+    },
+    {
+      "repo": "fastapi/fastapi",
+      "sha": "5f9fc5c59a9bb54608aa35376715f3ba9708188e",
+      "read_paths": [
+        "docs/en/docs/tutorial/dependencies/index.md"
+      ],
+      "license": "MIT",
+      "relevance": "shared dependencies, security and identity checks"
+    }
+  ],
+  "implementation": "independent Python standard-library registry reusing prior synthetic business adapters; no upstream code copied",
+  "validation": {
+    "python": "3.12.14",
+    "checks_passed": 17,
+    "transport": "in-process; no HTTP",
+    "limitations": [
+      "no LLM or natural-language routing",
+      "no real authorization provider or backend",
+      "no framework execution",
+      "no concurrency, signatures or persistent plan storage"
+    ]
+  }
+}

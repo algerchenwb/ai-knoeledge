@@ -1,6 +1,6 @@
 # AI 业务应用案例：从问题到可验收结果
 
-这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加一篇HTTP集成教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
+这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加HTTP集成与工具注册路由两篇教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
 
 全部数据与ID虚构；所有业务规则为独立教学定义，不代表任何公司现有接口、经营数据或已上线效果。开源项目提供工具、检索、状态与评测机制依据，不直接提供本篇的业务功能。案例中的接口名称为设计建议。
 
@@ -17,6 +17,7 @@
 | [画像预热：批量对象、部分失败与可恢复作业](09-profile-prewarm-job.md) | 提前读取常用画像 | 去重键不全与无限重试 | prewarm |
 | [商务文档：报价字段提取与金额复核](10-quote-document-validation.md) | 复核报价明细合计 | 币种与精度混用 | quote_total |
 | [API Agent：身份、契约、工具与HTTP结果](11-api-agent-http-integration.md) | 将区域占比与共访接成可验证接口 | 越权、口径错配与状态误读 | DemoService.execute |
+| [业务工具注册与任务路由](12-business-tool-registry-routing.md) | 将多接口组织为受控能力 | 歧义选择、旧计划与权限失效 | Registry.plan / execute |
 
 ## 一条可落地的业务流程
 
@@ -63,6 +64,16 @@ python knowledge/business-ai-cases/examples/test_api_agent_demo.py
 ```
 
 这是独立编写的教学编排器，参考FastAPI固定提交文档；尚未调用模型、真实OAuth或生产数据库，不能据此宣称业务已经上线。
+
+### 工具注册与任务路由
+
+[注册表教程](12-business-tool-registry-routing.md)将业务目标、能力权限、对象权限与可用状态分层，附版本绑定、歧义拒绝、参数白名单和执行时重检。2026-10-04运行17项离线检查全部通过，复用HTTP教程的合成数据计算；未调用模型或真实接口。
+
+```bash
+python knowledge/business-ai-cases/examples/test_tool_registry_demo.py
+```
+
+[运行结果](examples/tool-registry-results.json) · [固定来源记录](examples/tool-registry-sources.json)
 
 ## 如何做业务试点
 
