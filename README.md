@@ -4,6 +4,8 @@
 
 ## 新增的深入专题
 
+- [特征工程基础](knowledge/feature-engineering/README.md)：缩放、缺失、类别编码与目标编码，附已运行的 scikit-learn 检查。
+
 - [模型可解释性](knowledge/explainability/README.md)：置换重要性、PDP/ICE、Shapley/SHAP，涵盖相关特征、背景选择与因果边界，附手算及已运行 scikit-learn 集成示例。
 
 - [训练工程详解](knowledge/training-engineering/README.md)：8篇覆盖优化器、学习率、数据加载、梯度累积、AMP、训练恢复、DDP和排障，附13组已运行标准库实验。
