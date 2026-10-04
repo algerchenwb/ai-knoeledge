@@ -1,4 +1,4 @@
-# Agent 应用工程：十一篇深入教程
+# Agent 应用工程：十二篇深入教程
 
 从真实开源实现提取工程知识，配合独立离线故障注入。“实现案例”表示已核验代码路径，不等同于商业成功案例或生产效果证明。
 
@@ -16,7 +16,9 @@
 | [轨迹与业务验收](10-trajectory-and-business-acceptance.md) | 轨迹模式、参数、依赖、证据、部分交付、禁止动作与回归门禁；附 18 项离线样例检查 |
 | [速率、租户配额与截止时间](11-rate-limits-queues-and-deadlines.md) | 突发额度、联合准入、权重、公平性、排队、退避与 deadline；附 18 项离线检查 |
 
-案例：LangGraph 节点重试与 entrypoint 状态机制；Temporal Activity 重试及实验性 Deep Agents 插件。Pydantic AI 用量限制与累计机制。Pydantic 严格类型与业务校验。cachetools TTL 与回源协调机制。PyBreaker 故障分类与三态转换。Kubernetes 官方文档中的分块列表与快照契约。OpenTelemetry 官方 Trace 与 Baggage 规范。agentevals 轨迹匹配与参数比较机制。aiolimiter 加权容量、突发及事件循环机制。固定提交、许可与未实跑边界见教程。
+| [异步队列与任务收尾](12-async-queues-backpressure-and-shutdown.md) | 背压、等待取消、收尾确认、过期、TaskGroup 与正常停机；附 12 项真实 asyncio 检查 |
+
+案例：LangGraph 节点重试与 entrypoint 状态机制；Temporal Activity 重试及实验性 Deep Agents 插件。Pydantic AI 用量限制与累计机制。Pydantic 严格类型与业务校验。cachetools TTL 与回源协调机制。PyBreaker 故障分类与三态转换。Kubernetes 官方文档中的分块列表与快照契约。OpenTelemetry 官方 Trace 与 Baggage 规范。agentevals 轨迹匹配与参数比较机制。aiolimiter 加权容量、突发及事件循环机制。CPython asyncio 队列、取消与 TaskGroup 生命周期。固定提交、许可与未实跑边界见教程。
 
 ~~~bash
 python knowledge/agent-engineering/examples/agent_idempotency_checks.py
@@ -30,12 +32,13 @@ python knowledge/agent-engineering/examples/pagination_checks.py
 python knowledge/agent-engineering/examples/observability_checks.py
 python knowledge/agent-engineering/examples/agent_acceptance_checks.py
 python knowledge/agent-engineering/examples/rate_limit_checks.py
+python knowledge/agent-engineering/examples/async_queue_checks.py
 ~~~
 
-Python 3.12.14 标准库 mock 已验证；资源预算、熔断和速率脚本另验证了单进程双线程竞争；结构化输出脚本使用 Pydantic 2.13.5（需安装该依赖）实跑；未验证 Agent 框架集成、真实外部 API 或分布式并发，示例不能直接作为生产服务部署。
+Python 3.12.14 标准库 mock 已验证；异步队列脚本另实跑单事件循环的 Queue、取消、timeout 和 TaskGroup；资源预算、熔断和速率脚本另验证了单进程双线程竞争；结构化输出脚本使用 Pydantic 2.13.5（需安装该依赖）实跑；未验证 Agent 框架集成、真实外部 API 或分布式并发，示例不能直接作为生产服务部署。
 
 相关：[Agent 状态与权限](../../courses/generative-ai-for-beginners/deep-dives/17-agent-state-and-bounded-workflows.md)、[API Agent 后端实践](../../courses/generative-ai-for-beginners/appendices/api-agent-backend.md)。
 
-后续待扩展：工具协议版本、授权生命周期、观测系统集成与采样/导出验证、审批界面与持久化、长任务持久化、异步排队取消、跨进程配额与截止时间传播、真实 Agent 集成评估与独立标注集。尚未完成条目不计为已有内容。
+后续待扩展：工具协议版本、授权生命周期、观测系统集成与采样/导出验证、审批界面与持久化、长任务持久化、跨进程排队取消与持久收尾、跨进程配额与截止时间传播、真实 Agent 集成评估与独立标注集。尚未完成条目不计为已有内容。
 
 [返回总目录](../../README.md)
