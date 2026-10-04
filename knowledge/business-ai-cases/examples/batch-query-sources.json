@@ -1,0 +1,26 @@
+{
+  "verified_date": "2026-10-05",
+  "sources": [
+    {
+      "repo": "fastapi/fastapi",
+      "sha": "5f9fc5c59a9bb54608aa35376715f3ba9708188e",
+      "read_paths": [
+        "docs/en/docs/tutorial/body-nested-models.md"
+      ],
+      "license": "MIT",
+      "relevance": "nested request models and typed list fields only; concurrency and business policies are independent design"
+    }
+  ],
+  "implementation": "independent standard-library batch orchestration reusing api_agent_demo synthetic read adapters; no upstream code copied",
+  "validation": {
+    "python": "3.12.14",
+    "checks_passed": 13,
+    "execution": "offline fixture queries with real ThreadPoolExecutor, Event-gated order and worker ceiling checks",
+    "limitations": [
+      "no LLM or HTTP",
+      "no production backend or authorization provider",
+      "no global concurrency limit",
+      "no deadline, cancellation, retry, pagination, cross-request cache or persistent recovery"
+    ]
+  }
+}

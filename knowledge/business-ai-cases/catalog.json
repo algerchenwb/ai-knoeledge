@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 12,
+  "case_count": 13,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -140,6 +140,19 @@
       "source_record": "examples/tool-registry-sources.json",
       "scope": "independent offline registry; synthetic reused business adapters; no LLM or HTTP",
       "validation": "17 offline checks passed"
+    },
+    {
+      "id": "13",
+      "title": "批量业务查询：结果对应、请求去重、并发上限与部分失败",
+      "path": "13-batch-business-query.md",
+      "function": "run_batch",
+      "related_cards": "012、013、015、016、018、025",
+      "source_repo": "fastapi/fastapi",
+      "source_sha": "5f9fc5c59a9bb54608aa35376715f3ba9708188e",
+      "source_path": "docs/en/docs/tutorial/body-nested-models.md",
+      "source_record": "examples/batch-query-sources.json",
+      "scope": "independent standard-library batch orchestration; synthetic reused read adapters",
+      "validation": "13 offline checks with real threads passed"
     }
   ],
   "http_integration": {
@@ -155,5 +168,12 @@
     "python": "3.12.14",
     "transport": "in-process",
     "limitations": "no LLM, real API, framework execution, signatures or persistent plans"
+  },
+  "batch_query": {
+    "date": "2026-10-05",
+    "checks_passed": 13,
+    "python": "3.12.14",
+    "execution": "offline real threads",
+    "limitations": "no LLM, HTTP, production backend, global concurrency limit, deadline, retry or persistent recovery"
   }
 }
