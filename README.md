@@ -34,7 +34,7 @@
 
 ## 已有专题与课程
 
-- [无监督学习基础](knowledge/unsupervised-learning/README.md)：K-means、DBSCAN、PCA、高斯混合模型与 EM、层次聚类、OPTICS 与 HDBSCAN，涵盖评估、空间距离、信息损失、软归属、密度估计、树状图与密度尺度，附已运行示例。
+- [无监督学习基础](knowledge/unsupervised-learning/README.md)：K-means、DBSCAN、PCA、高斯混合模型与 EM、层次聚类、OPTICS 与 HDBSCAN、聚类稳定性，涵盖评估、空间距离、信息损失、软归属、密度估计、树状图、密度尺度与标签比较，附已运行示例。
 
 - [经典机器学习模型基础](knowledge/classical-ml/README.md)：线性回归、逻辑回归、正则化、决策树、随机森林、梯度提升、支持向量机、核方法、近邻模型、朴素贝叶斯、概率校准、类别不平衡、异常检测、特征选择、置换重要性、模型保存、输入协议与学习/验证曲线，附已运行的验证脚本。
 
