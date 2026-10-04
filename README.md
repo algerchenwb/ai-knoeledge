@@ -10,7 +10,7 @@
 
 - [Agent 开源实现案例：十篇深度教程](knowledge/agent-case-studies/README.md)：SQL流程、客服转接、代码执行、报告交付、工具组合、仓库修复、控制面、浏览器、研究与Agentic RAG，区分上游演示与实际验证。
 
-- [Agent 应用工程](knowledge/agent-engineering/README.md)：工具重试、幂等键、未知结果、checkpoint 恢复、回执与补偿、人工审批及版本绑定、取消与部分完成、资源预算及并发准入、结构化输出与工具参数校验、结果缓存及数据新鲜度、熔断与故障隔离；结合 LangGraph / Temporal / Pydantic AI / Pydantic / cachetools / PyBreaker 固定开源来源，附已运行离线检查。
+- [Agent 应用工程](knowledge/agent-engineering/README.md)：工具重试、幂等键、未知结果、checkpoint 恢复、回执与补偿、人工审批及版本绑定、取消与部分完成、资源预算及并发准入、结构化输出与工具参数校验、结果缓存及数据新鲜度、熔断与故障隔离、分页游标及快照；结合 LangGraph / Temporal / Pydantic AI / Pydantic / cachetools / PyBreaker / Kubernetes 固定开源来源，附已运行离线检查。
 
 - [半监督学习与伪标签](knowledge/semi-supervised/README.md)：自训练筛选、置信度与确认偏差、标签轮次、独立测试及已运行scikit-learn实验。
 
