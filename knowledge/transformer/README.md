@@ -10,6 +10,10 @@
 4. [标签对齐、交叉熵与困惑度](04-language-model-objective.md)
 5. [解码与采样](05-decoding-and-sampling.md)
 
+## 补充验证实验
+
+- [注意力输入干预与不变性实验](labs/attention-invariants.md)：逐步计算 Q/K/V，运行屏蔽隔离、因果隔离、置换等变、稳定 softmax 与位置编码检查，附标准库脚本及 D2L 固定来源。
+
 ## 来源与验证
 
 核验日期：2026-10-04。主要来源：[karpathy/nanoGPT](https://github.com/karpathy/nanoGPT)。每篇末尾提供固定提交链接；完整快照与许可见[来源清单](../expansion-2026-10/SOURCES.md)。
