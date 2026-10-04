@@ -12,6 +12,7 @@
 | 6 | [排序指标深入](06-ranking-metrics.md) | [示例](examples/06_ranking.py) |
 | 7 | [PageRank](07-pagerank.md) | [示例](examples/07_pagerank.py) |
 | 8 | [图消息传递](08-message-passing.md) | [示例](examples/08_messages.py) |
+| 9 | [在线学习](09-online-learning.md) | [示例](examples/09_online.py) |
 
 ## 运行与来源
 

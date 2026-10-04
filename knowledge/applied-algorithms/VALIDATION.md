@@ -12,5 +12,6 @@
 | 6 | [06_ranking.py](examples/06_ranking.py) | API与手算、增益约定、零相关、并列、RR |
 | 7 | [07_pagerank.py](examples/07_pagerank.py) | 质量守恒、悬挂节点、稳态残差、独立求解 |
 | 8 | [08_messages.py](examples/08_messages.py) | 手算消息、边顺序、重编号、归一化系数 |
+| 9 | [09_online.py](examples/09_online.py) | 真实partial_fit、先预测后更新、确定性重放 |
 
 这些检查针对确定的小案例，未测生产规模、线上收益、随机噪声误报率或所有异常输入。来源快照固定，但实际集成运行的是上述安装版本。第4、5、7、8、10篇不使用对应上游包，不能把数学演示通过解读为上游API已验证。
