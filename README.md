@@ -24,7 +24,7 @@
 
 - [无监督学习基础](knowledge/unsupervised-learning/README.md)：K-means、DBSCAN、PCA，涵盖评估、空间距离与信息损失，附已运行示例。
 
-- [经典机器学习模型基础](knowledge/classical-ml/README.md)：线性回归、逻辑回归、正则化、决策树、随机森林、梯度提升、支持向量机、核方法、近邻模型、朴素贝叶斯、概率校准与类别不平衡，附已运行的验证脚本。
+- [经典机器学习模型基础](knowledge/classical-ml/README.md)：线性回归、逻辑回归、正则化、决策树、随机森林、梯度提升、支持向量机、核方法、近邻模型、朴素贝叶斯、概率校准、类别不平衡与异常检测，附已运行的验证脚本。
 
 - [深度学习训练基础](knowledge/deep-learning-basics/README.md)：张量、自动求导、神经网络与训练循环，基于 PyTorch 官方开源教程，附可运行数学演示。
 
