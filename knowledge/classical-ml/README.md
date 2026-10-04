@@ -1,6 +1,6 @@
 # 经典机器学习模型基础
 
-基于 scikit-learn 官方开源文档，面向想理解模型机制的应用开发者。先学数值预测，再学分类概率，再理解正则化与调参，最后学习决策树和集成模型。
+基于 scikit-learn 官方开源文档，面向想理解模型机制的应用开发者。先学数值预测，再学分类概率，再理解正则化与调参，再学习决策树和集成模型，并理解支持向量机与核方法。
 
 ## 已完成教程
 
@@ -12,6 +12,9 @@
 | 4 | [决策树](04-decision-trees.md) | 分裂纯度、叶值、复杂度控制与外推限制 |
 | 5 | [随机森林](05-random-forests.md) | Bootstrap、概率平均、OOB 与特征重要性 |
 | 6 | [梯度提升树](06-gradient-boosting.md) | 残差/负梯度、学习率、早停与公平比较 |
+| 7 | [支持向量机](07-support-vector-machines.md) | 最大间隔、软约束、C、分类分数与 SVR |
+| 8 | [核方法与 RBF](08-kernels-and-rbf.md) | XOR、gamma、联合调参、核矩阵与计算规模 |
+| 核示例 | [SVM 与核方法验证脚本](examples/svm_kernel_checks.py) | 一维间隔、XOR 与保留测试集的网格搜索 |
 | 树示例 | [树与集成验证脚本](examples/tree_ensemble_checks.py) | 分裂阈值、森林合并与一轮提升核对 |
 | 示例 | [线性模型验证脚本](examples/linear_model_checks.py) | 手算核对、正则收缩、分类阈值与 GridSearchCV |
 
@@ -25,6 +28,7 @@
 - 来源提交：`a442e4bb39551feb7b0af4c00075e2cb91cf9b77`。
 - 来源文件：[doc/modules/linear_model.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/linear_model.rst)。
 - 树模型来源：[tree.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/tree.rst)、[ensemble.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/ensemble.rst)、[permutation_importance.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/permutation_importance.rst)，使用同一固定提交。
+- SVM 与核方法来源：[svm.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/svm.rst)，使用同一固定提交。
 - 对应章节：Ordinary Least Squares、Ridge、Lasso、Elastic-Net、Logistic regression。
 - 许可：[BSD 3-Clause](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/COPYING)，Copyright (c) 2007-2026 The scikit-learn developers。
 
@@ -43,6 +47,10 @@
 - 随机森林输出与各树类别概率平均一致。
 - 一轮平方误差提升从初始 [25,25,25,25] 得到 [20,20,30,30]，MSE 从 125 降为 50。
 
+- 一维线性 SVM：系数为 1，支持向量为 −1 与 1，总间隔宽度为 2。
+- XOR：线性 SVC 训练准确率为 0.5，RBF 为 1.0；这不是泛化比较。
+- 合成双月数据网格搜索选中 C=10、gamma=1，CV balanced accuracy 约 0.9444，保留测试集约 0.9833。
+
 这些数值只用于核对示例，不是实际业务性能结论。边界概率和浮点输出可能随环境略有变化。
 
 运行：
@@ -50,10 +58,11 @@
 ```bash
 python knowledge/classical-ml/examples/linear_model_checks.py
 python knowledge/classical-ml/examples/tree_ensemble_checks.py
+python knowledge/classical-ml/examples/svm_kernel_checks.py
 ```
 
 ## 后续扩展（尚未完成）
 
-支持向量机、聚类与降维。只有完成并核验的条目才加入上面的教程表。
+近邻模型、朴素贝叶斯等。聚类与降维已另设 [无监督学习专题](../unsupervised-learning/README.md)。只有完成并核验的条目才加入上面的教程表。
 
 [返回总入口](../../README.md)
