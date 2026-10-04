@@ -1,0 +1,103 @@
+[
+  {
+    "repo": "karpathy/nanoGPT",
+    "files": [
+      "model.py",
+      "train.py"
+    ],
+    "license": "MIT",
+    "commit": "3adf61e154c3fe3fca428ad6bc3818b27a3b8291",
+    "verified_date": "2026-10-04"
+  },
+  {
+    "repo": "facebookresearch/faiss",
+    "files": [
+      "README.md",
+      "tutorial/python/2-IVFFlat.py",
+      "tutorial/python/3-IVFPQ.py"
+    ],
+    "license": "MIT",
+    "commit": "b0074a3fa426027d9ff8575b44386d5922859ac9",
+    "verified_date": "2026-10-04"
+  },
+  {
+    "repo": "huggingface/sentence-transformers",
+    "files": [
+      "README.md",
+      "examples/sentence_transformer/applications/semantic-search/README.md",
+      "examples/sentence_transformer/applications/retrieve_rerank/README.md"
+    ],
+    "license": "Apache-2.0",
+    "commit": "4a3b5cd6ec718e421f57e824a41ed3fd99595df6",
+    "verified_date": "2026-10-04"
+  },
+  {
+    "repo": "huggingface/peft",
+    "files": [
+      "docs/source/package_reference/lora.md",
+      "docs/source/developer_guides/quantization.md"
+    ],
+    "license": "Apache-2.0",
+    "commit": "532a05dd505c28993119b7715ee286f4234bf51b",
+    "verified_date": "2026-10-04"
+  },
+  {
+    "repo": "huggingface/trl",
+    "files": [
+      "docs/source/sft_trainer.md",
+      "docs/source/dpo_trainer.md",
+      "docs/source/grpo_trainer.md"
+    ],
+    "license": "Apache-2.0",
+    "commit": "14c8d7019319d187e3ac3cbee5906ec46d95b89b",
+    "verified_date": "2026-10-04"
+  },
+  {
+    "repo": "huggingface/transformers",
+    "files": [
+      "docs/source/en/cache_explanation.md",
+      "docs/source/en/model_doc/clip.md"
+    ],
+    "license": "Apache-2.0",
+    "commit": "469230357aab0f2b303b0d638c1f8d06edb14184",
+    "verified_date": "2026-10-04"
+  },
+  {
+    "repo": "vllm-project/vllm",
+    "files": [
+      "README.md",
+      "docs/features/automatic_prefix_caching.md"
+    ],
+    "license": "Apache-2.0",
+    "commit": "84bcbc62644356270aaaa5e2d0237d03adc9bb3a",
+    "verified_date": "2026-10-04"
+  },
+  {
+    "repo": "huggingface/diffusers",
+    "files": [
+      "README.md",
+      "src/diffusers/schedulers/scheduling_ddpm.py"
+    ],
+    "license": "Apache-2.0",
+    "commit": "8b33bfc04b6b5e8bb58a58e55f68746c1bbee4cd",
+    "verified_date": "2026-10-04"
+  },
+  {
+    "repo": "Farama-Foundation/Gymnasium",
+    "files": [
+      "README.md"
+    ],
+    "license": "MIT",
+    "commit": "b415c420377c3a3fee3b7617e4d5f48c8d9d3b31",
+    "verified_date": "2026-10-04"
+  },
+  {
+    "repo": "vwxyzjn/cleanrl",
+    "files": [
+      "cleanrl/dqn.py"
+    ],
+    "license": "MIT",
+    "commit": "fe8d8a03c41a7ef5b523e2e354bd01c363e786bb",
+    "verified_date": "2026-10-04"
+  }
+]
