@@ -4,6 +4,8 @@
 
 ## 新增的深入专题
 
+- [应用算法：文本、推荐、图与数据流](knowledge/applied-algorithms/README.md)：逐轮补充TF-IDF、特征哈希、NMF、关联规则、隐式ALS、排序指标、PageRank、图消息传递、在线学习和漂移检测，附开源快照与已运行实验。
+
 - [预测区间与不确定性](knowledge/prediction-uncertainty/README.md)：区间含义、覆盖率、校准集与 split-conformal 有限样本手算，附已运行模拟及开源来源。
 
 - [时间序列预测与回测](knowledge/time-series/README.md)：滞后与滚动特征、可用时间、标签成熟、顺序回测及预测指标，附已运行实验。
