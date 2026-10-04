@@ -13,8 +13,9 @@
 | 5 | [谱聚类](05-spectral-clustering.md) | 相似图、图拉普拉斯、归一化切割、输入语义与转导边界 |
 | 6 | [层次聚类](05-hierarchical-clustering.md) | 四种合并规则、Ward 手算、树状图、切分阈值与新样本处理 |
 | 7 | [OPTICS 与 HDBSCAN](06-optics-and-hdbscan.md) | 核心/可达/互可达距离、密度尺度、提取规则、成员强度及跨库差异 |
-| 7 | [聚类稳定性与标签比较](07-cluster-stability-and-label-agreement.md) | ARI 手算、噪声口径、ID 对齐、子采样和统计边界 |
-| 8 | [t-SNE与可视化误区](08-tsne-and-visualization-pitfalls.md) | 邻居概率、perplexity、局部指标、图形误读与新样本限制 |
+| 8 | [聚类稳定性与标签比较](07-cluster-stability-and-label-agreement.md) | ARI 手算、噪声口径、ID 对齐、子采样和统计边界 |
+| 9 | [t-SNE与可视化误区](08-tsne-and-visualization-pitfalls.md) | 邻居概率、perplexity、局部指标、图形误读与新样本限制 |
+| 10 | [Isomap与测地距离](09-isomap-and-geodesic-distance.md) | 邻域图、路径手算、短路、双中心化、新样本映射与内存成本 |
 | 示例 | [机制核验脚本](examples/unsupervised_checks.py) | 三个完整算例，可离线运行 |
 
 相关知识：[评估基础](../ml-evaluation/README.md)、[经典监督模型](../classical-ml/README.md)、[张量形状](../deep-learning-basics/01-tensors-shapes-and-devices.md)。
@@ -99,7 +100,7 @@ python knowledge/unsupervised-learning/examples/cluster_stability_checks.py
 
 ## 后续扩展（尚未完成）
 
-非线性降维、图聚类与大型性能实验。尚未完成条目不作为已有教程计数。
+LLE 等其他非线性降维、真实数据上的参数敏感性与大型性能实验。尚未完成条目不作为已有教程计数。
 
 [返回总入口](../../README.md)
 
@@ -116,3 +117,11 @@ python knowledge/unsupervised-learning/examples/cluster_stability_checks.py
 固定来源：[manifold.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/manifold.rst)、[_t_sne.py](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/sklearn/manifold/_t_sne.py)。BSD-3-Clause，Copyright (c) 2007-2026 The scikit-learn developers；[完整许可文本](../applied-algorithms/licenses/scikit-learn.txt)已保留。独立中文解释与实验，非官方逐字翻译；来源快照与实际安装版本分开记录。
 
 运行：`python knowledge/unsupervised-learning/examples/tsne_checks.py`。加`--plot`导出SVG/PNG时额外需要matplotlib，默认机制检查不依赖绘图库。
+
+### Isomap 验证补充
+
+[教程](09-isomap-and-geodesic-distance.md)与[脚本](examples/isomap_checks.py)核对七点路径的全部49个距离、独立双中心化特征分解、半径增大造成的短路、互斥参数和新样本映射。环境与上方相同；退出码0，无警告。两端欧氏距离2，原图路径距离6，大半径路径距离2，嵌入距离最大误差0，最大正特征值约28。只验证教学机制，没有真实业务效果或大型性能结论。
+
+固定来源：[manifold.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/manifold.rst)、[_isomap.py](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/sklearn/manifold/_isomap.py)。许可与来源版本约定同上。
+
+运行：`python knowledge/unsupervised-learning/examples/isomap_checks.py`。
