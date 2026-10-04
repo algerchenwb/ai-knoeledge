@@ -2,7 +2,23 @@
 
 面向应用开发者，把 AI 概念解释清楚，再落实到可以验证的工程方法。
 
-## 正在编写的专题
+## 新增的深入专题
+
+- [本轮18篇详解总导航](knowledge/expansion-2026-10/README.md)：涵盖6个专题，核对10个开源项目，附固定来源与15组已运行数学示例。
+
+- [Transformer 内部机制](knowledge/transformer/README.md)：Embedding 与位置、注意力与掩码、残差、归一化与前馈层、标签对齐、交叉熵与困惑度、解码与采样。
+
+- [检索算法与质量](knowledge/retrieval/README.md)：相似度与检索评估、Flat、IVF、HNSW 与 PQ、混合检索与重排。
+
+- [微调与偏好对齐](knowledge/post-training/README.md)：SFT 数据与损失掩码、LoRA 与 QLoRA、DPO、GRPO 与奖励投机。
+
+- [模型推理与服务性能](knowledge/inference/README.md)：Prefill、Decode 与 KV Cache、量化与内存预算、批处理、调度与延迟。
+
+- [多模态基础](knowledge/multimodal/README.md)：CLIP 与对比学习、扩散模型与调度器。
+
+- [强化学习基础](knowledge/reinforcement-learning/README.md)：MDP、策略、价值与 Q-learning、环境、终止、截断与评估。
+
+## 已有专题与课程
 
 - [无监督学习基础](knowledge/unsupervised-learning/README.md)：K-means、DBSCAN、PCA，涵盖评估、空间距离与信息损失，附已运行示例。
 
