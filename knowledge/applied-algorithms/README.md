@@ -13,9 +13,12 @@
 | 7 | [PageRank](07-pagerank.md) | [示例](examples/07_pagerank.py) |
 | 8 | [图消息传递](08-message-passing.md) | [示例](examples/08_messages.py) |
 | 9 | [在线学习](09-online-learning.md) | [示例](examples/09_online.py) |
+| 10 | [漂移检测](10-drift-detection.md) | [示例](examples/10_drift.py) |
 
 ## 运行与来源
 
 环境记录：Python 3.12.14、NumPy 2.3.5、scikit-learn 1.8.0。建议新建虚拟环境，再运行 `python -m pip install -r knowledge/applied-algorithms/examples/requirements.txt`，然后运行所选章节给出的命令。仅依赖标准库的第4、10篇可以不安装额外依赖。
 
 小实验分别验证机制，不代表完成生产训练。实际调用scikit-learn与独立数学实验的范围见[来源清单](SOURCES.md)；已执行的断言见[验证记录](VALIDATION.md)。全部使用合成数据、无需GPU或线上凭据。
+
+一次执行本专题全部实验：`python knowledge/applied-algorithms/examples/run_all.py`。
