@@ -4,6 +4,8 @@
 
 ## 新增的深入专题
 
+- [Agent 应用工程](knowledge/agent-engineering/README.md)：工具重试、幂等键、未知结果、checkpoint 恢复、回执与补偿；结合 LangGraph / Temporal 固定源码案例及六组已运行离线故障注入。
+
 - [半监督学习与伪标签](knowledge/semi-supervised/README.md)：自训练筛选、置信度与确认偏差、标签轮次、独立测试及已运行scikit-learn实验。
 
 - [应用算法：文本、推荐、图与数据流](knowledge/applied-algorithms/README.md)：逐轮补充TF-IDF、特征哈希、NMF、关联规则、隐式ALS、排序指标、PageRank、图消息传递、在线学习和漂移检测，附开源快照与已运行实验。
