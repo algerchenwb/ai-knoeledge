@@ -1,0 +1,33 @@
+{
+  "verified_date": "2026-10-05",
+  "sources": [
+    {
+      "repo": "comet-ml/opik",
+      "sha": "657e3197dc460e6441471c832d93666c7fc730c8",
+      "read_paths": [
+        "README.md"
+      ],
+      "license": "Apache-2.0",
+      "relevance": "datasets, experiments, heuristic and LLM judge metrics, CI evaluation; no performance or product comparison claims adopted"
+    }
+  ],
+  "implementation": "independent deterministic dataset and grader, no upstream code copied",
+  "validation": {
+    "python": "3.12.14",
+    "golden_cases_passed": 12,
+    "grader_tests_passed": 10,
+    "dimensions": {
+      "business": 5,
+      "route": 5,
+      "evidence": 1,
+      "boundary": 7
+    },
+    "limitations": [
+      "no LLM, HTTP, production data or Opik SDK",
+      "structured proposals only",
+      "selected path assertions, not full output schema validation",
+      "evidence covered by only one case",
+      "no live release or CI workflow executed"
+    ]
+  }
+}

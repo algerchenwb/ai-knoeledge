@@ -1,0 +1,368 @@
+{
+  "date": "2026-10-05",
+  "dataset_version": "synthetic-business-v1",
+  "dataset_sha256": "0fb8f7b50906c5ed907ceaa4a15197b8b517b734a7a12471d657defd3ccbe7e6",
+  "catalog_revision": "97be14e0fd744146b029c53af4248d0d80c38e29db93650d0de3830ac7e3bef1",
+  "scope": "offline structured proposals and synthetic fixtures; no LLM, HTTP or Opik execution",
+  "summary": {
+    "case_count": 12,
+    "passed_cases": 12,
+    "dimensions": {
+      "business": {
+        "passed_cases": 5,
+        "applicable_cases": 5
+      },
+      "route": {
+        "passed_cases": 5,
+        "applicable_cases": 5
+      },
+      "evidence": {
+        "passed_cases": 1,
+        "applicable_cases": 1
+      },
+      "boundary": {
+        "passed_cases": 7,
+        "applicable_cases": 7
+      }
+    },
+    "critical_failures": [],
+    "failed_cases": [],
+    "gate": "pass"
+  },
+  "cases": [
+    {
+      "case_id": "coverage-50",
+      "critical": false,
+      "passed": true,
+      "checks": [
+        {
+          "dimension": "business",
+          "path": "kind",
+          "passed": true
+        },
+        {
+          "dimension": "route",
+          "path": "value.route.tool_name",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.status",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.numerator",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.denominator",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.ratio",
+          "passed": true
+        },
+        {
+          "dimension": "evidence",
+          "path": "value.business.context.data_version",
+          "passed": true
+        },
+        {
+          "dimension": "evidence",
+          "path": "value.business.evidence.0.source_id",
+          "passed": true
+        },
+        {
+          "dimension": "evidence",
+          "path": "value.business.evidence.0.data_version",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "overlap-directions",
+      "critical": false,
+      "passed": true,
+      "checks": [
+        {
+          "dimension": "business",
+          "path": "kind",
+          "passed": true
+        },
+        {
+          "dimension": "route",
+          "path": "value.route.tool_name",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.status",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.overlap",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.reference_share",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.competitor_share",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "empty-population",
+      "critical": false,
+      "passed": true,
+      "checks": [
+        {
+          "dimension": "business",
+          "path": "kind",
+          "passed": true
+        },
+        {
+          "dimension": "route",
+          "path": "value.route.tool_name",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.status",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.denominator",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.ratio",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "empty-competitor",
+      "critical": false,
+      "passed": true,
+      "checks": [
+        {
+          "dimension": "business",
+          "path": "kind",
+          "passed": true
+        },
+        {
+          "dimension": "route",
+          "path": "value.route.tool_name",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.status",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.reference_share",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.competitor_share",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "provisional-data",
+      "critical": false,
+      "passed": true,
+      "checks": [
+        {
+          "dimension": "business",
+          "path": "kind",
+          "passed": true
+        },
+        {
+          "dimension": "route",
+          "path": "value.route.tool_name",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.status",
+          "passed": true
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "cross-tenant",
+      "critical": true,
+      "passed": true,
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "upstream-unavailable",
+      "critical": false,
+      "passed": true,
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "bool-population",
+      "critical": false,
+      "passed": true,
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "metric-injection",
+      "critical": true,
+      "passed": true,
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "unsupported-goal",
+      "critical": false,
+      "passed": true,
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "uncovered-window",
+      "critical": false,
+      "passed": true,
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "insufficient-budget",
+      "critical": false,
+      "passed": true,
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "passed": true
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

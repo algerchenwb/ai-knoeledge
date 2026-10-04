@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 13,
+  "case_count": 14,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -153,6 +153,18 @@
       "source_record": "examples/batch-query-sources.json",
       "scope": "independent standard-library batch orchestration; synthetic reused read adapters",
       "validation": "13 offline checks with real threads passed"
+    },
+    {
+      "id": "14",
+      "title": "业务Agent金标准评测：从演示成功到可复跑验收",
+      "path": "14-business-agent-golden-evaluation.md",
+      "function": "evaluate / grade",
+      "source_repo": "comet-ml/opik",
+      "source_sha": "657e3197dc460e6441471c832d93666c7fc730c8",
+      "source_path": "README.md",
+      "source_record": "examples/business-golden-sources.json",
+      "scope": "independent deterministic evaluation; structured proposals and synthetic fixtures",
+      "validation": "12 golden cases and 10 grader fault injection checks passed"
     }
   ],
   "http_integration": {
@@ -175,5 +187,18 @@
     "python": "3.12.14",
     "execution": "offline real threads",
     "limitations": "no LLM, HTTP, production backend, global concurrency limit, deadline, retry or persistent recovery"
+  },
+  "golden_evaluation": {
+    "date": "2026-10-05",
+    "cases_passed": 12,
+    "grader_tests_passed": 10,
+    "python": "3.12.14",
+    "applicable_cases": {
+      "route": 5,
+      "business": 5,
+      "evidence": 1,
+      "boundary": 7
+    },
+    "limitations": "no LLM, HTTP, production data or Opik execution; selected assertions only"
   }
 }

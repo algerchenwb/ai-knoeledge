@@ -1,0 +1,453 @@
+{
+  "version": "synthetic-business-v1",
+  "date": "2026-10-05",
+  "basis": "Independent teaching cases with hand-defined expected counts, ratios, statuses and error stages; no production labels or natural-language model evaluation",
+  "cases": [
+    {
+      "id": "coverage-50",
+      "critical": false,
+      "proposal": {
+        "goal": "coverage",
+        "object_type": "region",
+        "parameters": {
+          "region_id": "area-alpha",
+          "population_type": 4,
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01"
+        }
+      },
+      "checks": [
+        {
+          "dimension": "business",
+          "path": "kind",
+          "expected": "result"
+        },
+        {
+          "dimension": "route",
+          "path": "value.route.tool_name",
+          "expected": "region_category_coverage"
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.status",
+          "expected": "ok"
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.numerator",
+          "expected": 2
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.denominator",
+          "expected": 4
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.ratio",
+          "expected": 0.5
+        },
+        {
+          "dimension": "evidence",
+          "path": "value.business.context.data_version",
+          "expected": "synthetic-2026-09"
+        },
+        {
+          "dimension": "evidence",
+          "path": "value.business.evidence.0.source_id",
+          "expected": "fixture:tenant-a:area-alpha"
+        },
+        {
+          "dimension": "evidence",
+          "path": "value.business.evidence.0.data_version",
+          "expected": "synthetic-2026-09"
+        }
+      ]
+    },
+    {
+      "id": "overlap-directions",
+      "critical": false,
+      "proposal": {
+        "goal": "overlap",
+        "object_type": "region",
+        "parameters": {
+          "region_id": "area-alpha",
+          "population_type": 4,
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "competitor_id": "poi-rival"
+        }
+      },
+      "checks": [
+        {
+          "dimension": "business",
+          "path": "kind",
+          "expected": "result"
+        },
+        {
+          "dimension": "route",
+          "path": "value.route.tool_name",
+          "expected": "region_competitor_overlap"
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.status",
+          "expected": "ok"
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.overlap",
+          "expected": 2
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.reference_share",
+          "expected": 0.5
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.competitor_share",
+          "expected": 1.0
+        }
+      ]
+    },
+    {
+      "id": "empty-population",
+      "critical": false,
+      "proposal": {
+        "goal": "coverage",
+        "object_type": "region",
+        "parameters": {
+          "region_id": "area-empty",
+          "population_type": 4,
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01"
+        }
+      },
+      "checks": [
+        {
+          "dimension": "business",
+          "path": "kind",
+          "expected": "result"
+        },
+        {
+          "dimension": "route",
+          "path": "value.route.tool_name",
+          "expected": "region_category_coverage"
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.status",
+          "expected": "no_denominator"
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.denominator",
+          "expected": 0
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.ratio",
+          "expected": null
+        }
+      ]
+    },
+    {
+      "id": "empty-competitor",
+      "critical": false,
+      "proposal": {
+        "goal": "overlap",
+        "object_type": "region",
+        "parameters": {
+          "region_id": "area-alpha",
+          "population_type": 4,
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "competitor_id": "poi-empty"
+        }
+      },
+      "checks": [
+        {
+          "dimension": "business",
+          "path": "kind",
+          "expected": "result"
+        },
+        {
+          "dimension": "route",
+          "path": "value.route.tool_name",
+          "expected": "region_competitor_overlap"
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.status",
+          "expected": "no_denominator"
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.reference_share",
+          "expected": 0.0
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result.competitor_share",
+          "expected": null
+        }
+      ]
+    },
+    {
+      "id": "provisional-data",
+      "critical": false,
+      "proposal": {
+        "goal": "coverage",
+        "object_type": "region",
+        "parameters": {
+          "region_id": "area-provisional",
+          "population_type": 4,
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01"
+        }
+      },
+      "checks": [
+        {
+          "dimension": "business",
+          "path": "kind",
+          "expected": "result"
+        },
+        {
+          "dimension": "route",
+          "path": "value.route.tool_name",
+          "expected": "region_category_coverage"
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.status",
+          "expected": "provisional"
+        },
+        {
+          "dimension": "business",
+          "path": "value.business.result",
+          "expected": null
+        }
+      ]
+    },
+    {
+      "id": "cross-tenant",
+      "critical": true,
+      "proposal": {
+        "goal": "coverage",
+        "object_type": "region",
+        "parameters": {
+          "region_id": "area-beta",
+          "population_type": 4,
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01"
+        }
+      },
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "expected": "error"
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "expected": "execute"
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "expected": "OBJECT_FORBIDDEN"
+        }
+      ]
+    },
+    {
+      "id": "upstream-unavailable",
+      "critical": false,
+      "proposal": {
+        "goal": "coverage",
+        "object_type": "region",
+        "parameters": {
+          "region_id": "area-unavailable",
+          "population_type": 4,
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01"
+        }
+      },
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "expected": "error"
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "expected": "execute"
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "expected": "UPSTREAM_UNAVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": "bool-population",
+      "critical": false,
+      "proposal": {
+        "goal": "coverage",
+        "object_type": "region",
+        "parameters": {
+          "region_id": "area-alpha",
+          "population_type": true,
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01"
+        }
+      },
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "expected": "error"
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "expected": "plan"
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "expected": "INVALID_POPULATION"
+        }
+      ]
+    },
+    {
+      "id": "metric-injection",
+      "critical": true,
+      "proposal": {
+        "goal": "coverage",
+        "object_type": "region",
+        "parameters": {
+          "region_id": "area-alpha",
+          "population_type": 4,
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "metric_version": "injected"
+        }
+      },
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "expected": "error"
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "expected": "plan"
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "expected": "INVALID_PARAMETERS"
+        }
+      ]
+    },
+    {
+      "id": "unsupported-goal",
+      "critical": false,
+      "proposal": {
+        "goal": "trend",
+        "object_type": "region",
+        "parameters": {
+          "region_id": "area-alpha",
+          "population_type": 4,
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01"
+        }
+      },
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "expected": "error"
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "expected": "plan"
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "expected": "UNSUPPORTED_TASK"
+        }
+      ]
+    },
+    {
+      "id": "uncovered-window",
+      "critical": false,
+      "proposal": {
+        "goal": "coverage",
+        "object_type": "region",
+        "parameters": {
+          "region_id": "area-alpha",
+          "population_type": 4,
+          "start": "2026-09-02",
+          "end_exclusive": "2026-10-01"
+        }
+      },
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "expected": "error"
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "expected": "execute"
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "expected": "DATA_SCOPE_MISMATCH"
+        }
+      ]
+    },
+    {
+      "id": "insufficient-budget",
+      "critical": false,
+      "proposal": {
+        "goal": "coverage",
+        "object_type": "region",
+        "parameters": {
+          "region_id": "area-alpha",
+          "population_type": 4,
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "max_tool_calls": 1
+        }
+      },
+      "checks": [
+        {
+          "dimension": "boundary",
+          "path": "kind",
+          "expected": "error"
+        },
+        {
+          "dimension": "boundary",
+          "path": "stage",
+          "expected": "execute"
+        },
+        {
+          "dimension": "boundary",
+          "path": "code",
+          "expected": "TOOL_BUDGET_EXCEEDED"
+        }
+      ]
+    }
+  ]
+}
