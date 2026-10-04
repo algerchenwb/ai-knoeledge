@@ -10,6 +10,7 @@
 | 2 | [DBSCAN](02-dbscan-density-and-noise.md) | 核心/边界/噪声、邻域参数、地理距离、覆盖与内存 |
 | 3 | [PCA](03-pca-and-information-loss.md) | 主成分、中心化、方差解释率、重建、Whitening 与泄漏 |
 | 4 | [高斯混合模型与 EM](04-gaussian-mixture-and-em.md) | 软归属、责任度手算、协方差约束、BIC 与密度边界 |
+| 5 | [谱聚类](05-spectral-clustering.md) | 相似图、图拉普拉斯、归一化切割、输入语义与转导边界 |
 | 示例 | [机制核验脚本](examples/unsupervised_checks.py) | 三个完整算例，可离线运行 |
 
 相关知识：[评估基础](../ml-evaluation/README.md)、[经典监督模型](../classical-ml/README.md)、[张量形状](../deep-learning-basics/01-tensors-shapes-and-devices.md)。
@@ -61,3 +62,9 @@ python knowledge/unsupervised-learning/examples/gmm_checks.py
 层次聚类、HDBSCAN/OPTICS、非线性降维与聚类稳定性实验。尚未完成条目不作为已有教程计数。
 
 [返回总入口](../../README.md)
+
+### 谱聚类验证补充
+
+[谱聚类脚本](examples/spectral_checks.py)核对边能量等式、两个连通分量的零特征值、弱桥图分组、ARI编号不变性及无predict接口。Python 3.12.14、NumPy 2.3.5、scikit-learn 1.8.0，退出码0，无stderr。固定300条同心圆案例上谱聚类ARI=1.0，K-means ARI≈−0.003355；只是单一结构演示，不是普遍性能结论。来源快照、API约定和限制详见教程。
+
+运行：`python knowledge/unsupervised-learning/examples/spectral_checks.py`。
