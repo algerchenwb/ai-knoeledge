@@ -11,6 +11,7 @@
 | 3 | [PCA](03-pca-and-information-loss.md) | 主成分、中心化、方差解释率、重建、Whitening 与泄漏 |
 | 4 | [高斯混合模型与 EM](04-gaussian-mixture-and-em.md) | 软归属、责任度手算、协方差约束、BIC 与密度边界 |
 | 5 | [谱聚类](05-spectral-clustering.md) | 相似图、图拉普拉斯、归一化切割、输入语义与转导边界 |
+| 5 | [层次聚类](05-hierarchical-clustering.md) | 四种合并规则、Ward 手算、树状图、切分阈值与新样本处理 |
 | 示例 | [机制核验脚本](examples/unsupervised_checks.py) | 三个完整算例，可离线运行 |
 
 相关知识：[评估基础](../ml-evaluation/README.md)、[经典监督模型](../classical-ml/README.md)、[张量形状](../deep-learning-basics/01-tensors-shapes-and-devices.md)。
@@ -57,9 +58,21 @@ python knowledge/unsupervised-learning/examples/unsupervised_checks.py
 python knowledge/unsupervised-learning/examples/gmm_checks.py
 ```
 
+### 层次聚类验证补充
+
+[验证脚本](examples/hierarchy_checks.py)检查四种 linkage 的合并高度和成员分组、预计算距离、阈值相等边界及链式效应。[四面板树状图](assets/linkage-dendrograms.svg)已检查。环境与 GMM 补充相同；这是小数据机制核验，没有实际业务效果或大规模性能结论。
+
+来源：[clustering.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/clustering.rst)、[_agglomerative.py](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/sklearn/cluster/_agglomerative.py)，固定提交与许可同上。
+
+运行：
+
+```bash
+python knowledge/unsupervised-learning/examples/hierarchy_checks.py
+```
+
 ## 后续扩展（尚未完成）
 
-层次聚类、HDBSCAN/OPTICS、非线性降维与聚类稳定性实验。尚未完成条目不作为已有教程计数。
+HDBSCAN/OPTICS、非线性降维与聚类稳定性实验。尚未完成条目不作为已有教程计数。
 
 [返回总入口](../../README.md)
 
