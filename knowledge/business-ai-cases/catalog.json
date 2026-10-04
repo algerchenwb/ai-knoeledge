@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 15,
+  "case_count": 16,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -177,6 +177,18 @@
       "source_record": "examples/business-cache-sources.json",
       "scope": "independent sequential cache; synthetic fixtures and controllable time; no upstream execution",
       "validation": "14 sequential fixture checks passed"
+    },
+    {
+      "id": "16",
+      "title": "业务对象解析与澄清：先找对地点，再调用工具",
+      "path": "16-business-object-resolution.md",
+      "function": "Resolver.resolve / Resolver.choose",
+      "source_repo": "qdrant/qdrant",
+      "source_sha": "6ab21cac18ebb6f4ae29102c7f8f5cc11affd5de",
+      "source_path": "README.md",
+      "source_record": "examples/business-object-sources.json",
+      "scope": "independent exact authorized lookup; fictional catalog and internal tickets only",
+      "validation": "14 offline exact lookup and clarification checks passed"
     }
   ],
   "http_integration": {
@@ -218,5 +230,11 @@
     "checks_passed": 14,
     "python": "3.12.14",
     "limitations": "no distributed cache, concurrency, LLM, HTTP or real database; trustworthy snapshot versions required"
+  },
+  "object_resolution": {
+    "date": "2026-10-05",
+    "checks_passed": 14,
+    "python": "3.12.14",
+    "limitations": "no LLM, embeddings, Qdrant, real catalog, signatures or persisted tickets"
   }
 }

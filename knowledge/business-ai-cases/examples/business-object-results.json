@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-05",
+  "checks_passed": 14,
+  "scope": "offline exact lookup and internal clarification tickets; no LLM, embeddings or Qdrant execution",
+  "example": {
+    "ambiguous": {
+      "status": "needs_clarification",
+      "has_more": false,
+      "candidates": [
+        {
+          "object_id": "area-a",
+          "label": "星河园区",
+          "city": "甲城",
+          "object_type": "region",
+          "object_version": "1"
+        },
+        {
+          "object_id": "area-b",
+          "label": "星河园区",
+          "city": "乙城",
+          "object_type": "region",
+          "object_version": "1"
+        }
+      ],
+      "catalog_revision": "48a4b30d56eff6b08569b064b1b18194aec65af41f09a83e0efe20504b861215",
+      "reason": "authorized_exact_label_or_alias_lookup"
+    },
+    "selected": {
+      "object_id": "area-b",
+      "label": "星河园区",
+      "city": "乙城",
+      "object_type": "region",
+      "object_version": "1"
+    },
+    "narrowed": {
+      "status": "resolved",
+      "has_more": false,
+      "candidates": [
+        {
+          "object_id": "area-a",
+          "label": "星河园区",
+          "city": "甲城",
+          "object_type": "region",
+          "object_version": "1"
+        }
+      ],
+      "catalog_revision": "48a4b30d56eff6b08569b064b1b18194aec65af41f09a83e0efe20504b861215",
+      "reason": "authorized_exact_label_or_alias_lookup"
+    },
+    "not_found": {
+      "status": "not_found",
+      "has_more": false,
+      "candidates": [],
+      "catalog_revision": "48a4b30d56eff6b08569b064b1b18194aec65af41f09a83e0efe20504b861215",
+      "reason": "authorized_exact_label_or_alias_lookup"
+    },
+    "searches": 4
+  }
+}

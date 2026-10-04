@@ -1,0 +1,25 @@
+{
+  "verified_date": "2026-10-05",
+  "sources": [
+    {
+      "repo": "qdrant/qdrant",
+      "sha": "6ab21cac18ebb6f4ae29102c7f8f5cc11affd5de",
+      "read_paths": [
+        "README.md"
+      ],
+      "license": "Apache-2.0",
+      "relevance": "vectors plus payload and filtering for candidate retrieval only"
+    }
+  ],
+  "implementation": "independent standard-library exact authorized object resolver; no upstream code copied",
+  "validation": {
+    "python": "3.12.14",
+    "checks_passed": 14,
+    "limitations": [
+      "no LLM, embedding, vector search or Qdrant execution",
+      "fictional catalog; not integrated with prior business HTTP IDs",
+      "internal tickets only; no signatures, persistence or expiration",
+      "no geography, address service or natural-language recall evaluation"
+    ]
+  }
+}
