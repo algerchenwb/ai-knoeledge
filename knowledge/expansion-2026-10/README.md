@@ -33,11 +33,15 @@ python knowledge/expansion-2026-10/examples/ai_math_checks.py
 
 [固定来源与许可](SOURCES.md) · [机器可读来源](sources.json) · [全库导航](../../README.md)
 
+## 后续已经补充
+
+[训练工程详解](../training-engineering/README.md)已新增8篇与13组标准库实验，覆盖优化器、调度、数据加载、累积、混合精度、恢复和DDP；它们是本轮18篇之后的续篇，不改变上表历史计数。
+
 ## 后续缺口：尚未完成
 
 以下是未来扩展方向，不计入本轮已完成文章，也不是已自动安排的任务：
 
-- 训练工程：优化器、学习率调度、数据加载、checkpoint、混合精度、分布式训练。
+- 训练工程进阶：FSDP/ZeRO、真实GPU profiler、分布式checkpoint和端到端框架训练。
 - 模型结构：CNN、RNN、RoPE细节、MoE、状态空间模型。
 - 数据与评估：数据标注/去重、OOD、校准、LLM评测集、统计显著性。
 - 检索进阶：中文BM25实作、稀疏检索、图检索、查询重写、领域embedding训练。

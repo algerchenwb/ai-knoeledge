@@ -44,8 +44,13 @@ tensorqs_tutorial.py、autogradqs_tutorial.py、buildmodel_tutorial.py、optimiz
 python knowledge/deep-learning-basics/examples/math_basics.py
 ```
 
+## 后续已补充
+
+- [训练工程8篇](../training-engineering/README.md)：Dataset/DataLoader、优化器、学习率、梯度累积、AMP、checkpoint恢复、DDP与训练排障。
+- [Transformer内部机制](../transformer/README.md)：Embedding、注意力、残差、训练目标与解码。
+
 ## 尚待扩展
 
-数据集与 DataLoader、优化器比较、正则化与早停、模型保存与恢复、Embedding 与注意力。尚待扩展的主题不作为已完成教程计数。
+深度学习中的正则化与早停专项实验，以及真实PyTorch/GPU训练集成。未完成的主题不作为已完成教程计数。
 
 [返回总入口](../../README.md)
