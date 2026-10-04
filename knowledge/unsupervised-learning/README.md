@@ -11,9 +11,10 @@
 | 3 | [PCA](03-pca-and-information-loss.md) | 主成分、中心化、方差解释率、重建、Whitening 与泄漏 |
 | 4 | [高斯混合模型与 EM](04-gaussian-mixture-and-em.md) | 软归属、责任度手算、协方差约束、BIC 与密度边界 |
 | 5 | [谱聚类](05-spectral-clustering.md) | 相似图、图拉普拉斯、归一化切割、输入语义与转导边界 |
-| 5 | [层次聚类](05-hierarchical-clustering.md) | 四种合并规则、Ward 手算、树状图、切分阈值与新样本处理 |
-| 6 | [OPTICS 与 HDBSCAN](06-optics-and-hdbscan.md) | 核心/可达/互可达距离、密度尺度、提取规则、成员强度及跨库差异 |
+| 6 | [层次聚类](05-hierarchical-clustering.md) | 四种合并规则、Ward 手算、树状图、切分阈值与新样本处理 |
+| 7 | [OPTICS 与 HDBSCAN](06-optics-and-hdbscan.md) | 核心/可达/互可达距离、密度尺度、提取规则、成员强度及跨库差异 |
 | 7 | [聚类稳定性与标签比较](07-cluster-stability-and-label-agreement.md) | ARI 手算、噪声口径、ID 对齐、子采样和统计边界 |
+| 8 | [t-SNE与可视化误区](08-tsne-and-visualization-pitfalls.md) | 邻居概率、perplexity、局部指标、图形误读与新样本限制 |
 | 示例 | [机制核验脚本](examples/unsupervised_checks.py) | 三个完整算例，可离线运行 |
 
 相关知识：[评估基础](../ml-evaluation/README.md)、[经典监督模型](../classical-ml/README.md)、[张量形状](../deep-learning-basics/01-tensors-shapes-and-devices.md)。
@@ -107,3 +108,11 @@ python knowledge/unsupervised-learning/examples/cluster_stability_checks.py
 [谱聚类脚本](examples/spectral_checks.py)核对边能量等式、两个连通分量的零特征值、弱桥图分组、ARI编号不变性及无predict接口。Python 3.12.14、NumPy 2.3.5、scikit-learn 1.8.0，退出码0，无stderr。固定300条同心圆案例上谱聚类ARI=1.0，K-means ARI≈−0.003355；只是单一结构演示，不是普遍性能结论。来源快照、API约定和限制详见教程。
 
 运行：`python knowledge/unsupervised-learning/examples/spectral_checks.py`。
+
+### t-SNE验证补充
+
+[实验脚本](examples/tsne_checks.py)实际运行两次TSNE，核对perplexity边界、输出有限、无transform，以及trustworthiness的平移/正比例缩放不变性。[双面板对照图](assets/tsne-perplexity.svg)已检查。环境与上方相同，退出码0，无stderr；T@5分别0.966009与0.966207，KL分别0.608849与0.224198。单一合成案例不代表业务效果，不同perplexity的KL不能直接用来判定哪个图更正确。
+
+固定来源：[manifold.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/manifold.rst)、[_t_sne.py](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/sklearn/manifold/_t_sne.py)。BSD-3-Clause，Copyright (c) 2007-2026 The scikit-learn developers；[完整许可文本](../applied-algorithms/licenses/scikit-learn.txt)已保留。独立中文解释与实验，非官方逐字翻译；来源快照与实际安装版本分开记录。
+
+运行：`python knowledge/unsupervised-learning/examples/tsne_checks.py`。加`--plot`导出SVG/PNG时额外需要matplotlib，默认机制检查不依赖绘图库。
