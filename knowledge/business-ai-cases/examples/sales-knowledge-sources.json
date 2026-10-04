@@ -1,0 +1,12 @@
+{
+  "checked_on": "2026-10-05",
+  "repository": "run-llama/llama_index",
+  "commit": "962940ddc079cc21701d28d1237c84c82a7c5164",
+  "path": "README.md",
+  "url": "https://github.com/run-llama/llama_index/blob/962940ddc079cc21701d28d1237c84c82a7c5164/README.md",
+  "license": "MIT",
+  "license_copy": "knowledge/agent-case-studies/licenses/llama-index.txt",
+  "observed": "README illustrates document loading, VectorStoreIndex, query engine, index persistence; cloud platform distinct from framework",
+  "design_scope": "Independent approved capability facts, effective dates, prerequisites and answer-state gate; no upstream code copied",
+  "validation": "20 offline standard-library fixture checks; no LlamaIndex or model execution"
+}

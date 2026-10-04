@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-05",
+  "python": "3.12.14",
+  "checks_passed": 20,
+  "examples": [
+    {
+      "product": "atlas",
+      "capability": "export",
+      "as_of": "2026-10-05",
+      "book_version": "capability-book-2",
+      "status": "supported",
+      "record_ids": [
+        "export-v2"
+      ],
+      "evidence_ids": [
+        "release-2#export"
+      ],
+      "missing_fields": [],
+      "failed_conditions": []
+    },
+    {
+      "product": "atlas",
+      "capability": "export",
+      "as_of": "2026-10-05",
+      "book_version": "capability-book-2",
+      "status": "needs_info",
+      "record_ids": [
+        "export-v2"
+      ],
+      "evidence_ids": [
+        "release-2#export"
+      ],
+      "missing_fields": [
+        "region"
+      ],
+      "failed_conditions": []
+    },
+    {
+      "product": "atlas",
+      "capability": "export",
+      "as_of": "2026-10-05",
+      "book_version": "capability-book-2",
+      "status": "not_applicable",
+      "record_ids": [
+        "export-v2"
+      ],
+      "evidence_ids": [
+        "release-2#export"
+      ],
+      "missing_fields": [],
+      "failed_conditions": [
+        "plan"
+      ]
+    },
+    {
+      "product": "atlas",
+      "capability": "forecast",
+      "as_of": "2026-10-05",
+      "book_version": "capability-book-2",
+      "status": "planned",
+      "record_ids": [
+        "forecast-plan"
+      ],
+      "evidence_ids": [
+        "roadmap-1#forecast"
+      ],
+      "missing_fields": [],
+      "failed_conditions": []
+    },
+    {
+      "product": "atlas",
+      "capability": "realtime",
+      "as_of": "2026-10-05",
+      "book_version": "capability-book-2",
+      "status": "unsupported",
+      "record_ids": [
+        "realtime-no"
+      ],
+      "evidence_ids": [
+        "limits-2#realtime"
+      ],
+      "missing_fields": [],
+      "failed_conditions": []
+    },
+    {
+      "product": "atlas",
+      "capability": "unknown",
+      "as_of": "2026-10-05",
+      "book_version": "capability-book-2",
+      "status": "insufficient_evidence",
+      "record_ids": [],
+      "evidence_ids": [],
+      "missing_fields": [],
+      "failed_conditions": []
+    }
+  ],
+  "limitations": "offline exact-key synthetic facts; no LLM, embeddings, retrieval engine, CRM, authorization service or evidence existence checks"
+}

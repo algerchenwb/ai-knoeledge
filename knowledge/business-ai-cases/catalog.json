@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 17,
+  "case_count": 18,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -201,6 +201,18 @@
       "source_record": "examples/business-result-contract-sources.json",
       "scope": "independent output validation using hand-defined trusted synthetic receipts",
       "validation": "18 offline checks and 5 valid result examples passed"
+    },
+    {
+      "id": "18",
+      "title": "售前知识库答复：产品能力、适用条件与证据",
+      "path": "18-sales-knowledge-capability-answer.md",
+      "function": "CapabilityBook.answer",
+      "source_repo": "run-llama/llama_index",
+      "source_sha": "962940ddc079cc21701d28d1237c84c82a7c5164",
+      "source_path": "README.md",
+      "source_record": "examples/sales-knowledge-sources.json",
+      "scope": "independent exact-key approved synthetic facts; no model or retrieval framework",
+      "validation": "20 offline checks passed"
     }
   ],
   "http_integration": {
@@ -255,5 +267,11 @@
     "valid_examples": 5,
     "python": "3.12.14",
     "limitations": "no real provenance, LLM, HTTP or FastAPI; caller must authorize receipt; free text excluded"
+  },
+  "sales_knowledge": {
+    "date": "2026-10-05",
+    "checks_passed": 20,
+    "python": "3.12.14",
+    "limitations": "no LLM, embeddings, retrieval engine, CRM, authorization service or evidence existence checks"
   }
 }
