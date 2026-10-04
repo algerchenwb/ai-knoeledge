@@ -1,6 +1,6 @@
 # 经典机器学习模型基础
 
-基于 scikit-learn 官方开源文档，面向想理解模型机制的应用开发者。先学数值预测，再学分类概率，再理解正则化与调参，再学习决策树和集成模型，并理解支持向量机、核方法、近邻模型和朴素贝叶斯，进一步处理概率校准、类别不平衡、异常检测、特征选择与模型依赖解释。
+基于 scikit-learn 官方开源文档，面向想理解模型机制的应用开发者。先学数值预测，再学分类概率，再理解正则化与调参，再学习决策树和集成模型，并理解支持向量机、核方法、近邻模型和朴素贝叶斯，进一步处理概率校准、类别不平衡、异常检测、特征选择、模型依赖解释与保存/加载协议。
 
 ## 已完成教程
 
@@ -22,6 +22,8 @@
 | 14 | [Local Outlier Factor](14-local-outlier-factor.md) | 局部可达密度、手算与新颖性接口 |
 | 15 | [特征选择](15-feature-selection.md) | 方差、单变量与交互、L1、包装法和筛选泄漏 |
 | 16 | [置换重要性](16-permutation-importance.md) | 指标方向、相关列、组置换和因果边界 |
+| 17 | [模型保存与输入协议](17-model-persistence-and-input-contracts.md) | Pipeline、格式、版本、字段、类别映射与加载验证 |
+| 持久化示例 | [验证脚本](examples/model_persistence_contract_checks.py) | 可信本地往返、六类输入拒绝、摘要与正类映射 |
 | 特征选择与解释示例 | [验证脚本](examples/feature_selection_importance_checks.py) | 常数列、XOR、折内筛选和单列/组置换 |
 | 异常检测示例 | [验证脚本](examples/anomaly_detection_checks.py) | 隔离分数/阈值、正常校验集与 LOF 手算 |
 | 校准与不平衡示例 | [验证脚本](examples/calibration_imbalance_checks.py) | 概率质量、校准、权重与折内随机复制 |
@@ -48,6 +50,7 @@
 - 采样补充来源：[imbalanced-learn common_pitfalls.rst](https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8504e95f0160f61d1b617ca66f779646d2ee609e/doc/common_pitfalls.rst) 与 [over_sampling.rst](https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8504e95f0160f61d1b617ca66f779646d2ee609e/doc/over_sampling.rst)，固定提交 `8504e95f0160f61d1b617ca66f779646d2ee609e`，采用 [MIT License](https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8504e95f0160f61d1b617ca66f779646d2ee609e/LICENSE)。该项目 API 未实跑，本批随机复制代码独立编写。
 - 异常检测来源：[outlier_detection.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/outlier_detection.rst)，另核对 [Isolation Forest 阈值实现](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/sklearn/ensemble/_iforest.py)，使用同一固定提交。
 - 特征选择来源：[feature_selection.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/feature_selection.rst)，置换解释使用上列 permutation_importance.rst，同一固定提交。
+- 持久化来源：[model_persistence.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/model_persistence.rst)，同一固定提交；输入协议与 manifest 为独立工程延伸。
 - 对应章节：Ordinary Least Squares、Ridge、Lasso、Elastic-Net、Logistic regression。
 - 许可：[BSD 3-Clause](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/COPYING)，Copyright (c) 2007-2026 The scikit-learn developers。
 
@@ -89,6 +92,10 @@
 - 筛选搜索选中 k=3、C=0.1，列索引 [0,1,10]，CV balanced accuracy≈0.8804，最终测试≈0.8608；选中噪声列也说明统计筛选不等于识别真实机制。
 - 手算 R² 置换下降为 4；重复信号列的单列 MSE 重要性约 4.917，整组置换 MSE 增量约 19.830，验证两种估计目标不同。
 
+- joblib 完整 Pipeline 保存/加载前后最大概率差为 0；classes_=['high','low']，正类在第 0 列，p(high)≈[0.2104,0.8814]。
+- 六类无效输入被拒绝；修改文件字节后在反序列化前发现摘要不匹配。摘要不是来源认证。
+- 持久化运行环境另记录为 Python 3.12.14、NumPy 2.3.5、SciPy 1.17.0、scikit-learn 1.8.0、joblib 1.5.3；未测试其他格式、跨版本加载或真实部署。
+
 这些数值只用于核对示例，不是实际业务性能结论。边界概率和浮点输出可能随环境略有变化。
 
 运行：
@@ -101,10 +108,11 @@ python knowledge/classical-ml/examples/knn_naive_bayes_checks.py
 python knowledge/classical-ml/examples/calibration_imbalance_checks.py
 python knowledge/classical-ml/examples/anomaly_detection_checks.py
 python knowledge/classical-ml/examples/feature_selection_importance_checks.py
+python knowledge/classical-ml/examples/model_persistence_contract_checks.py
 ```
 
 ## 后续扩展（尚未完成）
 
-模型持久化、上线输入协议与增量学习等。聚类与降维已另设 [无监督学习专题](../unsupervised-learning/README.md)。只有完成并核验的条目才加入上面的教程表。
+模型服务集成、模型更新与增量学习等。聚类与降维已另设 [无监督学习专题](../unsupervised-learning/README.md)。只有完成并核验的条目才加入上面的教程表。
 
 [返回总入口](../../README.md)
