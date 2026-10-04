@@ -1,0 +1,104 @@
+{
+  "01_coverage": {
+    "numerator": 2,
+    "denominator": 4,
+    "ratio": 0.5,
+    "status": "ok",
+    "out_of_scope": 1
+  },
+  "02_co_visit": {
+    "overlap": 2,
+    "a_to_b": 0.5,
+    "b_to_a": 1.0,
+    "jaccard": 0.5
+  },
+  "03_cohort": {
+    "active": 2,
+    "new": 1,
+    "old": 1,
+    "old_share": 0.5,
+    "old_frequency": {
+      "2": 1
+    }
+  },
+  "04_trend": {
+    "status": "ok",
+    "changes": {
+      "weekday": -0.1,
+      "weekend": -0.1
+    }
+  },
+  "05_site": {
+    "status": "ok",
+    "score": "66.0",
+    "contributions": {
+      "demand": "40.0",
+      "access": "18.0",
+      "cost_fit": "8.0"
+    }
+  },
+  "06_capabilities": {
+    "status": "gap",
+    "matched": [
+      "oauth",
+      "profile"
+    ],
+    "missing": [
+      "export"
+    ]
+  },
+  "07_ticket": {
+    "team": "data_operations",
+    "priority": "high"
+  },
+  "08_report": {
+    "status": "partial",
+    "sections": [
+      {
+        "claim": "traffic_change",
+        "sources": [
+          "fixture-1"
+        ],
+        "status": "supported"
+      },
+      {
+        "claim": "change_cause",
+        "sources": [],
+        "status": "missing_evidence"
+      }
+    ]
+  },
+  "09_prewarm": [
+    {
+      "target": [
+        "A",
+        1
+      ],
+      "status": "ok",
+      "attempts": 1,
+      "value": 10
+    },
+    {
+      "target": [
+        "A",
+        2
+      ],
+      "status": "ok",
+      "attempts": 1,
+      "value": 10
+    },
+    {
+      "target": [
+        "B",
+        1
+      ],
+      "status": "ok",
+      "attempts": 2,
+      "value": 10
+    }
+  ],
+  "10_quote": {
+    "currency": "CNY",
+    "total": "2700.00"
+  }
+}

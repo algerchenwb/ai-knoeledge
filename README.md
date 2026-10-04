@@ -4,6 +4,8 @@
 
 ## 新增的深入专题
 
+- [AI 业务应用案例](knowledge/business-ai-cases/README.md)：区域业态占比、竞品共访、新老客、客流趋势、选址、售前匹配、工单、报告、画像预热与报价；十个可复算场景，附14项已运行规则检查与业务验收边界。
+
 - [AI 应用落地：100个知识点](knowledge/ai-application-playbook/README.md)：十个方向，逐项提供应用场景、实现步骤、验收方法与常见误区，附15个开源项目快照。
 
 - [Agent 开源实现案例：十篇深度教程](knowledge/agent-case-studies/README.md)：SQL流程、客服转接、代码执行、报告交付、工具组合、仓库修复、控制面、浏览器、研究与Agentic RAG，区分上游演示与实际验证。

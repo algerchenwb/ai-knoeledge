@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-04",
+  "case_count": 10,
+  "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
+  "cases": [
+    {
+      "id": "01",
+      "title": "区域洞察：近90天某业态触达占比",
+      "path": "01-area-category-coverage.md",
+      "function": "coverage",
+      "related_cards": "051、052、053、060",
+      "source_repo": "huggingface/smolagents",
+      "source_sha": "c30b115286e000e98711fae5e85993547b73d826",
+      "source_path": "examples/text_to_sql.py",
+      "scope": "independent business design; synthetic data only"
+    },
+    {
+      "id": "02",
+      "title": "竞品分析：共访人数、方向比例与排行",
+      "path": "02-competitor-co-visitation.md",
+      "function": "co_visit",
+      "related_cards": "051、052、058",
+      "source_repo": "huggingface/smolagents",
+      "source_sha": "c30b115286e000e98711fae5e85993547b73d826",
+      "source_path": "examples/text_to_sql.py",
+      "scope": "independent business design; synthetic data only"
+    },
+    {
+      "id": "03",
+      "title": "客群运营：新老客定义与老客频次",
+      "path": "03-new-returning-customers.md",
+      "function": "cohort",
+      "related_cards": "052、053、058、059",
+      "source_repo": "huggingface/smolagents",
+      "source_sha": "c30b115286e000e98711fae5e85993547b73d826",
+      "source_path": "examples/text_to_sql.py",
+      "scope": "independent business design; synthetic data only"
+    },
+    {
+      "id": "04",
+      "title": "客流趋势：同日型对比与异常解释",
+      "path": "04-traffic-trend-and-diagnostics.md",
+      "function": "matched_day_trend",
+      "related_cards": "004、053、059、082",
+      "source_repo": "comet-ml/opik",
+      "source_sha": "657e3197dc460e6441471c832d93666c7fc730c8",
+      "source_path": "README.md",
+      "scope": "independent business design; synthetic data only"
+    },
+    {
+      "id": "05",
+      "title": "选址推荐：硬约束、可解释评分与缺失数据",
+      "path": "05-site-selection-decision-card.md",
+      "function": "site_score",
+      "related_cards": "008、024、051、082",
+      "source_repo": "openai/openai-agents-python",
+      "source_sha": "81f0ccf20c6e24063b9da36fa37f2bdb6a43d8d3",
+      "source_path": "examples/customer_service/main.py",
+      "scope": "independent business design; synthetic data only"
+    },
+    {
+      "id": "06",
+      "title": "销售支持：客户需求与产品能力匹配",
+      "path": "06-sales-capability-matching.md",
+      "function": "capability_match",
+      "related_cards": "009、011、031、087",
+      "source_repo": "run-llama/llama_index",
+      "source_sha": "962940ddc079cc21701d28d1237c84c82a7c5164",
+      "source_path": "docs/examples/agent/react_agent_with_query_engine.ipynb",
+      "scope": "independent business design; synthetic data only"
+    },
+    {
+      "id": "07",
+      "title": "客户服务：问题分类、工单路由与响应优先级",
+      "path": "07-customer-support-ticket-routing.md",
+      "function": "ticket_route",
+      "related_cards": "016、021、022、029、089",
+      "source_repo": "openai/openai-agents-python",
+      "source_sha": "81f0ccf20c6e24063b9da36fa37f2bdb6a43d8d3",
+      "source_path": "examples/customer_service/main.py",
+      "scope": "independent business design; synthetic data only"
+    },
+    {
+      "id": "08",
+      "title": "经营报告：结论、证据、缺失项与审核",
+      "path": "08-business-report-evidence.md",
+      "function": "build_report",
+      "related_cards": "004、009、028、087",
+      "source_repo": "assafelovic/gpt-researcher",
+      "source_sha": "0957c301ed06c2a5857b834358c7227c739041d4",
+      "source_path": "gpt_researcher/agent.py",
+      "scope": "independent business design; synthetic data only"
+    },
+    {
+      "id": "09",
+      "title": "画像预热：批量对象、部分失败与可恢复作业",
+      "path": "09-profile-prewarm-job.md",
+      "function": "prewarm",
+      "related_cards": "015、018、071、073、075、078",
+      "source_repo": "OpenHands/OpenHands",
+      "source_sha": "a6bba78ffd5a8b31620770f52383b1a2c0477fcd",
+      "source_path": "src/api/automation-service/automation-service.api.ts",
+      "scope": "independent business design; synthetic data only"
+    },
+    {
+      "id": "10",
+      "title": "商务文档：报价字段提取与金额复核",
+      "path": "10-quote-document-validation.md",
+      "function": "quote_total",
+      "related_cards": "002、043、045、060、087",
+      "source_repo": "docling-project/docling",
+      "source_sha": "58f1f8d907fdc4610cd8dca20da6ef53a4550ee8",
+      "source_path": "README.md",
+      "scope": "independent business design; synthetic data only"
+    }
+  ]
+}
