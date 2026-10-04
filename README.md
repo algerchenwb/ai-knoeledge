@@ -4,6 +4,8 @@
 
 ## 新增的深入专题
 
+- [模型可解释性](knowledge/explainability/README.md)：置换重要性、PDP/ICE、Shapley/SHAP，涵盖相关特征、背景选择与因果边界，附手算及已运行 scikit-learn 集成示例。
+
 - [训练工程详解](knowledge/training-engineering/README.md)：8篇覆盖优化器、学习率、数据加载、梯度累积、AMP、训练恢复、DDP和排障，附13组已运行标准库实验。
 
 - [本轮18篇详解总导航](knowledge/expansion-2026-10/README.md)：涵盖6个专题，核对10个开源项目，附固定来源与15组已运行数学示例。
