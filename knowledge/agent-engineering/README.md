@@ -15,7 +15,6 @@
 | [链路、业务结果与统计口径](09-tracing-outcomes-and-metric-denominators.md) | 父子链路、重试、异常/状态、业务完成、统计分母、费用未知与属性白名单；附 13 项离线检查 |
 | [轨迹与业务验收](10-trajectory-and-business-acceptance.md) | 轨迹模式、参数、依赖、证据、部分交付、禁止动作与回归门禁；附 18 项离线样例检查 |
 | [速率、租户配额与截止时间](11-rate-limits-queues-and-deadlines.md) | 突发额度、联合准入、权重、公平性、排队、退避与 deadline；附 18 项离线检查 |
-
 | [异步队列与任务收尾](12-async-queues-backpressure-and-shutdown.md) | 背压、等待取消、收尾确认、过期、TaskGroup 与正常停机；附 12 项真实 asyncio 检查 |
 
 案例：LangGraph 节点重试与 entrypoint 状态机制；Temporal Activity 重试及实验性 Deep Agents 插件。Pydantic AI 用量限制与累计机制。Pydantic 严格类型与业务校验。cachetools TTL 与回源协调机制。PyBreaker 故障分类与三态转换。Kubernetes 官方文档中的分块列表与快照契约。OpenTelemetry 官方 Trace 与 Baggage 规范。agentevals 轨迹匹配与参数比较机制。aiolimiter 加权容量、突发及事件循环机制。CPython asyncio 队列、取消与 TaskGroup 生命周期。固定提交、许可与未实跑边界见教程。
