@@ -1,6 +1,6 @@
 # AI 业务应用案例：从问题到可验收结果
 
-这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
+这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加一篇HTTP集成教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
 
 全部数据与ID虚构；所有业务规则为独立教学定义，不代表任何公司现有接口、经营数据或已上线效果。开源项目提供工具、检索、状态与评测机制依据，不直接提供本篇的业务功能。案例中的接口名称为设计建议。
 
@@ -16,6 +16,7 @@
 | [经营报告：结论、证据、缺失项与审核](08-business-report-evidence.md) | 形成带证据的经营草稿 | 引用存在却不支持结论 | build_report |
 | [画像预热：批量对象、部分失败与可恢复作业](09-profile-prewarm-job.md) | 提前读取常用画像 | 去重键不全与无限重试 | prewarm |
 | [商务文档：报价字段提取与金额复核](10-quote-document-validation.md) | 复核报价明细合计 | 币种与精度混用 | quote_total |
+| [API Agent：身份、契约、工具与HTTP结果](11-api-agent-http-integration.md) | 将区域占比与共访接成可验证接口 | 越权、口径错配与状态误读 | DemoService.execute |
 
 ## 一条可落地的业务流程
 
@@ -52,6 +53,16 @@ python knowledge/business-ai-cases/examples/test_business_rules.py
 Python3.12.14，标准库即可。2026-10-04实际运行十个函数场景，14项检查全部通过；[示例输出](examples/expected-results.json)保存本次结果。覆盖50%区域占比、方向共访50%/100%、事件去重、同日型−10%、选址66分、能力缺口、工单队列、部分证据、3项预热/4次读取和2700.00元合计。
 
 仅验证教学计算与失败边界；没有调用模型、数据库生产服务、真实站点、CRM、工单、缓存或报价系统，也未实测这些项目的完整集成。真实项目还需协议、权限、并发、网络失败与人工金标准评测。不得把14项检查当成业务端到端正确率。
+
+### HTTP集成示例
+
+[API Agent教程](11-api-agent-http-integration.md)将区域占比和共访接成标准库HTTP服务，附身份夹具、输入契约、租户隔离、数据版本与成熟度检查。2026-10-04在Python3.12.14运行23项真实回环HTTP检查，全部通过；[五组结果](examples/api-agent-http-results.json)保存成功、空分母、未成熟与越权返回。
+
+```bash
+python knowledge/business-ai-cases/examples/test_api_agent_demo.py
+```
+
+这是独立编写的教学编排器，参考FastAPI固定提交文档；尚未调用模型、真实OAuth或生产数据库，不能据此宣称业务已经上线。
 
 ## 如何做业务试点
 

@@ -1,0 +1,200 @@
+[
+  {
+    "request": {
+      "intent": "category_coverage",
+      "region_id": "area-alpha",
+      "population_type": 4,
+      "start": "2026-09-01",
+      "end_exclusive": "2026-10-01",
+      "metric_version": "coverage-v1"
+    },
+    "http_status": 200,
+    "response": {
+      "status": "ok",
+      "context": {
+        "region_id": "area-alpha",
+        "population_type": 4,
+        "window": {
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "timezone": "Asia/Shanghai"
+        },
+        "metric_version": "coverage-v1",
+        "data_version": "synthetic-2026-09",
+        "population_definition_version": "population-v1"
+      },
+      "result": {
+        "numerator": 2,
+        "denominator": 4,
+        "ratio": 0.5
+      },
+      "answer": "指定窗口内，4名去重区域用户中有2名到访目标业态，占50%。",
+      "evidence": [
+        {
+          "source_id": "fixture:tenant-a:area-alpha",
+          "data_version": "synthetic-2026-09"
+        }
+      ],
+      "trace": [
+        {
+          "step": 1,
+          "tool": "resolve_authorized_snapshot"
+        },
+        {
+          "step": 2,
+          "tool": "calculate_category_coverage"
+        }
+      ]
+    }
+  },
+  {
+    "request": {
+      "intent": "co_visit",
+      "region_id": "area-alpha",
+      "population_type": 4,
+      "start": "2026-09-01",
+      "end_exclusive": "2026-10-01",
+      "metric_version": "co-visit-v1",
+      "competitor_id": "poi-rival"
+    },
+    "http_status": 200,
+    "response": {
+      "status": "ok",
+      "context": {
+        "region_id": "area-alpha",
+        "population_type": 4,
+        "window": {
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "timezone": "Asia/Shanghai"
+        },
+        "metric_version": "co-visit-v1",
+        "data_version": "synthetic-2026-09",
+        "population_definition_version": "population-v1"
+      },
+      "result": {
+        "competitor_id": "poi-rival",
+        "overlap": 2,
+        "reference_share": 0.5,
+        "competitor_share": 1.0
+      },
+      "answer": "共访2人；本区域人群方向为50%，竞品人群方向为100%。",
+      "evidence": [
+        {
+          "source_id": "fixture:tenant-a:area-alpha",
+          "data_version": "synthetic-2026-09"
+        }
+      ],
+      "trace": [
+        {
+          "step": 1,
+          "tool": "resolve_authorized_snapshot"
+        },
+        {
+          "step": 2,
+          "tool": "calculate_co_visit"
+        }
+      ]
+    }
+  },
+  {
+    "request": {
+      "intent": "category_coverage",
+      "region_id": "area-empty",
+      "population_type": 4,
+      "start": "2026-09-01",
+      "end_exclusive": "2026-10-01",
+      "metric_version": "coverage-v1"
+    },
+    "http_status": 200,
+    "response": {
+      "status": "no_denominator",
+      "context": {
+        "region_id": "area-empty",
+        "population_type": 4,
+        "window": {
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "timezone": "Asia/Shanghai"
+        },
+        "metric_version": "coverage-v1",
+        "data_version": "synthetic-2026-09",
+        "population_definition_version": "population-v1"
+      },
+      "result": {
+        "numerator": 0,
+        "denominator": 0,
+        "ratio": null
+      },
+      "answer": "分母为空，无法计算占比。",
+      "evidence": [
+        {
+          "source_id": "fixture:tenant-a:area-empty",
+          "data_version": "synthetic-2026-09"
+        }
+      ],
+      "trace": [
+        {
+          "step": 1,
+          "tool": "resolve_authorized_snapshot"
+        },
+        {
+          "step": 2,
+          "tool": "calculate_category_coverage"
+        }
+      ]
+    }
+  },
+  {
+    "request": {
+      "intent": "category_coverage",
+      "region_id": "area-provisional",
+      "population_type": 4,
+      "start": "2026-09-01",
+      "end_exclusive": "2026-10-01",
+      "metric_version": "coverage-v1"
+    },
+    "http_status": 200,
+    "response": {
+      "status": "provisional",
+      "context": {
+        "region_id": "area-provisional",
+        "population_type": 4,
+        "window": {
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "timezone": "Asia/Shanghai"
+        },
+        "metric_version": "coverage-v1",
+        "data_version": "synthetic-2026-09",
+        "population_definition_version": "population-v1"
+      },
+      "result": null,
+      "answer": "数据尚未成熟，暂不输出正式占比。",
+      "trace": [
+        {
+          "step": 1,
+          "tool": "resolve_authorized_snapshot"
+        }
+      ]
+    }
+  },
+  {
+    "request": {
+      "intent": "category_coverage",
+      "region_id": "area-beta",
+      "population_type": 4,
+      "start": "2026-09-01",
+      "end_exclusive": "2026-10-01",
+      "metric_version": "coverage-v1"
+    },
+    "http_status": 403,
+    "response": {
+      "status": "error",
+      "error": {
+        "code": "OBJECT_FORBIDDEN",
+        "message": "对象不在当前身份允许范围"
+      }
+    }
+  }
+]

@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 10,
+  "case_count": 11,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -112,6 +112,28 @@
       "source_sha": "58f1f8d907fdc4610cd8dca20da6ef53a4550ee8",
       "source_path": "README.md",
       "scope": "independent business design; synthetic data only"
+    },
+    {
+      "id": "11",
+      "title": "API Agent业务集成：从结构化提案到真实HTTP结果",
+      "path": "11-api-agent-http-integration.md",
+      "function": "DemoService.execute",
+      "source_repo": "fastapi/fastapi",
+      "source_sha": "5f9fc5c59a9bb54608aa35376715f3ba9708188e",
+      "source_paths": [
+        "docs/en/docs/tutorial/body.md",
+        "docs/en/docs/tutorial/dependencies/index.md",
+        "docs/en/docs/tutorial/testing.md"
+      ],
+      "scope": "independent standard-library HTTP demo; source documents inform design only",
+      "validation": "23 real loopback HTTP checks passed"
     }
-  ]
+  ],
+  "http_integration": {
+    "date": "2026-10-04",
+    "checks_passed": 23,
+    "transport": "real loopback HTTP",
+    "python": "3.12.14",
+    "limitations": "synthetic fixtures; no LLM, real OAuth, production database or load testing"
+  }
 }
