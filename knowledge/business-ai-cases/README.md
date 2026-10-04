@@ -1,6 +1,6 @@
 # AI 业务应用案例：从问题到可验收结果
 
-这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加HTTP集成、工具注册路由、批量查询、金标准评测、结果缓存与对象解析六篇教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
+这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加HTTP集成、工具注册路由、批量查询、金标准评测、结果缓存、对象解析与结果校验七篇教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
 
 全部数据与ID虚构；所有业务规则为独立教学定义，不代表任何公司现有接口、经营数据或已上线效果。开源项目提供工具、检索、状态与评测机制依据，不直接提供本篇的业务功能。案例中的接口名称为设计建议。
 
@@ -22,6 +22,7 @@
 | [业务Agent金标准评测](14-business-agent-golden-evaluation.md) | 定位回归与验收交付 | 平均分掩盖越权、漏评与标签泄漏 | evaluate / grade |
 | [业务结果缓存与失效](15-business-result-cache.md) | 减少可信重复计算 | 旧权限、旧口径与多源数据失效遗漏 | CachedBusiness.query |
 | [业务对象解析与澄清](16-business-object-resolution.md) | 将地点名称落实为授权稳定ID | 同名错选、越权候选与旧澄清结果 | Resolver.resolve / choose |
+| [业务结果校验与证据协议](17-business-result-contract.md) | 校验结果后再交付事实 | 错范围、自洽错数与失效证据 | validate_result |
 
 ## 一条可落地的业务流程
 
@@ -119,6 +120,16 @@ python knowledge/business-ai-cases/examples/test_business_object_resolver.py
 ```
 
 [解析结果](examples/business-object-results.json) · [固定来源](examples/business-object-sources.json)
+
+### 结果校验与证据协议
+
+[结果校验教程](17-business-result-contract.md)附可信教学依据、范围与数学核对、证据绑定、业务状态和事实视图白名单。2026-10-05运行18项离线检查全部通过，包含五份合法返回与错误输出注入；未验证真实来源服务或模型解释。
+
+```bash
+python knowledge/business-ai-cases/examples/test_business_result_contract.py
+```
+
+[五份校验结果](examples/business-result-contract-results.json) · [固定来源](examples/business-result-contract-sources.json)
 
 ## 如何做业务试点
 

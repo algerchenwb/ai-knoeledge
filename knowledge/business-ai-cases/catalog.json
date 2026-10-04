@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 16,
+  "case_count": 17,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -189,6 +189,18 @@
       "source_record": "examples/business-object-sources.json",
       "scope": "independent exact authorized lookup; fictional catalog and internal tickets only",
       "validation": "14 offline exact lookup and clarification checks passed"
+    },
+    {
+      "id": "17",
+      "title": "业务结果校验与证据协议：工具返回之后还要检查什么",
+      "path": "17-business-result-contract.md",
+      "function": "validate_result",
+      "source_repo": "fastapi/fastapi",
+      "source_sha": "5f9fc5c59a9bb54608aa35376715f3ba9708188e",
+      "source_path": "docs/en/docs/tutorial/response-model.md",
+      "source_record": "examples/business-result-contract-sources.json",
+      "scope": "independent output validation using hand-defined trusted synthetic receipts",
+      "validation": "18 offline checks and 5 valid result examples passed"
     }
   ],
   "http_integration": {
@@ -236,5 +248,12 @@
     "checks_passed": 14,
     "python": "3.12.14",
     "limitations": "no LLM, embeddings, Qdrant, real catalog, signatures or persisted tickets"
+  },
+  "result_contract": {
+    "date": "2026-10-05",
+    "checks_passed": 18,
+    "valid_examples": 5,
+    "python": "3.12.14",
+    "limitations": "no real provenance, LLM, HTTP or FastAPI; caller must authorize receipt; free text excluded"
   }
 }

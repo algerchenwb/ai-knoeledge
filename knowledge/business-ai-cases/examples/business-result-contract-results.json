@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-05",
+  "checks_passed": 18,
+  "scope": "offline synthetic outputs and hand-defined trusted receipts; no LLM, HTTP or real provenance service",
+  "validated_results": [
+    {
+      "status": "ok",
+      "context": {
+        "region_id": "area-alpha",
+        "population_type": 4,
+        "window": {
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "timezone": "Asia/Shanghai"
+        },
+        "metric_version": "coverage-v1",
+        "data_version": "synthetic-2026-09",
+        "population_definition_version": "population-v1"
+      },
+      "result": {
+        "numerator": 2,
+        "denominator": 4,
+        "ratio": 0.5
+      },
+      "evidence": [
+        {
+          "source_id": "fixture:tenant-a:area-alpha",
+          "data_version": "synthetic-2026-09"
+        }
+      ]
+    },
+    {
+      "status": "ok",
+      "context": {
+        "region_id": "area-alpha",
+        "population_type": 4,
+        "window": {
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "timezone": "Asia/Shanghai"
+        },
+        "metric_version": "co-visit-v1",
+        "data_version": "synthetic-2026-09",
+        "population_definition_version": "population-v1"
+      },
+      "result": {
+        "competitor_id": "poi-rival",
+        "overlap": 2,
+        "reference_share": 0.5,
+        "competitor_share": 1.0
+      },
+      "evidence": [
+        {
+          "source_id": "fixture:tenant-a:area-alpha",
+          "data_version": "synthetic-2026-09"
+        }
+      ]
+    },
+    {
+      "status": "no_denominator",
+      "context": {
+        "region_id": "area-empty",
+        "population_type": 4,
+        "window": {
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "timezone": "Asia/Shanghai"
+        },
+        "metric_version": "coverage-v1",
+        "data_version": "synthetic-2026-09",
+        "population_definition_version": "population-v1"
+      },
+      "result": {
+        "numerator": 0,
+        "denominator": 0,
+        "ratio": null
+      },
+      "evidence": [
+        {
+          "source_id": "fixture:tenant-a:area-empty",
+          "data_version": "synthetic-2026-09"
+        }
+      ]
+    },
+    {
+      "status": "no_denominator",
+      "context": {
+        "region_id": "area-alpha",
+        "population_type": 4,
+        "window": {
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "timezone": "Asia/Shanghai"
+        },
+        "metric_version": "co-visit-v1",
+        "data_version": "synthetic-2026-09",
+        "population_definition_version": "population-v1"
+      },
+      "result": {
+        "competitor_id": "poi-empty",
+        "overlap": 0,
+        "reference_share": 0.0,
+        "competitor_share": null
+      },
+      "evidence": [
+        {
+          "source_id": "fixture:tenant-a:area-alpha",
+          "data_version": "synthetic-2026-09"
+        }
+      ]
+    },
+    {
+      "status": "provisional",
+      "context": {
+        "region_id": "area-provisional",
+        "population_type": 4,
+        "window": {
+          "start": "2026-09-01",
+          "end_exclusive": "2026-10-01",
+          "timezone": "Asia/Shanghai"
+        },
+        "metric_version": "coverage-v1",
+        "data_version": "synthetic-2026-09",
+        "population_definition_version": "population-v1"
+      },
+      "result": null,
+      "evidence": []
+    }
+  ]
+}

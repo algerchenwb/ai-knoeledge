@@ -1,0 +1,27 @@
+{
+  "verified_date": "2026-10-05",
+  "sources": [
+    {
+      "repo": "fastapi/fastapi",
+      "sha": "5f9fc5c59a9bb54608aa35376715f3ba9708188e",
+      "read_paths": [
+        "docs/en/docs/tutorial/response-model.md"
+      ],
+      "license": "MIT",
+      "relevance": "output validation, serialization and declared field filtering only"
+    }
+  ],
+  "implementation": "independent standard-library output validator and hand-defined fixture receipts; no upstream code copied",
+  "validation": {
+    "python": "3.12.14",
+    "checks_passed": 18,
+    "valid_result_examples": 5,
+    "limitations": [
+      "no LLM, HTTP, FastAPI or real provenance service",
+      "caller must authorize and bind trusted receipt",
+      "single fixture source; no full multi-source lineage",
+      "free-text answer and original trace excluded, not semantically validated",
+      "prior golden evaluation dataset unchanged"
+    ]
+  }
+}
