@@ -5,6 +5,7 @@
 | 轮次 | 知识点 | 可运行实验 |
 | --- | --- | --- |
 | 1 | [TF-IDF](01-tfidf.md) | [示例](examples/01_tfidf.py) |
+| 2 | [特征哈希](02-feature-hashing.md) | [示例](examples/02_hashing.py) |
 
 ## 运行与来源
 
