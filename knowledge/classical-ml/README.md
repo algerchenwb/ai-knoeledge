@@ -1,6 +1,6 @@
 # 经典机器学习模型基础
 
-基于 scikit-learn 官方开源文档，面向想理解模型机制的应用开发者。先学数值预测，再学分类概率，再理解正则化与调参，再学习决策树和集成模型，并理解支持向量机、核方法、近邻模型和朴素贝叶斯，进一步处理概率校准、类别不平衡与异常检测。
+基于 scikit-learn 官方开源文档，面向想理解模型机制的应用开发者。先学数值预测，再学分类概率，再理解正则化与调参，再学习决策树和集成模型，并理解支持向量机、核方法、近邻模型和朴素贝叶斯，进一步处理概率校准、类别不平衡、异常检测、特征选择与模型依赖解释。
 
 ## 已完成教程
 
@@ -20,12 +20,17 @@
 | 12 | [类别不平衡](12-class-imbalance.md) | 发生率、类权重、重采样与折内验证 |
 | 13 | [异常检测与 Isolation Forest](13-isolation-forest.md) | 随机隔离、分数方向、阈值与独立评估 |
 | 14 | [Local Outlier Factor](14-local-outlier-factor.md) | 局部可达密度、手算与新颖性接口 |
+| 15 | [特征选择](15-feature-selection.md) | 方差、单变量与交互、L1、包装法和筛选泄漏 |
+| 16 | [置换重要性](16-permutation-importance.md) | 指标方向、相关列、组置换和因果边界 |
+| 特征选择与解释示例 | [验证脚本](examples/feature_selection_importance_checks.py) | 常数列、XOR、折内筛选和单列/组置换 |
 | 异常检测示例 | [验证脚本](examples/anomaly_detection_checks.py) | 隔离分数/阈值、正常校验集与 LOF 手算 |
 | 校准与不平衡示例 | [验证脚本](examples/calibration_imbalance_checks.py) | 概率质量、校准、权重与折内随机复制 |
 | 近邻与 NB 示例 | [验证脚本](examples/knn_naive_bayes_checks.py) | 加权手算、保留测试调参、平滑与未知词 |
 | 核示例 | [SVM 与核方法验证脚本](examples/svm_kernel_checks.py) | 一维间隔、XOR 与保留测试集的网格搜索 |
 | 树示例 | [树与集成验证脚本](examples/tree_ensemble_checks.py) | 分裂阈值、森林合并与一轮提升核对 |
 | 示例 | [线性模型验证脚本](examples/linear_model_checks.py) | 手算核对、正则收缩、分类阈值与 GridSearchCV |
+
+深入解释方法另见 [模型可解释性专题](../explainability/README.md)。本专题第 16 篇侧重经典模型的固定算例与组置换，不替代该专题的 PDP/ICE 和 Shapley 内容。
 
 相关前置知识：[评估基础](../ml-evaluation/README.md)。理解梯度可进一步读 [深度学习训练基础](../deep-learning-basics/README.md)。
 
@@ -42,6 +47,7 @@
 - 校准与类权重来源：[calibration.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/calibration.rst)、[class_weight.py](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/sklearn/utils/class_weight.py)，使用同一固定提交。
 - 采样补充来源：[imbalanced-learn common_pitfalls.rst](https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8504e95f0160f61d1b617ca66f779646d2ee609e/doc/common_pitfalls.rst) 与 [over_sampling.rst](https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8504e95f0160f61d1b617ca66f779646d2ee609e/doc/over_sampling.rst)，固定提交 `8504e95f0160f61d1b617ca66f779646d2ee609e`，采用 [MIT License](https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8504e95f0160f61d1b617ca66f779646d2ee609e/LICENSE)。该项目 API 未实跑，本批随机复制代码独立编写。
 - 异常检测来源：[outlier_detection.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/outlier_detection.rst)，另核对 [Isolation Forest 阈值实现](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/sklearn/ensemble/_iforest.py)，使用同一固定提交。
+- 特征选择来源：[feature_selection.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/feature_selection.rst)，置换解释使用上列 permutation_importance.rst，同一固定提交。
 - 对应章节：Ordinary Least Squares、Ridge、Lasso、Elastic-Net、Logistic regression。
 - 许可：[BSD 3-Clause](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/COPYING)，Copyright (c) 2007-2026 The scikit-learn developers。
 
@@ -79,6 +85,10 @@
 - 独立正常校验集的 5% 分位数阈值约为 −0.5617；人为远处异常测试 AP=1，Precision=0.5、Recall=1，正常 FPR=0.05。此合成异常被刻意设得容易，不是业务性能保证。
 - 四点 LOF 为 [0.875,1.3333,0.875,4.9583]，与手算一致；新颖性示例只预测独立新点，正常与远点分别为 +1 与 −1。
 
+- 方差筛选删除常数列；XOR 两列 F 分数都为 0，联合树模型可拟合四点。
+- 筛选搜索选中 k=3、C=0.1，列索引 [0,1,10]，CV balanced accuracy≈0.8804，最终测试≈0.8608；选中噪声列也说明统计筛选不等于识别真实机制。
+- 手算 R² 置换下降为 4；重复信号列的单列 MSE 重要性约 4.917，整组置换 MSE 增量约 19.830，验证两种估计目标不同。
+
 这些数值只用于核对示例，不是实际业务性能结论。边界概率和浮点输出可能随环境略有变化。
 
 运行：
@@ -90,10 +100,11 @@ python knowledge/classical-ml/examples/svm_kernel_checks.py
 python knowledge/classical-ml/examples/knn_naive_bayes_checks.py
 python knowledge/classical-ml/examples/calibration_imbalance_checks.py
 python knowledge/classical-ml/examples/anomaly_detection_checks.py
+python knowledge/classical-ml/examples/feature_selection_importance_checks.py
 ```
 
 ## 后续扩展（尚未完成）
 
-模型解释与特征选择等。聚类与降维已另设 [无监督学习专题](../unsupervised-learning/README.md)。只有完成并核验的条目才加入上面的教程表。
+模型持久化、上线输入协议与增量学习等。聚类与降维已另设 [无监督学习专题](../unsupervised-learning/README.md)。只有完成并核验的条目才加入上面的教程表。
 
 [返回总入口](../../README.md)
