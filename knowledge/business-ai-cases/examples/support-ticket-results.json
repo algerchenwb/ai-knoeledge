@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-05",
+  "python": "3.12.14",
+  "checks_passed": 24,
+  "examples": {
+    "created": {
+      "replayed": false,
+      "ticket": {
+        "id": 1,
+        "tenant": "tenant-demo",
+        "category": "data",
+        "priority": "p1",
+        "state": "new",
+        "queue": "data-support",
+        "version": 1,
+        "created_at": 100,
+        "due_at": 160,
+        "first_response_at": null,
+        "escalated": 0,
+        "resolution_ref": null
+      }
+    },
+    "duplicate": {
+      "replayed": true,
+      "ticket": {
+        "id": 1,
+        "tenant": "tenant-demo",
+        "category": "data",
+        "priority": "p1",
+        "state": "new",
+        "queue": "data-support",
+        "version": 1,
+        "created_at": 100,
+        "due_at": 160,
+        "first_response_at": null,
+        "escalated": 0,
+        "resolution_ref": null
+      }
+    },
+    "escalation": [
+      {
+        "id": 1,
+        "tenant": "tenant-demo",
+        "category": "data",
+        "priority": "p1",
+        "state": "new",
+        "queue": "human-escalation",
+        "version": 2,
+        "created_at": 100,
+        "due_at": 160,
+        "first_response_at": null,
+        "escalated": 1,
+        "resolution_ref": null
+      }
+    ],
+    "assigned": {
+      "replayed": false,
+      "ticket": {
+        "id": 1,
+        "tenant": "tenant-demo",
+        "category": "data",
+        "priority": "p1",
+        "state": "assigned",
+        "queue": "human-escalation",
+        "version": 3,
+        "created_at": 100,
+        "due_at": 160,
+        "first_response_at": null,
+        "escalated": 1,
+        "resolution_ref": null
+      }
+    },
+    "responded": {
+      "replayed": false,
+      "ticket": {
+        "id": 1,
+        "tenant": "tenant-demo",
+        "category": "data",
+        "priority": "p1",
+        "state": "assigned",
+        "queue": "human-escalation",
+        "version": 4,
+        "created_at": 100,
+        "due_at": 160,
+        "first_response_at": 162,
+        "escalated": 1,
+        "resolution_ref": null
+      }
+    },
+    "resolved": {
+      "replayed": false,
+      "ticket": {
+        "id": 1,
+        "tenant": "tenant-demo",
+        "category": "data",
+        "priority": "p1",
+        "state": "resolved",
+        "queue": "human-escalation",
+        "version": 5,
+        "created_at": 100,
+        "due_at": 160,
+        "first_response_at": 162,
+        "escalated": 1,
+        "resolution_ref": "review-demo-1"
+      }
+    }
+  },
+  "limitations": "synthetic tickets and trusted actor fixtures; local SQLite only; no LLM, authentication, real support platform, notification or contractual SLA"
+}

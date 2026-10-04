@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 18,
+  "case_count": 19,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -213,6 +213,18 @@
       "source_record": "examples/sales-knowledge-sources.json",
       "scope": "independent exact-key approved synthetic facts; no model or retrieval framework",
       "validation": "20 offline checks passed"
+    },
+    {
+      "id": "19",
+      "title": "客服工单落地：重复请求、状态流转、响应时限与人工接管",
+      "path": "19-support-ticket-lifecycle.md",
+      "function": "Tickets.create / Tickets.action / Tickets.escalate_due",
+      "source_repo": "openai/openai-agents-python",
+      "source_sha": "81f0ccf20c6e24063b9da36fa37f2bdb6a43d8d3",
+      "source_path": "examples/customer_service/main.py",
+      "source_record": "examples/support-ticket-sources.json",
+      "scope": "independent SQLite ticket ledger; synthetic actors and policy; no model or real support system",
+      "validation": "24 checks including file reopen and two-connection concurrent duplicate create passed"
     }
   ],
   "http_integration": {
@@ -273,5 +285,12 @@
     "checks_passed": 20,
     "python": "3.12.14",
     "limitations": "no LLM, embeddings, retrieval engine, CRM, authorization service or evidence existence checks"
+  },
+  "support_ticket": {
+    "date": "2026-10-05",
+    "checks_passed": 24,
+    "python": "3.12.14",
+    "storage": "local SQLite",
+    "limitations": "synthetic trusted actors; no LLM, real authentication, notification, support platform or contractual SLA"
   }
 }

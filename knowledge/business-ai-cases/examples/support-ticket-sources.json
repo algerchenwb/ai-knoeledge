@@ -1,0 +1,12 @@
+{
+  "checked_on": "2026-10-05",
+  "repository": "openai/openai-agents-python",
+  "commit": "81f0ccf20c6e24063b9da36fa37f2bdb6a43d8d3",
+  "path": "examples/customer_service/main.py",
+  "url": "https://github.com/openai/openai-agents-python/blob/81f0ccf20c6e24063b9da36fa37f2bdb6a43d8d3/examples/customer_service/main.py",
+  "license": "MIT",
+  "license_copy": "knowledge/agent-case-studies/licenses/openai-agents-python.txt",
+  "observed": "FAQ/seat/triage Agents; shared context; handoff and tool output separated; seat tool mutates context only",
+  "independent_design": "SQLite ticket ledger, idempotency receipts, human actions, versions and first-response escalation; upstream source does not implement these policies",
+  "validation": "24 standard-library checks including local disk reopen and two SQLite connections with concurrent duplicate create; no upstream execution"
+}

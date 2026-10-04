@@ -1,6 +1,6 @@
 # AI 业务应用案例：从问题到可验收结果
 
-这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加HTTP集成、工具注册路由、批量查询、金标准评测、结果缓存、对象解析、结果校验与售前知识库八篇教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
+这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加HTTP集成、工具注册路由、批量查询、金标准评测、结果缓存、对象解析、结果校验、售前知识库与客服工单九篇教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
 
 全部数据与ID虚构；所有业务规则为独立教学定义，不代表任何公司现有接口、经营数据或已上线效果。开源项目提供工具、检索、状态与评测机制依据，不直接提供本篇的业务功能。案例中的接口名称为设计建议。
 
@@ -24,6 +24,7 @@
 | [业务对象解析与澄清](16-business-object-resolution.md) | 将地点名称落实为授权稳定ID | 同名错选、越权候选与旧澄清结果 | Resolver.resolve / choose |
 | [业务结果校验与证据协议](17-business-result-contract.md) | 校验结果后再交付事实 | 错范围、自洽错数与失效证据 | validate_result |
 | [售前知识库：产品能力、适用条件与证据](18-sales-knowledge-capability-answer.md) | 形成有依据的客户能力答复 | 规划误承诺、草稿与旧版覆盖、条件遗漏 | CapabilityBook.answer |
+| [客服工单：去重、状态与人工升级](19-support-ticket-lifecycle.md) | 保存请求回执并推进工单处理 | 重复写入、旧版本覆盖与进度误报 | Tickets.create / action / escalate_due |
 
 ## 一条可落地的业务流程
 
@@ -141,6 +142,16 @@ python knowledge/business-ai-cases/examples/test_sales_knowledge_demo.py
 ```
 
 [六种查询结果](examples/sales-knowledge-results.json) · [固定来源](examples/sales-knowledge-sources.json)
+
+### 客服工单生命周期
+
+[工单教程](19-support-ticket-lifecycle.md)补齐请求幂等、持久回执、状态机、版本校验、首次响应与单次升级。2026-10-05运行24项检查全部通过，含本地SQLite文件重开与双连接并发重复创建；未运行模型、真实认证、客服平台或通知服务。
+
+```bash
+python knowledge/business-ai-cases/examples/test_support_ticket_demo.py
+```
+
+[六阶段处理记录](examples/support-ticket-results.json) · [固定来源](examples/support-ticket-sources.json)
 
 ## 如何做业务试点
 
