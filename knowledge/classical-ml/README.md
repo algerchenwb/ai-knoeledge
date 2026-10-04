@@ -1,6 +1,6 @@
 # 经典机器学习模型基础
 
-基于 scikit-learn 官方开源文档，面向想理解模型机制的应用开发者。先学数值预测，再学分类概率，再理解正则化与调参，再学习决策树和集成模型，并理解支持向量机、核方法、近邻模型和朴素贝叶斯，进一步处理概率校准、类别不平衡、异常检测、特征选择、模型依赖解释与保存/加载协议。
+基于 scikit-learn 官方开源文档，面向想理解模型机制的应用开发者。先学数值预测，再学分类概率，再理解正则化与调参，再学习决策树和集成模型，并理解支持向量机、核方法、近邻模型和朴素贝叶斯，进一步处理概率校准、类别不平衡、异常检测、特征选择、模型依赖解释、保存/加载协议与曲线诊断。
 
 ## 已完成教程
 
@@ -23,6 +23,8 @@
 | 15 | [特征选择](15-feature-selection.md) | 方差、单变量与交互、L1、包装法和筛选泄漏 |
 | 16 | [置换重要性](16-permutation-importance.md) | 指标方向、相关列、组置换和因果边界 |
 | 17 | [模型保存与输入协议](17-model-persistence-and-input-contracts.md) | Pipeline、格式、版本、字段、类别映射与加载验证 |
+| 18 | [学习曲线与验证曲线](18-learning-and-validation-curves.md) | 数据量、复杂度、诊断边界与独立最终测试 |
+| 曲线示例 | [验证脚本](examples/learning_validation_curve_checks.py) | 37 次拟合、折内预处理与 SVG 图表 |
 | 持久化示例 | [验证脚本](examples/model_persistence_contract_checks.py) | 可信本地往返、六类输入拒绝、摘要与正类映射 |
 | 特征选择与解释示例 | [验证脚本](examples/feature_selection_importance_checks.py) | 常数列、XOR、折内筛选和单列/组置换 |
 | 异常检测示例 | [验证脚本](examples/anomaly_detection_checks.py) | 隔离分数/阈值、正常校验集与 LOF 手算 |
@@ -51,6 +53,7 @@
 - 异常检测来源：[outlier_detection.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/outlier_detection.rst)，另核对 [Isolation Forest 阈值实现](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/sklearn/ensemble/_iforest.py)，使用同一固定提交。
 - 特征选择来源：[feature_selection.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/feature_selection.rst)，置换解释使用上列 permutation_importance.rst，同一固定提交。
 - 持久化来源：[model_persistence.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/model_persistence.rst)，同一固定提交；输入协议与 manifest 为独立工程延伸。
+- 曲线来源：[learning_curve.rst](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/doc/modules/learning_curve.rst)，同一固定提交；合成实验与图表独立编写。
 - 对应章节：Ordinary Least Squares、Ridge、Lasso、Elastic-Net、Logistic regression。
 - 许可：[BSD 3-Clause](https://github.com/scikit-learn/scikit-learn/blob/a442e4bb39551feb7b0af4c00075e2cb91cf9b77/COPYING)，Copyright (c) 2007-2026 The scikit-learn developers。
 
@@ -96,6 +99,9 @@
 - 六类无效输入被拒绝；修改文件字节后在反序列化前发现摘要不匹配。摘要不是来源认证。
 - 持久化运行环境另记录为 Python 3.12.14、NumPy 2.3.5、SciPy 1.17.0、scikit-learn 1.8.0、joblib 1.5.3；未测试其他格式、跨版本加载或真实部署。
 
+- 曲线合成实验：一次模型 CV MSE≈0.1962，九次≈0.01511，十五次≈0.01741；按开发 CV 选九次后，最终测试 MSE≈0.01833。
+- 九次模型每折样本从 15 增到 45 时，平均验证 MSE 从约 0.06722 降到 0.01530；增加数据后的变化不严格单调，不是业务收益保证。
+
 这些数值只用于核对示例，不是实际业务性能结论。边界概率和浮点输出可能随环境略有变化。
 
 运行：
@@ -109,6 +115,7 @@ python knowledge/classical-ml/examples/calibration_imbalance_checks.py
 python knowledge/classical-ml/examples/anomaly_detection_checks.py
 python knowledge/classical-ml/examples/feature_selection_importance_checks.py
 python knowledge/classical-ml/examples/model_persistence_contract_checks.py
+python knowledge/classical-ml/examples/learning_validation_curve_checks.py
 ```
 
 ## 后续扩展（尚未完成）
