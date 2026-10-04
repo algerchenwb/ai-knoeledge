@@ -4,6 +4,8 @@
 
 ## 新增的深入专题
 
+- [训练工程详解](knowledge/training-engineering/README.md)：8篇覆盖优化器、学习率、数据加载、梯度累积、AMP、训练恢复、DDP和排障，附13组已运行标准库实验。
+
 - [本轮18篇详解总导航](knowledge/expansion-2026-10/README.md)：涵盖6个专题，核对10个开源项目，附固定来源与15组已运行数学示例。
 
 - [Transformer 内部机制](knowledge/transformer/README.md)：Embedding 与位置、注意力与掩码、残差、归一化与前馈层、标签对齐、交叉熵与困惑度、解码与采样。

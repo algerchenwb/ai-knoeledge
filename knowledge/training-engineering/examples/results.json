@@ -1,0 +1,113 @@
+{
+  "status": "PASS",
+  "check_groups": 13,
+  "results": {
+    "sgd_learning_rate": {
+      "updated": 0.6000000000000001,
+      "loss": 5.76,
+      "large_lr_loss": 12.960000000000004
+    },
+    "adam_bias_correction_and_decay": {
+      "m_hat": 2.0,
+      "v_hat": 4.0,
+      "zero_gradient_adamw_weight": 9.99
+    },
+    "schedule_boundaries_and_update_counts": {
+      "lr": [
+        0.025,
+        0.05,
+        0.07500000000000001,
+        0.1,
+        0.1,
+        0.0965745789630079,
+        0.08681980515339464,
+        0.07222075445642905,
+        0.05500000000000001,
+        0.03777924554357097,
+        0.023180194846605363,
+        0.013425421036992097,
+        0.01
+      ],
+      "updates_with_tail": 21,
+      "full_windows_only": 20
+    },
+    "padding_and_tail_coverage": {
+      "kept_batches": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ]
+      ],
+      "dropped_count": 2,
+      "padding_fraction": 0.25
+    },
+    "equal_microbatch_gradient_and_finite_difference": {
+      "full_grad": -25.5,
+      "accumulated": -25.5,
+      "finite_difference": -25.49999999779118
+    },
+    "unequal_token_normalization": {
+      "correct": 2.6,
+      "wrong_mean_of_means": 2.0
+    },
+    "partial_accumulation_window": {
+      "correct": 2.0,
+      "wrong": 1.0
+    },
+    "ddp_global_normalization": {
+      "gradient": 2.6,
+      "global_accuracy": 0.1,
+      "wrong_rank_mean": 0.5
+    },
+    "unscale_before_clip": {
+      "correct": [
+        0.6000000000000001,
+        0.8
+      ],
+      "wrong": [
+        0.006,
+        0.008
+      ]
+    },
+    "half_precision_underflow": {
+      "direct": 0.0,
+      "scaled_then_unscaled": 1.0011717677116394e-08
+    },
+    "distributed_sampler_padding": {
+      "rank0": [
+        0,
+        2,
+        4
+      ],
+      "rank1": [
+        1,
+        3,
+        0
+      ],
+      "repeated_id": 0
+    },
+    "full_state_resume": {
+      "final_weight": 2.234329926809514,
+      "step": 20,
+      "exact_trace_match": true
+    },
+    "missing_state_changes_trajectory": {
+      "complete": 2.234329926809514,
+      "no_optimizer_momentum": 2.033585725870813,
+      "no_rng_restore": 2.2434790840844467,
+      "no_data_cursor": 2.179958239461913
+    }
+  }
+}

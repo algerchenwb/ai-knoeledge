@@ -1,0 +1,46 @@
+[
+  {
+    "repo": "pytorch/pytorch",
+    "commit": "496340f06ef7bda2800522429ba3f4e3473a92fa",
+    "license": "BSD-style，含第三方许可声明",
+    "verified_date": "2026-10-04",
+    "files": [
+      "torch/optim/sgd.py",
+      "torch/optim/adam.py",
+      "torch/optim/adamw.py",
+      "torch/utils/data/dataloader.py",
+      "torch/utils/data/distributed.py",
+      "torch/utils/checkpoint.py"
+    ]
+  },
+  {
+    "repo": "pytorch/tutorials",
+    "commit": "11512db7cbbcc4b530ecfc63205d3fed13fa190d",
+    "license": "BSD 3-Clause",
+    "verified_date": "2026-10-04",
+    "files": [
+      "beginner_source/basics/data_tutorial.py",
+      "recipes_source/recipes/amp_recipe.py",
+      "intermediate_source/ddp_tutorial.rst"
+    ]
+  },
+  {
+    "repo": "huggingface/accelerate",
+    "commit": "01c73fbdb9a7cdbf3c750c22160e7568f2c339c0",
+    "license": "Apache-2.0",
+    "verified_date": "2026-10-04",
+    "files": [
+      "docs/source/usage_guides/gradient_accumulation.md",
+      "docs/source/usage_guides/checkpoint.md"
+    ]
+  },
+  {
+    "repo": "karpathy/nanoGPT",
+    "commit": "3adf61e154c3fe3fca428ad6bc3818b27a3b8291",
+    "license": "MIT",
+    "verified_date": "2026-10-04",
+    "files": [
+      "train.py"
+    ]
+  }
+]
