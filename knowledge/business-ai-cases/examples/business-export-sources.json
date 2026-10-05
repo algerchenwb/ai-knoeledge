@@ -1,0 +1,27 @@
+{
+  "checked_on": "2026-10-05",
+  "sources": [
+    {
+      "repository": "django-import-export/django-import-export",
+      "commit": "63c3a6fd4fff7ae1191bb204a5271f772c2c522c",
+      "paths": [
+        "README.rst",
+        "import_export/mixins.py"
+      ],
+      "urls": [
+        "https://github.com/django-import-export/django-import-export/blob/63c3a6fd4fff7ae1191bb204a5271f772c2c522c/README.rst",
+        "https://github.com/django-import-export/django-import-export/blob/63c3a6fd4fff7ae1191bb204a5271f772c2c522c/import_export/mixins.py"
+      ],
+      "license": "BSD-2-Clause",
+      "license_copy": "examples/django-import-export-LICENSE.txt",
+      "used_for": "format and permissions capability description; BaseExportMixin field-selection and resource-export interfaces read only"
+    }
+  ],
+  "implementation": "independent in-memory snapshot and CSV artifact fixture; no upstream code copied or executed",
+  "validation": {
+    "python": "3.12.14",
+    "checks_passed": 18,
+    "execution": "synthetic CSV parsing and two-thread local concurrency",
+    "limitations": "no LLM, Django, Celery, real authentication, durable queue, object storage, signed URL, spreadsheet software or distributed recovery"
+  }
+}

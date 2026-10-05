@@ -1,6 +1,6 @@
 # AI 业务应用案例：从问题到可验收结果
 
-这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加HTTP集成、工具注册路由、批量查询、金标准评测、结果缓存、对象解析、结果校验、售前知识库、客服工单、报告验收、报价计价、数据导入、客户激活、业务试点与用量额度十五篇教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
+这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加HTTP集成、工具注册路由、批量查询、金标准评测、结果缓存、对象解析、结果校验、售前知识库、客服工单、报告验收、报价计价、数据导入、客户激活、业务试点、用量额度与文件导出十六篇教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
 
 全部数据与ID虚构；所有业务规则为独立教学定义，不代表任何公司现有接口、经营数据或已上线效果。开源项目提供工具、检索、状态与评测机制依据，不直接提供本篇的业务功能。案例中的接口名称为设计建议。
 
@@ -31,6 +31,7 @@
 | [SaaS客户激活漏斗：顺序与观察期](23-saas-customer-activation-funnel.md) | 定位用户业务路径的使用缺口 | 重复事件、顺序误读与未成熟分母 | analyze |
 | [AI功能业务试点：分组与护栏验收](24-ai-business-pilot-ab-acceptance.md) | 复核新功能的业务效果与成本 | 缺失当失败、分母偏差与过早宣布胜出 | assign / summarize |
 | [AI业务用量与额度账本](25-business-usage-quota-ledger.md) | 核算任务消费并限制额度 | 重试重复扣量、并发透支与未知用量释放 | Ledger.reserve / finish |
+| [AI分析结果导出与下载交付](26-business-result-export-delivery.md) | 交付范围明确且可核对的文件 | 快照混用、撤权后下载与状态误报 | Exports.create / run / download |
 
 ## 一条可落地的业务流程
 
@@ -218,6 +219,16 @@ python knowledge/business-ai-cases/examples/test_business_usage_ledger.py
 ```
 
 [预留与结算记录](examples/business-usage-results.json) · [固定来源](examples/business-usage-sources.json)
+
+### AI分析结果导出与下载交付
+
+[导出教程](26-business-result-export-delivery.md)补齐公开字段白名单、固定数据副本、受理与就绪、权限重检、过期和CSV公式前缀处理。2026-10-05运行18项检查全部通过，含CSV解析及单实例双线程重试；未运行模型、Django、真实认证、下载链接、对象存储或办公软件。
+
+```bash
+python knowledge/business-ai-cases/examples/test_business_export_demo.py
+```
+
+[任务与文件结果](examples/business-export-results.json) · [固定来源](examples/business-export-sources.json)
 
 ## 如何做业务试点
 

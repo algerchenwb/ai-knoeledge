@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-05",
+  "checks_passed": 18,
+  "example": {
+    "fictional": true,
+    "queued": {
+      "state": "queued",
+      "data_version": "snapshot-v1",
+      "row_count": 1,
+      "expires_at": 160,
+      "sha256": null
+    },
+    "ready": {
+      "state": "ready",
+      "data_version": "snapshot-v1",
+      "row_count": 1,
+      "expires_at": 160,
+      "sha256": "4d6234ba74aeb832f2073b97cc61c543abb5b0f279f538fdc91dfe1cf0364c3f"
+    },
+    "csv_utf8": "object_id,name,count\r\npoi-demo,\"'=SUM(1,2)\",25\r\n",
+    "expired": {
+      "state": "expired",
+      "data_version": "snapshot-v1",
+      "row_count": 1,
+      "expires_at": 160,
+      "sha256": null
+    }
+  }
+}

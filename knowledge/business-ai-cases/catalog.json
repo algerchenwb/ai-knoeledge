@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 25,
+  "case_count": 26,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -297,6 +297,21 @@
       "source_record": "examples/business-usage-sources.json",
       "scope": "independent synthetic SQLite unit ledger; no pricing or upstream execution",
       "validation": "16 standard-library checks including file reopen and concurrent quota competition passed"
+    },
+    {
+      "id": "26",
+      "title": "AI分析结果导出：快照、任务状态与下载交付",
+      "path": "26-business-result-export-delivery.md",
+      "function": "Exports.create / Exports.run / Exports.download",
+      "source_repo": "django-import-export/django-import-export",
+      "source_sha": "63c3a6fd4fff7ae1191bb204a5271f772c2c522c",
+      "source_paths": [
+        "README.rst",
+        "import_export/mixins.py"
+      ],
+      "source_record": "examples/business-export-sources.json",
+      "scope": "independent in-memory synthetic snapshot and CSV artifact; no upstream execution",
+      "validation": "18 standard-library checks including CSV parsing and local concurrent retries passed"
     }
   ],
   "http_integration": {
@@ -401,5 +416,11 @@
     "python": "3.12.14",
     "storage": "local SQLite",
     "limitations": "trusted synthetic scope and confirmations; no LLM, real usage, pricing, authentication, OpenMeter, outbox or distributed recovery"
+  },
+  "result_export": {
+    "date": "2026-10-05",
+    "checks_passed": 18,
+    "python": "3.12.14",
+    "limitations": "trusted principal fixtures and in-memory artifacts; no LLM, Django, durable queue, real auth, signed URL, storage, office software or distributed recovery"
   }
 }
