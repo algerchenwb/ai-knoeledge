@@ -1,4 +1,4 @@
-# Agent 应用工程：十三篇深入教程
+# Agent 应用工程：十四篇深入教程
 
 从真实开源实现提取工程知识，配合独立离线故障注入。“实现案例”表示已核验代码路径，不等同于商业成功案例或生产效果证明。
 
@@ -17,8 +17,9 @@
 | [速率、租户配额与截止时间](11-rate-limits-queues-and-deadlines.md) | 突发额度、联合准入、权重、公平性、排队、退避与 deadline；附 18 项离线检查 |
 | [异步队列与任务收尾](12-async-queues-backpressure-and-shutdown.md) | 背压、等待取消、收尾确认、过期、TaskGroup 与正常停机；附 12 项真实 asyncio 检查 |
 | [工具协议与契约版本](13-tool-protocol-and-contract-versioning.md) | MCP 新旧协议、发现目录、契约指纹、旧计划失效与结果分类；附 18 项离线检查 |
+| [持久任务、租约与回执](14-durable-jobs-leases-and-receipts.md) | checkpoint 边界、原子领取、旧执行者、未知结果对账与 outbox；附 14 项 SQLite 检查 |
 
-案例：LangGraph 节点重试与 entrypoint 状态机制；Temporal Activity 重试及实验性 Deep Agents 插件。Pydantic AI 用量限制与累计机制。Pydantic 严格类型与业务校验。cachetools TTL 与回源协调机制。PyBreaker 故障分类与三态转换。Kubernetes 官方文档中的分块列表与快照契约。OpenTelemetry 官方 Trace 与 Baggage 规范。agentevals 轨迹匹配与参数比较机制。aiolimiter 加权容量、突发及事件循环机制。CPython asyncio 队列、取消与 TaskGroup 生命周期。MCP 2026-07-28 官方规范与新旧版本兼容。固定提交、许可与未实跑边界见教程。
+案例：LangGraph 节点重试与 entrypoint 状态机制；Temporal Activity 重试及实验性 Deep Agents 插件。Pydantic AI 用量限制与累计机制。Pydantic 严格类型与业务校验。cachetools TTL 与回源协调机制。PyBreaker 故障分类与三态转换。Kubernetes 官方文档中的分块列表与快照契约。OpenTelemetry 官方 Trace 与 Baggage 规范。agentevals 轨迹匹配与参数比较机制。aiolimiter 加权容量、突发及事件循环机制。CPython asyncio 队列、取消与 TaskGroup 生命周期。MCP 2026-07-28 官方规范与新旧版本兼容。LangGraph SQLiteSaver 状态与中间写入机制。固定提交、许可与未实跑边界见教程。
 
 ~~~bash
 python knowledge/agent-engineering/examples/agent_idempotency_checks.py
@@ -34,12 +35,13 @@ python knowledge/agent-engineering/examples/agent_acceptance_checks.py
 python knowledge/agent-engineering/examples/rate_limit_checks.py
 python knowledge/agent-engineering/examples/async_queue_checks.py
 python knowledge/agent-engineering/examples/tool_protocol_checks.py
+python knowledge/agent-engineering/examples/durable_job_checks.py
 ~~~
 
-Python 3.12.14 标准库 mock 已验证；异步队列脚本另实跑单事件循环的 Queue、取消、timeout 和 TaskGroup；资源预算、熔断和速率脚本另验证了单进程双线程竞争；结构化输出脚本使用 Pydantic 2.13.5（需安装该依赖）实跑；未验证 Agent 框架集成、真实外部 API 或分布式并发，示例不能直接作为生产服务部署。
+Python 3.12.14 标准库 mock 已验证；异步队列脚本另实跑单事件循环的 Queue、取消、timeout 和 TaskGroup；资源预算、熔断和速率脚本另验证了单进程双线程竞争；结构化输出脚本使用 Pydantic 2.13.5（需安装该依赖）实跑；持久任务脚本另使用 SQLite 3.53.1 文件数据库，验证独立进程读取、双连接竞争与事务回滚；未验证 Agent 框架集成、真实外部 API 或分布式并发，示例不能直接作为生产服务部署。
 
 相关：[Agent 状态与权限](../../courses/generative-ai-for-beginners/deep-dives/17-agent-state-and-bounded-workflows.md)、[API Agent 后端实践](../../courses/generative-ai-for-beginners/appendices/api-agent-backend.md)。
 
-后续待扩展：MCP 真实传输与订阅集成、授权生命周期、观测系统集成与采样/导出验证、审批界面与持久化、长任务持久化、跨进程排队取消与持久收尾、跨进程配额与截止时间传播、真实 Agent 集成评估与独立标注集。尚未完成条目不计为已有内容。
+后续待扩展：MCP 真实传输与订阅集成、授权生命周期、观测系统集成与采样/导出验证、审批界面与持久化、长任务框架恢复集成与真实回执、跨进程排队取消与持久收尾、跨进程配额与截止时间传播、真实 Agent 集成评估与独立标注集。尚未完成条目不计为已有内容。
 
 [返回总目录](../../README.md)
