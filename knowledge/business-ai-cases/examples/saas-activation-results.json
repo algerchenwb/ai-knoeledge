@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-05",
+  "python": "3.12.14",
+  "checks_passed": 18,
+  "examples": {
+    "base": {
+      "status": "observed",
+      "tenant": "a",
+      "definition_version": "ordered-user-activation-1",
+      "data_version": "events-demo-1",
+      "cohort": [
+        "2026-09-01T00:00:00Z",
+        "2026-09-06T00:00:00Z"
+      ],
+      "as_of": "2026-09-10T00:00:00Z",
+      "window_days": 7,
+      "entrants": 4,
+      "eligible": 3,
+      "pending": 1,
+      "queried": 3,
+      "activated": 1,
+      "signup_to_query": {
+        "numerator": 3,
+        "denominator": 3,
+        "ratio": 1.0
+      },
+      "query_to_report": {
+        "numerator": 1,
+        "denominator": 3,
+        "ratio": 0.3333333333333333
+      },
+      "signup_to_report": {
+        "numerator": 1,
+        "denominator": 3,
+        "ratio": 0.3333333333333333
+      }
+    },
+    "duplicate_delivery": {
+      "status": "observed",
+      "tenant": "a",
+      "definition_version": "ordered-user-activation-1",
+      "data_version": "events-demo-1",
+      "cohort": [
+        "2026-09-01T00:00:00Z",
+        "2026-09-06T00:00:00Z"
+      ],
+      "as_of": "2026-09-10T00:00:00Z",
+      "window_days": 7,
+      "entrants": 4,
+      "eligible": 3,
+      "pending": 1,
+      "queried": 3,
+      "activated": 1,
+      "signup_to_query": {
+        "numerator": 3,
+        "denominator": 3,
+        "ratio": 1.0
+      },
+      "query_to_report": {
+        "numerator": 1,
+        "denominator": 3,
+        "ratio": 0.3333333333333333
+      },
+      "signup_to_report": {
+        "numerator": 1,
+        "denominator": 3,
+        "ratio": 0.3333333333333333
+      }
+    },
+    "no_mature_sample": {
+      "status": "no_mature_sample",
+      "tenant": "a",
+      "definition_version": "ordered-user-activation-1",
+      "data_version": "events-demo-1",
+      "cohort": [
+        "2026-09-01T00:00:00Z",
+        "2026-09-06T00:00:00Z"
+      ],
+      "as_of": "2026-09-10T00:00:00Z",
+      "window_days": 7,
+      "entrants": 1,
+      "eligible": 0,
+      "pending": 1,
+      "queried": 0,
+      "activated": 0,
+      "signup_to_query": {
+        "numerator": 0,
+        "denominator": 0,
+        "ratio": null
+      },
+      "query_to_report": {
+        "numerator": 0,
+        "denominator": 0,
+        "ratio": null
+      },
+      "signup_to_report": {
+        "numerator": 0,
+        "denominator": 0,
+        "ratio": null
+      }
+    }
+  },
+  "limitations": "synthetic user events and trusted coverage fixtures; no LLM, real telemetry, identity merging, statistical significance or PostHog execution"
+}
