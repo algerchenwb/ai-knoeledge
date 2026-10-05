@@ -1,0 +1,13 @@
+{
+  "checked_on": "2026-10-05",
+  "repository": "growthbook/growthbook",
+  "commit": "830bb76190b1bcfa18b023f559aefdad58e49812",
+  "path": "README.md",
+  "url": "https://github.com/growthbook/growthbook/blob/830bb76190b1bcfa18b023f559aefdad58e49812/README.md",
+  "license": "root MIT Expat with enterprise-directory and third-party exceptions",
+  "license_source": "LICENSE",
+  "license_copy": "examples/growthbook-LICENSE.txt",
+  "observed": "feature flags, gradual rollout, experiments and SQL-backed metrics; statistical engine advertised but not inspected or executed",
+  "independent_design": "stable independent hash assignment and synthetic pilot accounting with missing outcomes, maturity and guardrails; not SDK-compatible; no upstream code copied",
+  "validation": "16 offline standard-library checks; no LLM, live experiment, significance testing, power analysis or GrowthBook execution"
+}

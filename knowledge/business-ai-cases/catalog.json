@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 23,
+  "case_count": 24,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -273,6 +273,18 @@
       "source_record": "examples/saas-activation-sources.json",
       "scope": "independent ordered user funnel; trusted synthetic coverage and identities; no upstream engine execution",
       "validation": "18 offline standard-library checks passed"
+    },
+    {
+      "id": "24",
+      "title": "AI功能业务试点：A/B分组、指标核算与护栏验收",
+      "path": "24-ai-business-pilot-ab-acceptance.md",
+      "function": "assign / summarize",
+      "source_repo": "growthbook/growthbook",
+      "source_sha": "830bb76190b1bcfa18b023f559aefdad58e49812",
+      "source_path": "README.md",
+      "source_record": "examples/ai-business-pilot-sources.json",
+      "scope": "independent synthetic account assignment and mature-window result accounting; no upstream SDK or statistical engine execution",
+      "validation": "16 offline standard-library checks passed"
     }
   ],
   "http_integration": {
@@ -364,5 +376,11 @@
     "checks_passed": 18,
     "python": "3.12.14",
     "limitations": "synthetic events and trusted coverage; no LLM, real telemetry, identity merge, statistical significance or PostHog"
+  },
+  "business_pilot": {
+    "date": "2026-10-05",
+    "checks_passed": 16,
+    "python": "3.12.14",
+    "limitations": "synthetic enrollment and preaggregated outcomes; no LLM, real exposure, telemetry, labels, statistical inference or GrowthBook execution"
   }
 }
