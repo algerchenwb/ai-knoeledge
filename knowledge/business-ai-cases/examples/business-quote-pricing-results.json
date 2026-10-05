@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-05",
+  "python": "3.12.14",
+  "checks_passed": 20,
+  "examples": {
+    "quote": {
+      "body": {
+        "tenant": "tenant-demo",
+        "customer": "customer-demo",
+        "currency": "CNY",
+        "price_basis": "pre-tax; tax and fees not calculated",
+        "pricing_mode": "graduated",
+        "card_version": "rate-demo-2",
+        "policy_version": "discount-demo-1",
+        "as_of": "2026-10-05",
+        "valid_days": 14,
+        "expires_at": "2026-10-19",
+        "status": "pricing_checked",
+        "lines": [
+          {
+            "sku": "analysis-unit",
+            "quantity": 150,
+            "discount": "0.10",
+            "segments": [
+              {
+                "units": 100,
+                "unit_price": "2.00",
+                "amount": "200.00"
+              },
+              {
+                "units": 50,
+                "unit_price": "1.50",
+                "amount": "75.00"
+              }
+            ],
+            "base": "275.00",
+            "net": "247.50"
+          },
+          {
+            "sku": "setup-once",
+            "quantity": 1,
+            "discount": "0",
+            "segments": [
+              {
+                "units": 1,
+                "unit_price": "50.00",
+                "amount": "50.00"
+              }
+            ],
+            "base": "50.00",
+            "net": "50.00"
+          }
+        ],
+        "total": "297.50"
+      },
+      "digest": "59f47226f0c9679c7b964ee37560afd25e832b53d839d29c7ef140e33a818e8f"
+    },
+    "recheck": {
+      "status": "pricing_rechecked",
+      "digest": "59f47226f0c9679c7b964ee37560afd25e832b53d839d29c7ef140e33a818e8f",
+      "total": "297.50",
+      "currency": "CNY"
+    },
+    "needs_approval": {
+      "body": {
+        "tenant": "tenant-demo",
+        "customer": "customer-demo",
+        "currency": "CNY",
+        "price_basis": "pre-tax; tax and fees not calculated",
+        "pricing_mode": "graduated",
+        "card_version": "rate-demo-2",
+        "policy_version": "discount-demo-1",
+        "as_of": "2026-10-05",
+        "valid_days": 14,
+        "expires_at": "2026-10-19",
+        "status": "needs_discount_approval",
+        "lines": [
+          {
+            "sku": "analysis-unit",
+            "quantity": 150,
+            "discount": "0.20",
+            "segments": [
+              {
+                "units": 100,
+                "unit_price": "2.00",
+                "amount": "200.00"
+              },
+              {
+                "units": 50,
+                "unit_price": "1.50",
+                "amount": "75.00"
+              }
+            ],
+            "base": "275.00",
+            "net": "220.00"
+          }
+        ],
+        "total": "220.00"
+      },
+      "digest": "1943dd3ee40527c21e39108e83aa018df312ffe0e17d493949f329432d19ea97"
+    }
+  },
+  "limitations": "fictional pre-tax card and trusted customer fixtures; no document extraction, LLM, real discount approval, tax, FX, invoice or payment"
+}

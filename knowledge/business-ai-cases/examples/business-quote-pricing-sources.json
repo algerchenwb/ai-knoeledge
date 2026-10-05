@@ -1,0 +1,12 @@
+{
+  "checked_on": "2026-10-05",
+  "repository": "docling-project/docling",
+  "commit": "58f1f8d907fdc4610cd8dca20da6ef53a4550ee8",
+  "path": "README.md",
+  "url": "https://github.com/docling-project/docling/blob/58f1f8d907fdc4610cd8dca20da6ef53a4550ee8/README.md",
+  "license": "MIT",
+  "license_copy": "knowledge/agent-case-studies/licenses/docling.txt",
+  "observed": "Document parsing, table structure, unified DoclingDocument, Markdown/JSON exports; model licenses separate",
+  "independent_design": "Fictional graduated pre-tax quote computation, discount limit, current card/policy checks and expiry; no upstream code copied",
+  "validation": "20 offline Python standard-library checks; no Docling, LLM, tax, FX, real approvals, billing or payment"
+}

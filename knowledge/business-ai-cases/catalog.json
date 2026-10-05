@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 20,
+  "case_count": 21,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -237,6 +237,18 @@
       "source_record": "examples/business-report-gate-sources.json",
       "scope": "independent structured metric report and trusted approval fixtures; no writing model or actual publication",
       "validation": "24 offline standard-library checks passed"
+    },
+    {
+      "id": "21",
+      "title": "AI辅助报价：价目表、阶梯价格、折扣权限与有效期",
+      "path": "21-ai-assisted-quote-pricing.md",
+      "function": "QuotePricing.build / QuotePricing.recheck",
+      "source_repo": "docling-project/docling",
+      "source_sha": "58f1f8d907fdc4610cd8dca20da6ef53a4550ee8",
+      "source_path": "README.md",
+      "source_record": "examples/business-quote-pricing-sources.json",
+      "scope": "independent fictional pre-tax graduated pricing; no document extraction, real approval or billing",
+      "validation": "20 offline standard-library checks passed"
     }
   ],
   "http_integration": {
@@ -310,5 +322,11 @@
     "checks_passed": 24,
     "python": "3.12.14",
     "limitations": "synthetic trusted snapshots and approval fixtures; no LLM, causal-text validation, real evidence, authentication or publication"
+  },
+  "quote_pricing": {
+    "date": "2026-10-05",
+    "checks_passed": 20,
+    "python": "3.12.14",
+    "limitations": "fictional trusted price/customer fixtures; no LLM, Docling, tax, FX, real discount approval, invoices or payment"
   }
 }
