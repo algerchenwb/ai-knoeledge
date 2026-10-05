@@ -1,4 +1,4 @@
-# Agent 应用工程：十五篇深入教程
+# Agent 应用工程：十六篇深入教程
 
 从真实开源实现提取工程知识，配合独立离线故障注入。“实现案例”表示已核验代码路径，不等同于商业成功案例或生产效果证明。
 
@@ -19,8 +19,9 @@
 | [工具协议与契约版本](13-tool-protocol-and-contract-versioning.md) | MCP 新旧协议、发现目录、契约指纹、旧计划失效与结果分类；附 18 项离线检查 |
 | [持久任务、租约与回执](14-durable-jobs-leases-and-receipts.md) | checkpoint 边界、原子领取、旧执行者、未知结果对账与 outbox；附 14 项 SQLite 检查 |
 | [指标语义与人群汇总](15-semantic-metrics-and-cohort-aggregation.md) | 聚合粒度、JOIN 扇出、去重不可加、总体比例、窗口及版本比较；附 15 项 SQLite 检查 |
+| [异常诊断与因果边界](16-business-diagnosis-and-causal-boundaries.md) | 分组结构、标准化、路径依赖分解、因果识别与反驳；附 14 项精确算术检查 |
 
-案例：LangGraph 节点重试与 entrypoint 状态机制；Temporal Activity 重试及实验性 Deep Agents 插件。Pydantic AI 用量限制与累计机制。Pydantic 严格类型与业务校验。cachetools TTL 与回源协调机制。PyBreaker 故障分类与三态转换。Kubernetes 官方文档中的分块列表与快照契约。OpenTelemetry 官方 Trace 与 Baggage 规范。agentevals 轨迹匹配与参数比较机制。aiolimiter 加权容量、突发及事件循环机制。CPython asyncio 队列、取消与 TaskGroup 生命周期。MCP 2026-07-28 官方规范与新旧版本兼容。LangGraph SQLiteSaver 状态与中间写入机制。MetricFlow 语义模型与比率指标测试配置。固定提交、许可与未实跑边界见教程。
+案例：LangGraph 节点重试与 entrypoint 状态机制；Temporal Activity 重试及实验性 Deep Agents 插件。Pydantic AI 用量限制与累计机制。Pydantic 严格类型与业务校验。cachetools TTL 与回源协调机制。PyBreaker 故障分类与三态转换。Kubernetes 官方文档中的分块列表与快照契约。OpenTelemetry 官方 Trace 与 Baggage 规范。agentevals 轨迹匹配与参数比较机制。aiolimiter 加权容量、突发及事件循环机制。CPython asyncio 队列、取消与 TaskGroup 生命周期。MCP 2026-07-28 官方规范与新旧版本兼容。LangGraph SQLiteSaver 状态与中间写入机制。MetricFlow 语义模型与比率指标测试配置。DoWhy 因果识别、估计与反驳工作流。固定提交、许可与未实跑边界见教程。
 
 ~~~bash
 python knowledge/agent-engineering/examples/agent_idempotency_checks.py
@@ -38,6 +39,7 @@ python knowledge/agent-engineering/examples/async_queue_checks.py
 python knowledge/agent-engineering/examples/tool_protocol_checks.py
 python knowledge/agent-engineering/examples/durable_job_checks.py
 python knowledge/agent-engineering/examples/semantic_metric_checks.py
+python knowledge/agent-engineering/examples/business_diagnosis_checks.py
 ~~~
 
 Python 3.12.14 标准库 mock 已验证；异步队列脚本另实跑单事件循环的 Queue、取消、timeout 和 TaskGroup；资源预算、熔断和速率脚本另验证了单进程双线程竞争；结构化输出脚本使用 Pydantic 2.13.5（需安装该依赖）实跑；持久任务脚本另使用 SQLite 3.53.1 文件数据库，验证独立进程读取、双连接竞争与事务回滚；指标语义脚本另实跑 SQLite 去重与关联反例；未验证 Agent 框架集成、真实外部 API 或分布式并发，示例不能直接作为生产服务部署。
