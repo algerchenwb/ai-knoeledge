@@ -1,0 +1,155 @@
+{
+  "date": "2026-10-05",
+  "python": "3.12.14",
+  "checks_passed": 24,
+  "examples": {
+    "ready_draft": {
+      "body": {
+        "tenant": "tenant-demo",
+        "object_id": "area-demo",
+        "period": [
+          "2026-09-01",
+          "2026-10-01"
+        ],
+        "policy_version": "report-policy-1",
+        "definitions": {
+          "co_visit": "co-visit-1",
+          "coverage": "coverage-1",
+          "traffic_change": "matched-day-1"
+        },
+        "required": [
+          "co_visit",
+          "coverage",
+          "traffic_change"
+        ],
+        "status": "ready_for_review",
+        "sections": [
+          {
+            "metric": "co_visit",
+            "status": "ok",
+            "value": "0.3",
+            "evidence_id": "receipt-co",
+            "data_version": "co-data-2"
+          },
+          {
+            "metric": "coverage",
+            "status": "ok",
+            "value": "0.5",
+            "evidence_id": "receipt-coverage",
+            "data_version": "coverage-data-2"
+          },
+          {
+            "metric": "traffic_change",
+            "status": "ok",
+            "value": "-0.1",
+            "evidence_id": "receipt-trend",
+            "data_version": "trend-data-2"
+          }
+        ]
+      },
+      "digest": "f029bceb55994b045882fa658e7f4343ca8cc25acdf004f693d7eb034fcb8fe8"
+    },
+    "approval_fixture": {
+      "tenant": "tenant-demo",
+      "reviewer": "reviewer-demo",
+      "digest": "f029bceb55994b045882fa658e7f4343ca8cc25acdf004f693d7eb034fcb8fe8",
+      "approved_at": 100,
+      "expires_at": 200
+    },
+    "release_eligibility": {
+      "status": "eligible_for_release",
+      "digest": "f029bceb55994b045882fa658e7f4343ca8cc25acdf004f693d7eb034fcb8fe8",
+      "reviewer": "reviewer-demo",
+      "manifest": {
+        "tenant": "tenant-demo",
+        "object_id": "area-demo",
+        "period": [
+          "2026-09-01",
+          "2026-10-01"
+        ],
+        "policy_version": "report-policy-1",
+        "definitions": {
+          "co_visit": "co-visit-1",
+          "coverage": "coverage-1",
+          "traffic_change": "matched-day-1"
+        },
+        "required": [
+          "co_visit",
+          "coverage",
+          "traffic_change"
+        ],
+        "status": "ready_for_review",
+        "sections": [
+          {
+            "metric": "co_visit",
+            "status": "ok",
+            "value": "0.3",
+            "evidence_id": "receipt-co",
+            "data_version": "co-data-2"
+          },
+          {
+            "metric": "coverage",
+            "status": "ok",
+            "value": "0.5",
+            "evidence_id": "receipt-coverage",
+            "data_version": "coverage-data-2"
+          },
+          {
+            "metric": "traffic_change",
+            "status": "ok",
+            "value": "-0.1",
+            "evidence_id": "receipt-trend",
+            "data_version": "trend-data-2"
+          }
+        ]
+      }
+    },
+    "partial_draft": {
+      "body": {
+        "tenant": "tenant-demo",
+        "object_id": "area-demo",
+        "period": [
+          "2026-09-01",
+          "2026-10-01"
+        ],
+        "policy_version": "report-policy-1",
+        "definitions": {
+          "co_visit": "co-visit-1",
+          "coverage": "coverage-1",
+          "traffic_change": "matched-day-1"
+        },
+        "required": [
+          "co_visit",
+          "coverage",
+          "traffic_change"
+        ],
+        "status": "partial",
+        "sections": [
+          {
+            "metric": "co_visit",
+            "status": "ok",
+            "value": "0.3",
+            "evidence_id": "receipt-co",
+            "data_version": "co-data-2"
+          },
+          {
+            "metric": "coverage",
+            "status": "ok",
+            "value": "0.5",
+            "evidence_id": "receipt-coverage",
+            "data_version": "coverage-data-2"
+          },
+          {
+            "metric": "traffic_change",
+            "status": "missing",
+            "value": null,
+            "evidence_id": null,
+            "data_version": null
+          }
+        ]
+      },
+      "digest": "271b0d0cc5c03a5a7f43c987a418a0e70218df97343c6132d372b96bc3f0bc61"
+    }
+  },
+  "limitations": "synthetic trusted snapshots and approval fixtures; no LLM, causal-text validation, real evidence service, authentication or publication"
+}

@@ -1,0 +1,12 @@
+{
+  "checked_on": "2026-10-05",
+  "repository": "assafelovic/gpt-researcher",
+  "commit": "0957c301ed06c2a5857b834358c7227c739041d4",
+  "path": "gpt_researcher/agent.py",
+  "url": "https://github.com/assafelovic/gpt-researcher/blob/0957c301ed06c2a5857b834358c7227c739041d4/gpt_researcher/agent.py",
+  "license": "MIT",
+  "license_copy": "knowledge/agent-case-studies/licenses/gpt-researcher.txt",
+  "observed": "conduct_research prepares context; write_report delegates report generation; research sources and references exposed",
+  "independent_design": "structured metric manifest, exact scope checks, Decimal ratios, digest-bound approval fixtures and current-version release eligibility; no upstream code copied",
+  "validation": "24 offline standard-library synthetic fixture checks; no upstream framework, LLM, real evidence service, approval authentication or publication"
+}

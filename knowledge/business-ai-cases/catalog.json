@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 19,
+  "case_count": 20,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -225,6 +225,18 @@
       "source_record": "examples/support-ticket-sources.json",
       "scope": "independent SQLite ticket ledger; synthetic actors and policy; no model or real support system",
       "validation": "24 checks including file reopen and two-connection concurrent duplicate create passed"
+    },
+    {
+      "id": "20",
+      "title": "经营报告交付：事实清单、版本绑定与发布前验收",
+      "path": "20-business-report-release-gate.md",
+      "function": "ReportGate.prepare / ReportGate.approve / ReportGate.check_release",
+      "source_repo": "assafelovic/gpt-researcher",
+      "source_sha": "0957c301ed06c2a5857b834358c7227c739041d4",
+      "source_path": "gpt_researcher/agent.py",
+      "source_record": "examples/business-report-gate-sources.json",
+      "scope": "independent structured metric report and trusted approval fixtures; no writing model or actual publication",
+      "validation": "24 offline standard-library checks passed"
     }
   ],
   "http_integration": {
@@ -292,5 +304,11 @@
     "python": "3.12.14",
     "storage": "local SQLite",
     "limitations": "synthetic trusted actors; no LLM, real authentication, notification, support platform or contractual SLA"
+  },
+  "report_release_gate": {
+    "date": "2026-10-05",
+    "checks_passed": 24,
+    "python": "3.12.14",
+    "limitations": "synthetic trusted snapshots and approval fixtures; no LLM, causal-text validation, real evidence, authentication or publication"
   }
 }
