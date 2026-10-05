@@ -1,4 +1,4 @@
-# Agent 应用工程：十八篇深入教程
+# Agent 应用工程：十九篇深入教程
 
 从真实开源实现提取工程知识，配合独立离线故障注入。“实现案例”表示已核验代码路径，不等同于商业成功案例或生产效果证明。
 
@@ -22,8 +22,9 @@
 | [异常诊断与因果边界](16-business-diagnosis-and-causal-boundaries.md) | 分组结构、标准化、路径依赖分解、因果识别与反驳；附 14 项精确算术检查 |
 | [推荐排序与敏感性](17-decision-ranking-and-sensitivity.md) | 硬约束、效用锚点、权重、缺失、支配、排名反转与并列；附 16 项精确检查 |
 | [监控告警与通知](18-alert-states-freshness-and-notifications.md) | 持续条件、恢复迟滞、缺失与过期、迟到、身份与通知去重；附 18 项离线检查 |
+| [实验与效果验收](19-business-experiments-and-evidence.md) | 随机化单位、分流失配、成熟窗口、置换检验、多指标及提前停止；附 18 项检查与 SciPy 数值对照 |
 
-案例：LangGraph 节点重试与 entrypoint 状态机制；Temporal Activity 重试及实验性 Deep Agents 插件。Pydantic AI 用量限制与累计机制。Pydantic 严格类型与业务校验。cachetools TTL 与回源协调机制。PyBreaker 故障分类与三态转换。Kubernetes 官方文档中的分块列表与快照契约。OpenTelemetry 官方 Trace 与 Baggage 规范。agentevals 轨迹匹配与参数比较机制。aiolimiter 加权容量、突发及事件循环机制。CPython asyncio 队列、取消与 TaskGroup 生命周期。MCP 2026-07-28 官方规范与新旧版本兼容。LangGraph SQLiteSaver 状态与中间写入机制。MetricFlow 语义模型与比率指标测试配置。DoWhy 因果识别、估计与反驳工作流。pymcdm WSM 与归一化源码。Prometheus 告警状态、保持时长与通知时间机制。固定提交、许可与未实跑边界见教程。
+案例：LangGraph 节点重试与 entrypoint 状态机制；Temporal Activity 重试及实验性 Deep Agents 插件。Pydantic AI 用量限制与累计机制。Pydantic 严格类型与业务校验。cachetools TTL 与回源协调机制。PyBreaker 故障分类与三态转换。Kubernetes 官方文档中的分块列表与快照契约。OpenTelemetry 官方 Trace 与 Baggage 规范。agentevals 轨迹匹配与参数比较机制。aiolimiter 加权容量、突发及事件循环机制。CPython asyncio 队列、取消与 TaskGroup 生命周期。MCP 2026-07-28 官方规范与新旧版本兼容。LangGraph SQLiteSaver 状态与中间写入机制。MetricFlow 语义模型与比率指标测试配置。DoWhy 因果识别、估计与反驳工作流。pymcdm WSM 与归一化源码。Prometheus 告警状态、保持时长与通知时间机制。SciPy 二项检验与置换检验源码。固定提交、许可与未实跑边界见教程。
 
 ~~~bash
 python knowledge/agent-engineering/examples/agent_idempotency_checks.py
@@ -44,9 +45,10 @@ python knowledge/agent-engineering/examples/semantic_metric_checks.py
 python knowledge/agent-engineering/examples/business_diagnosis_checks.py
 python knowledge/agent-engineering/examples/decision_ranking_checks.py
 python knowledge/agent-engineering/examples/alert_state_checks.py
+python knowledge/agent-engineering/examples/business_experiment_checks.py
 ~~~
 
-Python 3.12.14 标准库 mock 已验证；异步队列脚本另实跑单事件循环的 Queue、取消、timeout 和 TaskGroup；资源预算、熔断和速率脚本另验证了单进程双线程竞争；结构化输出脚本使用 Pydantic 2.13.5（需安装该依赖）实跑；持久任务脚本另使用 SQLite 3.53.1 文件数据库，验证独立进程读取、双连接竞争与事务回滚；指标语义脚本另实跑 SQLite 去重与关联反例；未验证 Agent 框架集成、真实外部 API 或分布式并发，示例不能直接作为生产服务部署。
+Python 3.12.14 标准库 mock 已验证；异步队列脚本另实跑单事件循环的 Queue、取消、timeout 和 TaskGroup；资源预算、熔断和速率脚本另验证了单进程双线程竞争；结构化输出脚本使用 Pydantic 2.13.5（需安装该依赖）实跑；持久任务脚本另使用 SQLite 3.53.1 文件数据库，验证独立进程读取、双连接竞争与事务回滚；指标语义脚本另实跑 SQLite 去重与关联反例；业务实验脚本另使用 SciPy 1.17.0 对照 180 组二项和 9 组置换 p 值（该项依赖 SciPy）；未验证 Agent 框架集成、真实外部 API 或分布式并发，示例不能直接作为生产服务部署。
 
 相关：[Agent 状态与权限](../../courses/generative-ai-for-beginners/deep-dives/17-agent-state-and-bounded-workflows.md)、[API Agent 后端实践](../../courses/generative-ai-for-beginners/appendices/api-agent-backend.md)。
 
