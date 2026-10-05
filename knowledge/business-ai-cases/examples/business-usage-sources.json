@@ -1,0 +1,21 @@
+{
+  "checked_on": "2026-10-05",
+  "sources": [
+    {
+      "repository": "openmeterio/openmeter",
+      "commit": "cebcd9f8b9f6a1b5cf473d3bb7065450549b4240",
+      "path": "README.md",
+      "url": "https://github.com/openmeterio/openmeter/blob/cebcd9f8b9f6a1b5cf473d3bb7065450549b4240/README.md",
+      "license": "Apache-2.0",
+      "license_copy": "examples/openmeter-LICENSE.txt",
+      "used_for": "usage events, customer attribution, aggregation, entitlements and asynchronous processing described by README only"
+    }
+  ],
+  "implementation": "independent SQLite reservation and terminal receipt ledger; not upstream algorithm",
+  "validation": {
+    "python": "3.12.14",
+    "checks_passed": 16,
+    "execution": "synthetic local SQLite including reopen and two-connection concurrent quota competition",
+    "limitations": "no LLM, authentication, real usage, upstream runtime, money, invoicing, outbox or distributed recovery"
+  }
+}

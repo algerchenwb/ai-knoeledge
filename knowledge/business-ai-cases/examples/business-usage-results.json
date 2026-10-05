@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-05",
+  "checks_passed": 16,
+  "example": {
+    "fictional": true,
+    "unit": "internal_work_unit_not_money_or_tokens",
+    "reserved": {
+      "state": "held",
+      "actual": null,
+      "replayed": false
+    },
+    "during": {
+      "quota": 100,
+      "held": 40,
+      "used": 0,
+      "available": 60
+    },
+    "settled": {
+      "state": "settled",
+      "actual": 25,
+      "replayed": false
+    },
+    "settlement_retry": {
+      "state": "settled",
+      "actual": 25,
+      "replayed": true
+    },
+    "final": {
+      "quota": 100,
+      "held": 0,
+      "used": 25,
+      "available": 75
+    }
+  }
+}

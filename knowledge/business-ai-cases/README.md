@@ -1,6 +1,6 @@
 # AI 业务应用案例：从问题到可验收结果
 
-这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加HTTP集成、工具注册路由、批量查询、金标准评测、结果缓存、对象解析、结果校验、售前知识库、客服工单、报告验收、报价计价、数据导入、客户激活与业务试点十四篇教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
+这组内容把[100项应用知识](../ai-application-playbook/README.md)展开成十个完整业务案例，并增加HTTP集成、工具注册路由、批量查询、金标准评测、结果缓存、对象解析、结果校验、售前知识库、客服工单、报告验收、报价计价、数据导入、客户激活、业务试点与用量额度十五篇教程，覆盖取数、经营分析、售前、客服、报表、后台作业和商务文档。每篇说明业务价值、指标或规则、工具编排、可复算样例、结果表达和验收边界。
 
 全部数据与ID虚构；所有业务规则为独立教学定义，不代表任何公司现有接口、经营数据或已上线效果。开源项目提供工具、检索、状态与评测机制依据，不直接提供本篇的业务功能。案例中的接口名称为设计建议。
 
@@ -30,6 +30,7 @@
 | [AI辅助客户数据导入：映射与预演](22-ai-assisted-customer-data-import.md) | 将客户表格转成可提交记录 | 字段误配、重复键与旧计划写入 | Importer.preview / commit |
 | [SaaS客户激活漏斗：顺序与观察期](23-saas-customer-activation-funnel.md) | 定位用户业务路径的使用缺口 | 重复事件、顺序误读与未成熟分母 | analyze |
 | [AI功能业务试点：分组与护栏验收](24-ai-business-pilot-ab-acceptance.md) | 复核新功能的业务效果与成本 | 缺失当失败、分母偏差与过早宣布胜出 | assign / summarize |
+| [AI业务用量与额度账本](25-business-usage-quota-ledger.md) | 核算任务消费并限制额度 | 重试重复扣量、并发透支与未知用量释放 | Ledger.reserve / finish |
 
 ## 一条可落地的业务流程
 
@@ -207,6 +208,16 @@ python knowledge/business-ai-cases/examples/test_ai_business_pilot.py
 ```
 
 [三组核算结果](examples/ai-business-pilot-results.json) · [固定来源](examples/ai-business-pilot-sources.json)
+
+### AI业务用量与额度账本
+
+[用量教程](25-business-usage-quota-ledger.md)补齐计量单位、周期归属、预留、实际用量结算、重复回执与未知结果。2026-10-05运行16项检查全部通过，含本地SQLite文件重开与双连接并发额度竞争；未运行模型、真实认证、供应商用量、OpenMeter或支付。
+
+```bash
+python knowledge/business-ai-cases/examples/test_business_usage_ledger.py
+```
+
+[预留与结算记录](examples/business-usage-results.json) · [固定来源](examples/business-usage-sources.json)
 
 ## 如何做业务试点
 

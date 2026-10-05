@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 24,
+  "case_count": 25,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -285,6 +285,18 @@
       "source_record": "examples/ai-business-pilot-sources.json",
       "scope": "independent synthetic account assignment and mature-window result accounting; no upstream SDK or statistical engine execution",
       "validation": "16 offline standard-library checks passed"
+    },
+    {
+      "id": "25",
+      "title": "AI业务用量与额度账本：预留、结算和未知结果",
+      "path": "25-business-usage-quota-ledger.md",
+      "function": "Ledger.reserve / Ledger.finish",
+      "source_repo": "openmeterio/openmeter",
+      "source_sha": "cebcd9f8b9f6a1b5cf473d3bb7065450549b4240",
+      "source_path": "README.md",
+      "source_record": "examples/business-usage-sources.json",
+      "scope": "independent synthetic SQLite unit ledger; no pricing or upstream execution",
+      "validation": "16 standard-library checks including file reopen and concurrent quota competition passed"
     }
   ],
   "http_integration": {
@@ -382,5 +394,12 @@
     "checks_passed": 16,
     "python": "3.12.14",
     "limitations": "synthetic enrollment and preaggregated outcomes; no LLM, real exposure, telemetry, labels, statistical inference or GrowthBook execution"
+  },
+  "usage_ledger": {
+    "date": "2026-10-05",
+    "checks_passed": 16,
+    "python": "3.12.14",
+    "storage": "local SQLite",
+    "limitations": "trusted synthetic scope and confirmations; no LLM, real usage, pricing, authentication, OpenMeter, outbox or distributed recovery"
   }
 }
