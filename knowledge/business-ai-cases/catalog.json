@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "case_count": 21,
+  "case_count": 22,
   "execution": "10 independent synthetic core-rule demos; 14 standard-library checks passed; no LLM or production integration",
   "cases": [
     {
@@ -249,6 +249,18 @@
       "source_record": "examples/business-quote-pricing-sources.json",
       "scope": "independent fictional pre-tax graduated pricing; no document extraction, real approval or billing",
       "validation": "20 offline standard-library checks passed"
+    },
+    {
+      "id": "22",
+      "title": "AI辅助客户数据导入：字段映射、预演校验与正式提交",
+      "path": "22-ai-assisted-customer-data-import.md",
+      "function": "Importer.preview / Importer.commit",
+      "source_repo": "frictionlessdata/frictionless-py",
+      "source_sha": "6c7146c07fa0f15b5c1bdc09e73309fb339dfe9a",
+      "source_path": "README.md",
+      "source_record": "examples/customer-data-import-sources.json",
+      "scope": "independent explicit CSV validation and in-memory scoped commit; fictional permissions",
+      "validation": "20 standard-library checks including real two-thread duplicate commit passed"
     }
   ],
   "http_integration": {
@@ -328,5 +340,11 @@
     "checks_passed": 20,
     "python": "3.12.14",
     "limitations": "fictional trusted price/customer fixtures; no LLM, Docling, tax, FX, real discount approval, invoices or payment"
+  },
+  "customer_data_import": {
+    "date": "2026-10-05",
+    "checks_passed": 20,
+    "python": "3.12.14",
+    "limitations": "synthetic objects; in-memory state and one-process lock; no LLM, real authentication, persistent storage or Frictionless"
   }
 }

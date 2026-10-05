@@ -1,0 +1,13 @@
+{
+  "checked_on": "2026-10-05",
+  "repository": "frictionlessdata/frictionless-py",
+  "commit": "6c7146c07fa0f15b5c1bdc09e73309fb339dfe9a",
+  "path": "README.md",
+  "url": "https://github.com/frictionlessdata/frictionless-py/blob/6c7146c07fa0f15b5c1bdc09e73309fb339dfe9a/README.md",
+  "license": "MIT",
+  "license_source": "LICENSE.md",
+  "license_copy": "examples/frictionless-LICENSE.md",
+  "observed": "Describe, extract, validate and transform tabular data; unified validation report with row/field/code/message",
+  "independent_design": "Explicit CSV mapping, synthetic object authorization, preview plans, all-or-nothing in-memory commit and scoped replay; no upstream code copied",
+  "validation": "20 standard-library checks including real two-thread duplicate commit; no Frictionless, LLM, real authentication, persistent storage or production integration"
+}

@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-05",
+  "python": "3.12.14",
+  "checks_passed": 20,
+  "examples": {
+    "preview": {
+      "plan_id": "plan-demo-valid",
+      "file_sha256": "2da7ffb84db30abc48f012003e596bd7bc9da53cab087429a48e9d972229fcbf",
+      "dataset_version": 0,
+      "grant_revision": 1,
+      "status": "ready",
+      "accepted_rows": 2,
+      "errors": [],
+      "expires_at": 400
+    },
+    "committed": {
+      "plan_id": "plan-demo-valid",
+      "tenant": "tenant-demo",
+      "status": "committed",
+      "rows_written": 2,
+      "dataset_version": 1,
+      "file_sha256": "2da7ffb84db30abc48f012003e596bd7bc9da53cab087429a48e9d972229fcbf",
+      "replayed": false
+    },
+    "retry": {
+      "plan_id": "plan-demo-valid",
+      "tenant": "tenant-demo",
+      "status": "committed",
+      "rows_written": 2,
+      "dataset_version": 1,
+      "file_sha256": "2da7ffb84db30abc48f012003e596bd7bc9da53cab087429a48e9d972229fcbf",
+      "replayed": true
+    },
+    "invalid_preview": {
+      "plan_id": "plan-demo-invalid",
+      "file_sha256": "952435039d0899e61d91456063b6d79f1901b44d5b03b4c64298098ea70928b7",
+      "dataset_version": 1,
+      "grant_revision": 1,
+      "status": "invalid",
+      "accepted_rows": 0,
+      "errors": [
+        {
+          "record_number": 2,
+          "code": "population_count"
+        }
+      ],
+      "expires_at": 403
+    }
+  },
+  "limitations": "synthetic authorized objects; in-memory state and one-process lock; no LLM, real authentication, persistent storage or Frictionless execution"
+}
